@@ -1,4 +1,7 @@
 # fkoh111
-An R package inspired by https://github.com/kbroman/broman
+An R package inspired by https://github.com/kbroman/broman  
 
-This is a WIP.
+Made for the fun of it etc. etc.  
+
+
+[![Build Status](https://travis-ci.com/fkoh111/fkoh111.svg?branch=master)](https://travis-ci.com/fkoh111/fkoh111)
