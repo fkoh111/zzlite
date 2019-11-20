@@ -9,8 +9,8 @@
 #' @return nuttin expect for more objects in your environment
 #' 
 #' @examples
-#' init_foldeR("R")
-init_foldeR <- function(folder) {
+#' init_folder("R")
+init_folder <- function(folder) {
   src <- file.path(getwd(), folder)
   src_contains <- list.files(path = src, "*.R$")
   
@@ -18,5 +18,3 @@ init_foldeR <- function(folder) {
     source(file.path(src, file))
   }  
 }
-
-

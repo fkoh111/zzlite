@@ -1,6 +1,6 @@
 test_that("we're initializing `dummy_vector` and `dummy_function`", {
   
-  init_foldeR("tests/testdata")
+  init_folder("tests/testdata")
   
   # Testing vectors
   identical_dummy_vector <- c("Hello", "World!")
@@ -17,7 +17,7 @@ test_that("we're initializing `dummy_vector` and `dummy_function`", {
 test_that("we're not reading files with lowercase R extensions. Testing by NOT having
           object `dummy_with_lowercase_extension` in our globals", {
   
-  init_foldeR("tests/testdata")
+  init_folder("tests/testdata")
   
   expect_error(expect_null(dummy_with_lowercase_extension), "object 'dummy_with_lowercase_extension' not found")
   
