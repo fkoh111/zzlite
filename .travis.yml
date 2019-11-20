@@ -1,5 +1,16 @@
 language: r
-cache: packages
+
+r:
+  - oldrel
+  - release
+  - devel
+  - bioc-devel
+
+r_packages:
+  - testthat
+
+cache:
+  - packages
 
 warnings_are_errors: true
 
