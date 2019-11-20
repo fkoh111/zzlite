@@ -3,7 +3,7 @@ test_that("we're initializing `dummy_vector` and `dummy_function`", {
   init_folder("tests/testdata")
   
   # Testing vectors
-  identical_dummy_vector <- c("Hello", "World!")
+  identical_dummy_vector <- c("Hello", "World!a")
   expect_identical(dummy_vector, identical_dummy_vector)
   
   
