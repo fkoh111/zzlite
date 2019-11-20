@@ -8,6 +8,7 @@ r:
 
 r_packages:
   - testthat
+  - covr
 
 cache:
   - packages
@@ -18,3 +19,6 @@ notifications:
   email:
     on_success: change
     on_failure: change
+
+after_success:
+  - Rscript -e 'covr::codecov()'
