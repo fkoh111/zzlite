@@ -4,10 +4,10 @@
 \alias{init_folder}
 \title{Init a a given folder containing .R files}
 \usage{
-init_folder(folder)
+init_folder(src)
 }
 \arguments{
-\item{folder}{which is a path or a folder name}
+\item{src}{which is a path or a folder name}
 }
 \value{
 nuttin expect for more objects in your environment
