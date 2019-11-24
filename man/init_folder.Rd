@@ -7,10 +7,12 @@
 init_folder(src, strict = TRUE)
 }
 \arguments{
-\item{src}{which is a path or a folder name}
+\item{src}{Which is a path or a folder name}
+
+\item{strict}{Evaluate .R extensions in strict mode, that is, only source capital R. Defaults to TRUE}
 }
 \value{
-nuttin expect for more objects in your environment
+Nuttin' expect for more objects in your environment
 }
 \description{
 This function initializes files with a proper .R extension.

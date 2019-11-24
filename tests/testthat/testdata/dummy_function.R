@@ -1,3 +1,3 @@
 dummy_function <- function () {
-  not_print <- c("Hello World!")
+  not_print <- c("Hello", "World!")
 }
