@@ -10,8 +10,14 @@
 #' 
 #' @examples
 #' init_folder("R")
-init_folder <- function(src) {
-  src_contains <- list.files(path = src, "*.R$")
+init_folder <- function(src, strict = TRUE) {
+  if (strict == TRUE) {
+    file_pattern <- "*.\\.R$"
+  } else {
+    file_pattern <- "*.\\.(R|r)$"
+  }
+  
+  src_contains <- list.files(path = src, pattern = file_pattern)
   
   for (file in src_contains) {
     source(file.path(src, file))

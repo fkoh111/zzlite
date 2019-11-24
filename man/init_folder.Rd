@@ -4,7 +4,7 @@
 \alias{init_folder}
 \title{Init a a given folder containing .R files}
 \usage{
-init_folder(src)
+init_folder(src, strict = TRUE)
 }
 \arguments{
 \item{src}{which is a path or a folder name}
