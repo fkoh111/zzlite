@@ -22,6 +22,6 @@ init_folder <- function(src, strict = TRUE) {
   src_contains <- list.files(path = src, pattern = file_pattern)
   
   for (file in src_contains) {
-    source(file.path(src, file))
+    source(file.path(src, file, fsep = .Platform$file.sep))
   }
 }
