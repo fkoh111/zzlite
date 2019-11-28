@@ -5,7 +5,8 @@
 #' 
 #' @param src Which is a path or a folder name
 #' 
-#' @param strict Evaluate .R extensions in strict mode, that is, only source capital R. Defaults to TRUE
+#' @param strict Evaluate .R extensions in strict mode, that is, only source
+#' capital R extensions. Defaults to TRUE
 #' 
 #' @export
 #' @return Nuttin' expect for more objects in your environment
@@ -18,10 +19,19 @@ init_folder <- function(src, strict = TRUE) {
   } else {
     file_pattern <- ".*\\.(R|r)$"
   }
-    
+
   src_contains <- list.files(path = src, pattern = file_pattern)
   
-  for (file in src_contains) {
-    source(file.path(src, file, fsep = .Platform$file.sep))
+  if (identical(src_contains, character(0))) {
+    warning("The current path doesn't contain any R file")
+  } else {
+    for (file in src_contains) {
+      source(file.path(src, file, fsep = .Platform$file.sep))
+    } 
   }
 }
+
+
+#init_folder("tests/testthat/testdata/dummy_folder_without_R")
+#init_folder("tests/testthat/testdata/")
+#init_folder()
