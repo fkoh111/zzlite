@@ -23,15 +23,10 @@ init_folder <- function(src, strict = TRUE) {
   src_contains <- list.files(path = src, pattern = file_pattern)
   
   if (identical(src_contains, character(0))) {
-    warning("The current path doesn't contain any R file")
+    warning("The assigned path doesn't contain any valid file(s)")
   } else {
     for (file in src_contains) {
       source(file.path(src, file, fsep = .Platform$file.sep))
     } 
   }
 }
-
-
-#init_folder("tests/testthat/testdata/dummy_folder_without_R")
-#init_folder("tests/testthat/testdata/")
-#init_folder()
