@@ -1,18 +1,31 @@
 # init_folder
-#' Init a a given folder containing .R files
 #' 
-#' This function initializes files with a proper .R extension.
+#' Init a given folder containing script files for the R programming language
 #' 
-#' @param src Which is a path or a folder name
 #' 
-#' @param strict Evaluate .R extensions in strict mode, that is, only source
-#' capital R extensions. Defaults to TRUE
+#' Per default init_folder will only initialize files with a capitalized
+#' extension, that is a .R extension, and not files with a lowercase
+#' .r exension.
+#' 
+#' This is in accordance with general guidelines in the community, as well as
+#' advised by authorities within the community, e.g.:
+#' Wickham, H. (2015). Advanced R . Boca Raton, FL: CRC Press.
+#' 
+#' 
+#' 
+#' @param src The the folder you want to initialize. This can either be the name
+#' of a folder, or the relative path to a given folder.
+#' 
+#' @param strict Evaluate .R extensions in strict mode, that is, source only
+#' script files with a capital .R extension. Defaults to TRUE.
 #' 
 #' @export
-#' @return Nuttin' expect for more objects in your environment
+#' @return Returns object(s) assigned in .R files located in the folder initialized
+#' by init_folder. 
 #' 
 #' @examples
 #' init_folder("R")
+#' 
 init_folder <- function(src, strict = TRUE) {
   if (strict == TRUE) {
     file_pattern <- ".*\\.R$"

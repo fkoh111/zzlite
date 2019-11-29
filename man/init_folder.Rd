@@ -2,21 +2,32 @@
 % Please edit documentation in R/init_folder.R
 \name{init_folder}
 \alias{init_folder}
-\title{Init a a given folder containing .R files}
+\title{Init a given folder containing script files for the R programming language}
 \usage{
 init_folder(src, strict = TRUE)
 }
 \arguments{
-\item{src}{Which is a path or a folder name}
+\item{src}{The the folder you want to initialize. This can either be the name
+of a folder, or the relative path to a given folder.}
 
-\item{strict}{Evaluate .R extensions in strict mode, that is, only source capital R. Defaults to TRUE}
+\item{strict}{Evaluate .R extensions in strict mode, that is, source only
+script files with a capital .R extension. Defaults to TRUE.}
 }
 \value{
-Nuttin' expect for more objects in your environment
+Returns object(s) assigned in .R files located in the folder initialized
+by init_folder.
 }
 \description{
-This function initializes files with a proper .R extension.
+Per default init_folder will only initialize files with a capitalized
+extension, that is a .R extension, and not files with a lowercase
+.r exension.
+}
+\details{
+This is in accordance with general guidelines in the community, as well as
+advised by authorities within the community, e.g.:
+Wickham, H. (2015). Advanced R . Boca Raton, FL: CRC Press.
 }
 \examples{
 init_folder("R")
+
 }

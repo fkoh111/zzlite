@@ -1,6 +1,6 @@
 Package: fkoh111
 Type: Package
-Title: fkoh111s utils
+Title: fkoh111s util
 Version: 0.1
 Date: 2019-11-19
 Author: Frederik Kok Hansen
@@ -9,5 +9,5 @@ Imports:
     testthat
 Description: This package is fkoh111s general utils. It is most likely only relevant for fkoh111.
 License: GPL-3
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.1
 Encoding: UTF-8
