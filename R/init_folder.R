@@ -2,11 +2,10 @@
 #' 
 #' Init a given folder containing script files for the R programming language
 #' 
-#' The reason bla bla bla
 #' 
 #' Per default init_folder will only initialize files with a capitalized
-#' extension, that is, .R extension, and not files with a lowercase,
-#' .r, exension.
+#' extension, that is a .R extension, and not files with a lowercase
+#' .r exension.
 #' 
 #' This is in accordance with general guidelines in the community, as well as
 #' advised by authorities within the community, e.g.:
@@ -21,10 +20,12 @@
 #' script files with a capital .R extension. Defaults to TRUE.
 #' 
 #' @export
-#' @return Nothing except for more objects in your environment
+#' @return Returns object(s) assigned in .R files located in the folder initialized
+#' by init_folder. 
 #' 
 #' @examples
 #' init_folder("R")
+#' 
 init_folder <- function(src, strict = TRUE) {
   if (strict == TRUE) {
     file_pattern <- ".*\\.R$"
