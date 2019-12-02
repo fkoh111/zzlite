@@ -8,7 +8,8 @@ init_folder(src, strict = TRUE)
 }
 \arguments{
 \item{src}{The the folder you want to initialize. This can either be the name
-of a folder, or the relative path to a given folder.}
+of a folder, or the relative path to a given folder.
+If no folder or path is provided, the current wd is initialized.}
 
 \item{strict}{Evaluate .R extensions in strict mode, that is, source only
 script files with a capital .R extension. Defaults to TRUE.}
