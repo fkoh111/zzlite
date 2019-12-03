@@ -12,9 +12,9 @@ devtools::install_github("fkoh111/fkoh111")
 
 The package is strongly inspired by packages such as Broman: [Broman](https://github.com/kbroman/broman).  
 
-[![Build Status](https://travis-ci.com/fkoh111/fkoh111.svg?branch=develop)](https://travis-ci.com/fkoh111/fkoh111)
+[![Build Status](https://travis-ci.com/fkoh111/fkoh111.svg?branch=develop)](https://travis-ci.com/fkoh111/fkoh111)  
 
-[![codecov](https://codecov.io/gh/fkoh111/fkoh111/branch/master/graph/badge.svg)](https://codecov.io/gh/fkoh111/fkoh111)
+[![codecov](https://codecov.io/gh/fkoh111/fkoh111/branch/master/graph/badge.svg)](https://codecov.io/gh/fkoh111/fkoh111)  
 
 ---
 
