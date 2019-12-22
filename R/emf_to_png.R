@@ -10,7 +10,7 @@ target <- "png"
 endpoint <- "https://api.zamzar.com/v1/jobs"
 file <- file.path(file_path, fsep = .Platform$file.sep)
 
-
+keys <- "66b28eb8fa03c69157a68b6926acd02d6ad1406b"
 response_get <- GET(test_endpoint, config = authenticate(key, "")) %>%
   print()
 
@@ -24,14 +24,4 @@ response_post <- POST(url = endpoint, config = authenticate(key, ""), body = lis
 response_post_get <- GET(endpoint, config = authenticate(key, "")) %>%
   print()
 
-###
-
-
-#TODO: Make path
-
-emf_to_png <- function(dotsh) {
-  system(paste0("cd inst/ && ./", dotsh), wait = TRUE)
-}
-
-emf_to_png("emf_to_png_libre.sh")
 
