@@ -2,6 +2,8 @@ library(httr)
 library(jsonlite)
 library(dplyr)
 
+### Zamzar API
+
 test_endpoint <- "https://api.zamzar.com/v1/formats/gif"
 file_path <- file.path(getwd(), "tests", "testthat", "testdata", "avatar.emf", fsep = .Platform$file.sep)
 target <- "png"
@@ -21,3 +23,15 @@ response_post <- POST(url = endpoint, config = authenticate(key, ""), body = lis
 
 response_post_get <- GET(endpoint, config = authenticate(key, "")) %>%
   print()
+
+###
+
+
+#TODO: Make path
+
+emf_to_png <- function(dotsh) {
+  system(paste0("cd inst/ && ./", dotsh), wait = TRUE)
+}
+
+emf_to_png("emf_to_png_libre.sh")
+
