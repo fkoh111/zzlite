@@ -24,4 +24,8 @@ response_post <- POST(url = endpoint, config = authenticate(key, ""), body = lis
 response_post_get <- GET(endpoint, config = authenticate(key, "")) %>%
   print()
 
+stop_for_status(response_post_get)
+got_content <- content(response_post_get, "text")
+as_json <- fromJSON(got_content, flatten = TRUE)
 
+as_json$data$id
