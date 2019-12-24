@@ -9,6 +9,9 @@ r:
 r_packages:
   - testthat
   - covr
+  - httr
+  - jsonlite
+  - dplyr
 
 cache:
   - packages
