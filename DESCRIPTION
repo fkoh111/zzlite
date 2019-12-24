@@ -11,6 +11,6 @@ Imports:
     jsonlite,
     dplyr
 Description: This package is fkoh111s general utils. It is most likely only relevant for fkoh111.
-License: GPL-3
+License: GPL-3 + file LICENSE
 RoxygenNote: 7.0.1
 Encoding: UTF-8
