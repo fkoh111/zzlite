@@ -8,7 +8,7 @@
 # Example code in package build process
 *-Ex.R
 sandbox.R
-key.json
+map.json
 
 # Output files from R CMD build
 /*.tar.gz

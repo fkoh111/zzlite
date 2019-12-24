@@ -1,0 +1,20 @@
+{
+  "user":"123",
+  "pswd":"",
+  "prod": {
+    "post": { 
+      "endpoint": "https://api.zamzar.com/v1/jobs"
+    },
+    "get": {
+      "endpoint": "https://api.zamzar.com/v1/files/"
+    }
+  },
+  "dev": {
+    "post": { 
+      "endpoint": "https://sandbox.zamzar.com/v1/jobs"
+    },
+    "get": {
+      "endpoint": "https://sandbox.zamzar.com/v1/files/"
+    }
+  }
+}
