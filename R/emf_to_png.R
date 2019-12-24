@@ -5,6 +5,7 @@ library(dplyr)
 test_endpoint <- "https://sandbox.zamzar.com/v1/formats/gif"
 file_path <- file.path(getwd(), "tests", "testthat", "testdata", "avatar.emf", fsep = .Platform$file.sep)
 target <- "png"
+
 #endpoint <- "https://api.zamzar.com/v1/jobs"
 endpoint <- "https://sandbox.zamzar.com/v1/jobs"
 
@@ -13,7 +14,6 @@ posted <- POST(url = endpoint,
                       config = authenticate(fromJSON("inst/key.json")$username, ""),
                       body = list(source_file = upload_file(file), target_format = "png")
                       )
-
 
 status <- GET(endpoint, config = authenticate(fromJSON("inst/key.json")$username, "")) %>%
   stop_for_status()
