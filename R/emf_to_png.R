@@ -4,10 +4,10 @@ library(dplyr)
 
 target <- "png"
 
-file_path <- file.path(getwd(), "tests", "testthat", "testdata", "avatar.emf", fsep = .Platform$file.sep)
+file <- file.path(getwd(), "tests", "testthat", "testdata", "avatar.emf", fsep = .Platform$file.sep)
 
 
-posted <- POST(url = fromJSON("inst/map.json")$dev$post$endpoint,
+posted <- POST(url = fromJSON("inst/map.json")$prod$post$endpoint,
                       config = authenticate(
                         fromJSON("inst/map.json")$user,
                         fromJSON("inst/map.json")$pswd
@@ -17,7 +17,7 @@ posted <- POST(url = fromJSON("inst/map.json")$dev$post$endpoint,
                     )
 
 
-status <- GET(endpoint,
+status <- GET(fromJSON("inst/map.json")$dev$get$endpoint,
               config = authenticate(
                 fromJSON("inst/map.json")$user,
                 fromJSON("inst/map.json")$pswd
@@ -30,7 +30,7 @@ content <- content(status, as = "text") %>%
   fromJSON(., flatten = TRUE)
 
 
-id <- content$data$target_files[[1]][[1]]
+id <- content$data$id[1]
 
 
 url <- paste0(fromJSON("inst/map.json")$dev$get$endpoint, id,"/content")
