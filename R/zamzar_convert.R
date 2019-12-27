@@ -9,7 +9,7 @@ library(dplyr)
 
 #posted <- POST(url = fromJSON("inst/map.json")$prod$post$endpoint,
 #                      config = authenticate(
-#                        fromJSON("inst/map.json")$user,
+#                        fromJSON("inst/map.json")$usr,
 #                        fromJSON("inst/map.json")$pswd
 #                      ),
 #                      body = list(source_file = upload_file(file),
@@ -19,7 +19,7 @@ library(dplyr)
 
 #status <- GET(fromJSON("inst/map.json")$dev$get$endpoint,
 #              config = authenticate(
-#                fromJSON("inst/map.json")$user,
+#                fromJSON("inst/map.json")$usr,
 #                fromJSON("inst/map.json")$pswd
 #              )
 #            ) %>%
@@ -38,7 +38,7 @@ library(dplyr)
 #GET(url,
 #    write_disk("test.png", overwrite = TRUE),
 #    config = authenticate(
-#      fromJSON("inst/map.json")$user,
+#      fromJSON("inst/map.json")$usr,
 #      fromJSON("inst/map.json")$pswd
 #    )
 #  )
