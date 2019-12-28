@@ -1,20 +1,69 @@
-zz_post <- function(file, target, prod = FALSE) {
+# zz_post
+#' 
+#' Simple wrapper for Zamzar endpoint accepting images for conversion
+#' 
+#' 
+#' Per default zz_post assumes that you're doing development, thus using a 
+#' development endpoint. Set prod bool to TRUE to change this behavious.
+#'
+#'
+#' @param file The file you want to convert. Potentially the path to the file
+#' you want to convert.
+#' 
+#' @param target The file you want to convert to. E.g., "png".
+#' 
+#' @param usr The username/API key you are using for Zamzar. See: https://developers.zamzar.com/user
+#' 
+#' @param prod Boolean deciding whether to use a production endpoint or
+#' a development endpoint. Defaults to FALSE (That is, development endpoint).
+#'
+#' @export
+#' @return A response object
+#' 
+#' @import httr
+#' 
+#' @examples 
+#' zz_post()
+
+zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   
-  if(prod == FALSE) {
-    post_endpoint <- zz_config()$dev$post$endpoint
+  if (is.null(file)) {
+    file <- tempfile()
+    writeLines("Potentially write something smart here that can be used for testing.
+               Alternatively, see if we can write an image", file)
   }
   
-  if(prod == TRUE) {
-    post_endpoint <- zz_config()$prod$post$endpoint
+  if (is.null(target)) {
+    target <- "png"
   }
   
-  POST(url = post_endpoint,
+  if (is.null(usr)) {
+    usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
+  }
+  
+  if (prod == FALSE) {
+    post_endpoint <- "https://sandbox.zamzar.com/v1/jobs"
+  } 
+  
+  if (prod == TRUE) {
+    post_endpoint <- "https://api.zamzar.com/v1/jobs"
+  }
+  
+  
+  body <- list(source_file = upload_file(path = file),
+               target_format = target)
+  
+  response <- POST(url = post_endpoint,
        config = authenticate(
-         user = zz_config()$usr,
-         password = zz_config()$pswd,
-         type = zz_config()$type
+         user = usr,
+         password = "",
+         type = "basic"
        ),
-       body = list(source_file = upload_file(file),
-                   target_format = target)
+       body = body
   )
+  
+  #TODO: Potentially curate a list of stuff that should be returned.
+  #      You should return more than just the status codes
+  
+  message_for_status(response)
 }
