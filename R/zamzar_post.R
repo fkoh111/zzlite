@@ -1,24 +1,29 @@
 library(httr)
 library(jsonlite)
-library(dplyr)
 
-target <- "png"
-
-file <- file.path(getwd(), "tests", "testthat", "testdata", "avatar.emf", fsep = .Platform$file.sep)
-
-zamzar_post <- function(file, target) {
+zamzar_post <- function(file, target, prod = FALSE) {
   
-  POST(url = fromJSON(file.path("inst", "config.json", fsep = .Platform$file.sep))$prod$post$endpoint,
+  if(prod == FALSE) {
+    post_endpoint <- zz_config()$dev$post$endpoint
+  }
+  
+  if(prod == TRUE) {
+    post_endpoint <- zz_config()$prod$post$endpoint
+  }
+  
+  POST(url = post_endpoint,
        config = authenticate(
-         user = fromJSON(file.path("inst", "config.json", fsep = .Platform$file.sep))$usr,
-         password = fromJSON(file.path("inst", "config.json", fsep = .Platform$file.sep))$pswd,
-         type = "basic"
+         user = zz_config()$usr,
+         password = zz_config()$pswd,
+         type = zz_config()$type
        ),
        body = list(source_file = upload_file(file),
                    target_format = target)
   )
 }
 
-zamzar_post(file = file, target = target)
+target <- "png"
+file <- file.path(getwd(), "tests", "testthat", "testdata", "avatar.emf", fsep = .Platform$file.sep)
 
+zamzar_post(file = file, target = target)
 

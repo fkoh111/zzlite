@@ -18,6 +18,11 @@ cache:
 
 warnings_are_errors: true
 
+branches:
+  only:
+  - master
+  - develop
+
 notifications:
   email:
     on_success: change
