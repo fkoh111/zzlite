@@ -9,6 +9,7 @@
 *-Ex.R
 sandbox.R
 map.json
+config.json
 
 # Output files from R CMD build
 /*.tar.gz

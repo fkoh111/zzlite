@@ -6,3 +6,6 @@
 ^\.travis\.yml$
 sandbox.R
 map.R
+config.json
+zz_get.R
+zz_post.R

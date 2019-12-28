@@ -1,6 +1,3 @@
-library(httr)
-library(jsonlite)
-
 zz_post <- function(file, target, prod = FALSE) {
   
   if(prod == FALSE) {
@@ -21,9 +18,3 @@ zz_post <- function(file, target, prod = FALSE) {
                    target_format = target)
   )
 }
-
-target <- "png"
-file <- file.path(getwd(), "tests", "testthat", "testdata", "avatar.emf", fsep = .Platform$file.sep)
-
-zz_post(file = file, target = target)
-
