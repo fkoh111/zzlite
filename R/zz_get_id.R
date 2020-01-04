@@ -1,10 +1,13 @@
-# zz_post
+# zz_get_id
 #' 
-#' Simple wrapper for Zamzar endpoint accepting images for conversion
+#' Simple wrapper for Zamzar endpoint returning an id(s) for a posted file(s)
 #' 
 #' 
-#' Per default zz_post assumes that you're doing development, thus using a 
-#' development endpoint. Set prod bool to TRUE to change this behavious.
+#' Per default zz_get_id assumes that you're doing development, thus using a 
+#' development endpoint. Set prod bool to TRUE to change this behaviour.
+#'
+#' Per default zz_get_id assumes that you only want the id for the latest 
+#' assigned file. Set latest bool to FALSE to change this behaviour.
 #'
 #'
 #' @param usr The username/API key you are using for Zamzar. See: https://developers.zamzar.com/user
