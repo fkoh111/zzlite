@@ -53,8 +53,8 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   body <- list(source_file = upload_file(path = file),
                target_format = target)
   
-  response <- POST(url = post_endpoint,
-       config = authenticate(
+  response <- httr::POST(url = post_endpoint,
+       config = httr::authenticate(
          user = usr,
          password = "",
          type = "basic"
@@ -65,5 +65,5 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   #TODO: Potentially curate a list of stuff that should be returned.
   #      You should return more than just the status codes
   
-  message_for_status(response)
+  httr::message_for_status(response)
 }
