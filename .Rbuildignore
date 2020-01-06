@@ -6,5 +6,4 @@
 ^\.travis\.yml$
 sandbox.R
 config.json
-zz_get.R
 zz_config.R

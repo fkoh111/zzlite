@@ -10,7 +10,8 @@
 #' assigned file. Set latest bool to FALSE to change this behaviour.
 #'
 #'
-#' @param usr The username/API key you are using for Zamzar. See: https://developers.zamzar.com/user
+#' @param usr The username/API key you are using for Zamzar.
+#' See: https://developers.zamzar.com/user
 #'
 #' @param prod Boolean deciding whether to use a production endpoint or
 #' a development endpoint. Defaults to FALSE (That is, development endpoint).

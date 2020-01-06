@@ -7,7 +7,8 @@
 zz_get_id(usr = NULL, prod = FALSE, latest = TRUE)
 }
 \arguments{
-\item{usr}{The username/API key you are using for Zamzar. See: https://developers.zamzar.com/user}
+\item{usr}{The username/API key you are using for Zamzar.
+See: https://developers.zamzar.com/user}
 
 \item{prod}{Boolean deciding whether to use a production endpoint or
 a development endpoint. Defaults to FALSE (That is, development endpoint).}
