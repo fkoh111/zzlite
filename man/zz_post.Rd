@@ -12,7 +12,8 @@ you want to convert.}
 
 \item{target}{The file you want to convert to. E.g., "png".}
 
-\item{usr}{The username/API key you are using for Zamzar. See: https://developers.zamzar.com/user}
+\item{usr}{The username/API key you are using for Zamzar.
+See: https://developers.zamzar.com/user}
 
 \item{prod}{Boolean deciding whether to use a production endpoint or
 a development endpoint. Defaults to FALSE (That is, development endpoint).}
@@ -21,7 +22,7 @@ a development endpoint. Defaults to FALSE (That is, development endpoint).}
 A response object
 }
 \description{
-Per default zz_post assumes that you're doing development, thus using a 
+Per default zz_post() assumes that you're doing development, thus using a 
 development endpoint. Set prod bool to TRUE to change this behaviour.
 }
 \examples{

@@ -3,7 +3,7 @@
 #' Simple wrapper for Zamzar endpoint to fetch a file from a target id
 #' 
 #' 
-#' Per default zz_get assumes that you're doing development, thus using a 
+#' Per default zz_get() assumes that you're doing development, thus using a 
 #' development endpoint. Set prod bool to TRUE to change this behaviour.
 #'
 #' @param target_id The target id for a previously passed file. Most likely

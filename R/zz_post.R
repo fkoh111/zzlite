@@ -3,7 +3,7 @@
 #' Simple wrapper for Zamzar endpoint accepting images for conversion
 #' 
 #' 
-#' Per default zz_post assumes that you're doing development, thus using a 
+#' Per default zz_post() assumes that you're doing development, thus using a 
 #' development endpoint. Set prod bool to TRUE to change this behaviour.
 #'
 #'
@@ -64,6 +64,7 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   
   #TODO: Potentially curate a list of stuff that should be returned.
   #      You should return more than just the status codes
+  #      Potentially the target? You can collect your returned vars in a list
   
   httr::message_for_status(response)
 }

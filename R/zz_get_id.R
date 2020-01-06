@@ -2,19 +2,16 @@
 #' 
 #' Simple wrapper for Zamzar endpoint returning an id(s) for a posted file(s)
 #' 
-#' 
-#' Per default zz_get_id assumes that you're doing development, thus using a 
-#' development endpoint. Set prod bool to TRUE to change this behaviour.
 #'
-#' Per default zz_get_id assumes that you only want the target id for the latest 
+#' Per default zz_get_id() assumes that you only want the target id for the latest 
 #' assigned file. Set latest bool to FALSE to change this behaviour.
 #'
+#' Please note: zz_get_id() doesn't differentiate between files that have been
+#' assigned to either the development or production endpoint.
+#' Thus you have to keep track of this yourself.
 #'
 #' @param usr The username/API key you are using for Zamzar.
 #' See: https://developers.zamzar.com/user
-#'
-#' @param prod Boolean deciding whether to use a production endpoint or
-#' a development endpoint. Defaults to FALSE (That is, development endpoint).
 #'
 #' @param latest Boolean deciding whether or not we should only return the 
 #' latest target id. If switched to false, will return a list of all assigned
@@ -28,15 +25,9 @@
 #' @examples 
 #' zz_get_id()
 
-zz_get_id <- function(usr = NULL, prod = FALSE, latest = TRUE) {
+zz_get_id <- function(usr = NULL, latest = TRUE) {
   
-  if (prod == FALSE) {
-    files_endpoint <- "https://sandbox.zamzar.com/v1/files"
-  } 
-  
-  if (prod == TRUE) {
-    files_endpoint <- "https://api.zamzar.com/v1/files"
-  }
+  files_endpoint <- "https://api.zamzar.com/v1/files"
   
   if (is.null(usr)) {
     usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param

@@ -4,14 +4,11 @@
 \alias{zz_get_id}
 \title{Simple wrapper for Zamzar endpoint returning an id(s) for a posted file(s)}
 \usage{
-zz_get_id(usr = NULL, prod = FALSE, latest = TRUE)
+zz_get_id(usr = NULL, latest = TRUE)
 }
 \arguments{
 \item{usr}{The username/API key you are using for Zamzar.
 See: https://developers.zamzar.com/user}
-
-\item{prod}{Boolean deciding whether to use a production endpoint or
-a development endpoint. Defaults to FALSE (That is, development endpoint).}
 
 \item{latest}{Boolean deciding whether or not we should only return the 
 latest target id. If switched to false, will return a list of all assigned
@@ -21,12 +18,13 @@ target ids}
 A target id or alternatively a list of target ids
 }
 \description{
-Per default zz_get_id assumes that you're doing development, thus using a 
-development endpoint. Set prod bool to TRUE to change this behaviour.
+Per default zz_get_id() assumes that you only want the target id for the latest 
+assigned file. Set latest bool to FALSE to change this behaviour.
 }
 \details{
-Per default zz_get_id assumes that you only want the target id for the latest 
-assigned file. Set latest bool to FALSE to change this behaviour.
+Please note: zz_get_id() doesn't differentiate between files that have been
+assigned to either the development or production endpoint.
+Thus you have to keep track of this yourself.
 }
 \examples{
 zz_get_id()

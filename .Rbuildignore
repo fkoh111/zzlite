@@ -7,3 +7,4 @@
 sandbox.R
 config.json
 zz_config.R
+^.*\.png$

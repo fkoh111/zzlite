@@ -8,7 +8,8 @@ convert between}
 zz_formats(usr = NULL)
 }
 \arguments{
-\item{usr}{The username/API key you are using for Zamzar. See: https://developers.zamzar.com/user}
+\item{usr}{The username/API key you are using for Zamzar.
+See: https://developers.zamzar.com/user}
 }
 \value{
 A list of formats
