@@ -4,7 +4,8 @@
 #' convert between
 #'
 #'
-#' @param usr The username/API key you are using for Zamzar. See: https://developers.zamzar.com/user
+#' @param usr The username/API key you are using for Zamzar.
+#' See: https://developers.zamzar.com/user
 #'
 #' @export
 #' @return A list of formats
