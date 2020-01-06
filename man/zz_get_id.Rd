@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_get_id.R
 \name{zz_get_id}
 \alias{zz_get_id}
-\title{Simple wrapper for Zamzar endpoint accepting images for conversion}
+\title{Simple wrapper for Zamzar endpoint returning an id(s) for a posted file(s)}
 \usage{
 zz_get_id(usr = NULL, prod = FALSE, latest = TRUE)
 }
@@ -19,8 +19,12 @@ latest id. If switched to false, will return a list of all assigned ids}
 An id or alternatively a list of ids
 }
 \description{
-Per default zz_post assumes that you're doing development, thus using a 
-development endpoint. Set prod bool to TRUE to change this behavious.
+Per default zz_get_id assumes that you're doing development, thus using a 
+development endpoint. Set prod bool to TRUE to change this behaviour.
+}
+\details{
+Per default zz_get_id assumes that you only want the id for the latest 
+assigned file. Set latest bool to FALSE to change this behaviour.
 }
 \examples{
 zz_get_id()
