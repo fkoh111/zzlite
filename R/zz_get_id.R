@@ -48,13 +48,13 @@ zz_get_id <- function(usr = NULL, prod = FALSE, latest = TRUE) {
                 )
   )
   
-  content <- httr::content(status, as = "text", encoding = "UTF-8") %>%
-    jsonlite::fromJSON(., flatten = TRUE)
-  
+  content <- httr::content(status, as = "text", encoding = "UTF-8")
+  content_df <- jsonlite::fromJSON(content, flatten = TRUE)
+
   if (latest == TRUE) {
-    content$paging$first
+    content_df$paging$first
   } else {
-    content$data$id
+    content_df$data$id
   }
 
 }
