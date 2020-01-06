@@ -6,7 +6,7 @@
 #' Per default zz_get_id assumes that you're doing development, thus using a 
 #' development endpoint. Set prod bool to TRUE to change this behaviour.
 #'
-#' Per default zz_get_id assumes that you only want the id for the latest 
+#' Per default zz_get_id assumes that you only want the target id for the latest 
 #' assigned file. Set latest bool to FALSE to change this behaviour.
 #'
 #'
@@ -16,12 +16,13 @@
 #' a development endpoint. Defaults to FALSE (That is, development endpoint).
 #'
 #' @param latest Boolean deciding whether or not we should only return the 
-#' latest id. If switched to false, will return a list of all assigned ids 
+#' latest target id. If switched to false, will return a list of all assigned
+#' target ids 
 #'
 #' @export
-#' @return An id or alternatively a list of ids
+#' @return A target id or alternatively a list of target ids
 #' 
-#' @import httr dplyr jsonlite
+#' @import httr jsonlite
 #' 
 #' @examples 
 #' zz_get_id()

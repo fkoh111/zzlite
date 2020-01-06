@@ -13,17 +13,18 @@ zz_get_id(usr = NULL, prod = FALSE, latest = TRUE)
 a development endpoint. Defaults to FALSE (That is, development endpoint).}
 
 \item{latest}{Boolean deciding whether or not we should only return the 
-latest id. If switched to false, will return a list of all assigned ids}
+latest target id. If switched to false, will return a list of all assigned
+target ids}
 }
 \value{
-An id or alternatively a list of ids
+A target id or alternatively a list of target ids
 }
 \description{
 Per default zz_get_id assumes that you're doing development, thus using a 
 development endpoint. Set prod bool to TRUE to change this behaviour.
 }
 \details{
-Per default zz_get_id assumes that you only want the id for the latest 
+Per default zz_get_id assumes that you only want the target id for the latest 
 assigned file. Set latest bool to FALSE to change this behaviour.
 }
 \examples{
