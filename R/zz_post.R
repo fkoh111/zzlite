@@ -4,7 +4,7 @@
 #' 
 #' 
 #' Per default zz_post assumes that you're doing development, thus using a 
-#' development endpoint. Set prod bool to TRUE to change this behavious.
+#' development endpoint. Set prod bool to TRUE to change this behaviour.
 #'
 #'
 #' @param file The file you want to convert. Potentially the path to the file
@@ -28,9 +28,8 @@
 zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   
   if (is.null(file)) {
-    file <- tempfile()
-    writeLines("Potentially write something smart here that can be used for testing.
-               Alternatively, see if we can write an image", file)
+    file <- tempfile(fileext = ".png")
+    writeLines("Potentially write something smart here", file)
   }
   
   if (is.null(target)) {

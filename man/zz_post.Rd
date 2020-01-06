@@ -22,7 +22,7 @@ A response object
 }
 \description{
 Per default zz_post assumes that you're doing development, thus using a 
-development endpoint. Set prod bool to TRUE to change this behavious.
+development endpoint. Set prod bool to TRUE to change this behaviour.
 }
 \examples{
 zz_post()
