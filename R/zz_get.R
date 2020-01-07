@@ -31,10 +31,12 @@ zz_get <- function(target_id = NULL, usr = NULL, prod = FALSE) {
   
   if (prod == FALSE) {
     files_endpoint <- "https://sandbox.zamzar.com/v1/files"
+#    files_endpoint <- zz_config()$dev_endpoint
   } 
   
   if (prod == TRUE) {
     files_endpoint <- "https://api.zamzar.com/v1/files"
+#    files_endpoint <- zz_config()$prod_endpoint
   }
   
   url <- paste0(files_endpoint, "/", target_id,"/content") # Use a proper URL encoder
