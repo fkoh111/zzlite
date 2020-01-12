@@ -40,7 +40,7 @@ zz_get <- function(target_id = NULL, usr = NULL, prod = FALSE) {
   url <- paste0(endpoint, "/", target_id,"/content") # Use a proper URL encoder
   
   httr::GET(url,
-      write_disk("test.png", overwrite = TRUE),
+      write_disk("temp.png", overwrite = TRUE),
       config = httr::authenticate(
         user = usr,
         password = "",
