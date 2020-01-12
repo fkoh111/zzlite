@@ -27,13 +27,13 @@
 
 zz_get_id <- function(usr = NULL, latest = TRUE) {
   
-  files_endpoint <- "https://api.zamzar.com/v1/files"
+  endpoint <- zz_endpoint()$prod[[2]]
   
   if (is.null(usr)) {
     usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
   }
   
-  status <- httr::GET(url = files_endpoint,
+  status <- httr::GET(url = endpoint,
                 config = httr::authenticate(
                   user = usr,
                   password = "",

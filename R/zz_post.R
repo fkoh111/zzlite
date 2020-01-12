@@ -41,19 +41,20 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
     usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
   }
   
+  
   if (prod == FALSE) {
-    post_endpoint <- "https://sandbox.zamzar.com/v1/jobs"
+    endpoint <- endpoint <- zz_endpoint()$dev[[1]]
   } 
   
   if (prod == TRUE) {
-    post_endpoint <- "https://api.zamzar.com/v1/jobs"
+    endpoint <- endpoint <- zz_endpoint()$prod[[1]]
   }
   
   
   body <- list(source_file = upload_file(path = file),
                target_format = target)
   
-  response <- httr::POST(url = post_endpoint,
+  response <- httr::POST(url = endpoint,
        config = httr::authenticate(
          user = usr,
          password = "",

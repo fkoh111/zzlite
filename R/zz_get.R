@@ -37,7 +37,7 @@ zz_get <- function(target_id = NULL, usr = NULL, prod = FALSE) {
     endpoint <- zz_endpoint()$dev[[2]]
   }
   
-  url <- paste0(endpoint, "/", target_id,"/content") # Use a proper URL encoder
+  url <- paste0(endpoint, target_id,"/content") # Use a proper URL encoder
   
   httr::GET(url,
       write_disk("temp.png", overwrite = TRUE),
