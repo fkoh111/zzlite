@@ -11,6 +11,9 @@
 #'
 #' @param usr The username/API key you are using for Zamzar.
 #' See: https://developers.zamzar.com/user
+#' 
+#' @param name The name of the file you are fetching from Zamzar. If a name is not assigned
+#' to the file, then we're using the target_id as a name.
 #'
 #' @param prod Boolean deciding whether to use a production endpoint or
 #' a development endpoint. Defaults to FALSE (That is, development endpoint).
@@ -23,10 +26,14 @@
 #' @examples 
 #' zz_get()
 
-zz_get <- function(target_id = NULL, usr = NULL, prod = FALSE) {
+zz_get <- function(target_id = NULL, usr = NULL, name = NULL, prod = FALSE) {
   
   if (is.null(usr)) {
     usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
+  }
+  
+  if (is.null(name)) {
+    target_id <- as.character(target_id)
   }
   
   if (prod == FALSE) {
@@ -40,7 +47,7 @@ zz_get <- function(target_id = NULL, usr = NULL, prod = FALSE) {
   url <- paste0(endpoint, target_id,"/content") # Use a proper URL encoder
   
   httr::GET(url,
-      write_disk("temp.png", overwrite = TRUE),
+      write_disk(paste0(target_id, ".png"), overwrite = TRUE),
       config = httr::authenticate(
         user = usr,
         password = "",

@@ -4,7 +4,7 @@
 \alias{zz_get}
 \title{Simple wrapper for Zamzar endpoint to fetch a file from a target id}
 \usage{
-zz_get(target_id = NULL, usr = NULL, prod = FALSE)
+zz_get(target_id = NULL, usr = NULL, name = NULL, prod = FALSE)
 }
 \arguments{
 \item{target_id}{The target id for a previously passed file. Most likely
@@ -12,6 +12,9 @@ returned from zz_get_id()}
 
 \item{usr}{The username/API key you are using for Zamzar.
 See: https://developers.zamzar.com/user}
+
+\item{name}{The name of the file you are fetching from Zamzar. If a name is not assigned
+to the file, then we're using the target_id as a name.}
 
 \item{prod}{Boolean deciding whether to use a production endpoint or
 a development endpoint. Defaults to FALSE (That is, development endpoint).}
