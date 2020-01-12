@@ -30,17 +30,17 @@ zz_get <- function(target_id = NULL, usr = NULL, prod = FALSE) {
   }
   
   if (prod == FALSE) {
-    files_endpoint <- "https://sandbox.zamzar.com/v1/files"
+    endpoint <- zz_endpoint()$prod[[2]]
   } 
   
   if (prod == TRUE) {
-    files_endpoint <- "https://api.zamzar.com/v1/files"
+    endpoint <- zz_endpoint()$dev[[2]]
   }
   
-  url <- paste0(files_endpoint, "/", target_id,"/content") # Use a proper URL encoder
+  url <- paste0(endpoint, "/", target_id,"/content") # Use a proper URL encoder
   
-  GET(url,
-      write_disk("test.png", overwrite = TRUE),
+  httr::GET(url,
+      write_disk("temp.png", overwrite = TRUE),
       config = httr::authenticate(
         user = usr,
         password = "",
