@@ -3,7 +3,7 @@
 export(import_from)
 export(zz_format)
 export(zz_get)
-export(zz_get_id)
+export(zz_get_info)
 export(zz_post)
 import(httr)
 import(jsonlite)

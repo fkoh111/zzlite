@@ -1,12 +1,12 @@
-# zz_get_id
+# zz_get_info
 #' 
 #' Simple wrapper for Zamzar endpoint returning an id(s) for a posted file(s)
 #' 
 #'
-#' Per default zz_get_id() assumes that you only want the target id for the latest 
+#' Per default zz_get_info() assumes that you only want the target id for the latest 
 #' assigned file. Set latest bool to FALSE to change this behaviour.
 #'
-#' Please note: zz_get_id() doesn't differentiate between files that have been
+#' Please note: zz_get_info() doesn't differentiate between files that have been
 #' assigned to either the development or production endpoint.
 #' Thus you have to keep track of this yourself.
 #'
@@ -23,9 +23,9 @@
 #' @import httr jsonlite
 #' 
 #' @examples 
-#' zz_get_id()
+#' zz_get_info()
 
-zz_get_id <- function(usr = NULL, latest = TRUE) {
+zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   endpoint <- zz_endpoint()$prod[[2]]
   
@@ -45,9 +45,15 @@ zz_get_id <- function(usr = NULL, latest = TRUE) {
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)
 
   if (latest == TRUE) {
-    content_df$paging$first
+    id <- content_df$paging$first
+    extension <- content_df$data$format[[1]]
+    created_at <- content_df$data$created_at[[1]]
   } else {
-    content_df$data$id
+    id <- content_df$data$id
+    extension <- content_df$data$format
+    created_at <- content_df$data$created_at
   }
 
+  res <- list(id = id, extension = extension, created_at = created_at)
+  
 }
