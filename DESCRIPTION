@@ -8,8 +8,7 @@ Maintainer: Frederik Kok Hansen <frederik_kok@icloud.com>
 Imports:
     testthat,
     httr,
-    jsonlite,
-    dplyr
+    jsonlite
 Description: This package is fkoh111s general utils. It is most likely only relevant for fkoh111.
 License: GPL-3 + file LICENSE
 RoxygenNote: 7.0.1
