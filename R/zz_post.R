@@ -41,7 +41,6 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
     usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
   }
   
-  
   if (prod == FALSE) {
     endpoint <- endpoint <- zz_endpoint()$dev[[1]]
   } 
@@ -49,7 +48,6 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   if (prod == TRUE) {
     endpoint <- endpoint <- zz_endpoint()$prod[[1]]
   }
-  
   
   body <- list(source_file = upload_file(path = file),
                target_format = target)

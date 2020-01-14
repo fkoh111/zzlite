@@ -22,7 +22,7 @@
 #' 
 #' @import httr jsonlite
 #' 
-#' @examples 
+#' @examples
 #' zz_get_info()
 
 zz_get_info <- function(usr = NULL, latest = TRUE) {
