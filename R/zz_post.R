@@ -61,9 +61,5 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
        body = body
   )
   
-  #TODO: Potentially curate a list of stuff that should be returned.
-  #      You should return more than just the status codes
-  #      Potentially the target? You can collect your returned vars in a list
-  
   httr::message_for_status(response)
 }
