@@ -55,7 +55,8 @@ zz_get <- function(target_id = NULL,
     endpoint <- zz_endpoint()$dev[[2]]
   }
   
-  url <- paste0(endpoint, target_id,"/content") # Use a proper URL encoder
+  # Concatenating an URL
+  url <- paste0(endpoint, target_id, "/content")
   
   httr::GET(url,
       write_disk(paste0(target_id, ".", extension), overwrite = TRUE),

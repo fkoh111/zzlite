@@ -26,4 +26,3 @@ zz_endpoint <- function() {
   class(conf) <- "config"
   conf
 }
-
