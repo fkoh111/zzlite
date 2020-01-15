@@ -55,7 +55,7 @@ zz_get <- function(target_id = NULL,
   
   
   # Concatenating an URL
-  url <- httr::modify_url(endpoint, path = c(target_id, "/content"))
+  url <- paste0(endpoint, target_id, "/content")
   
   httr::GET(url,
       httr::write_disk(paste0(target_id, ".", extension), overwrite = TRUE),
