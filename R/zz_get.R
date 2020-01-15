@@ -24,8 +24,6 @@
 #' @export
 #' @return A file written to disk
 #' 
-#' @import httr jsonlite
-#' 
 #' @examples 
 #' zz_get()
 
@@ -59,7 +57,7 @@ zz_get <- function(target_id = NULL,
   url <- paste0(endpoint, target_id, "/content")
   
   httr::GET(url,
-      write_disk(paste0(target_id, ".", extension), overwrite = TRUE),
+      httr::write_disk(paste0(target_id, ".", extension), overwrite = TRUE),
       config = httr::authenticate(
         user = usr,
         password = "",

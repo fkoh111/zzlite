@@ -21,8 +21,6 @@
 #' @export
 #' @return A response object
 #' 
-#' @import httr
-#' 
 #' @examples 
 #' zz_post()
 
@@ -49,7 +47,7 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
     endpoint <- endpoint <- zz_endpoint()$prod[[1]]
   }
   
-  body <- list(source_file = upload_file(path = file),
+  body <- list(source_file = httr::upload_file(path = file),
                target_format = target)
   
   response <- httr::POST(url = endpoint,
