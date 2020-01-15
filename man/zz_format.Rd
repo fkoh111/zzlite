@@ -5,14 +5,19 @@
 \title{Simple wrapper for Zamzar endpoint returning a list of formats you can
 convert between}
 \usage{
-zz_format(usr = NULL)
+zz_format(usr = NULL, origin = NULL)
 }
 \arguments{
 \item{usr}{The username/API key you are using for Zamzar.
 See: https://developers.zamzar.com/user}
+
+\item{origin}{The origin format you want to convert. If param origin is passed,
+zz_format returns a list containing a list of targets and a list of costs.
+The target list contains tagets that you can convert your origin to.
+The cost list contains the cost of for converting between origin and target.}
 }
 \value{
-A list of formats
+A list of formats.
 }
 \description{
 Simple wrapper for Zamzar endpoint returning a list of formats you can
