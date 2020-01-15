@@ -10,8 +10,6 @@
 #' @export
 #' @return A list of formats
 #' 
-#' @import httr jsonlite
-#' 
 #' @examples 
 #' zz_format()
 
@@ -23,15 +21,15 @@ zz_format <- function(usr = NULL) {
   
   endpoint <- zz_endpoint()$format[[1]]
 
-  response <- GET(endpoint,
-                  config = authenticate(
+  response <- httr::GET(endpoint,
+                    config = httr::authenticate(
                     user = usr,
                     password = "",
                     type = "basic"
                   )
   )
   
-  content <- content(response, as = "text", encoding = "UTF-8")
-  content_df <- fromJSON(content, flatten = TRUE)
+  content <- httr::content(response, as = "text", encoding = "UTF-8")
+  content_df <- jsonlite::fromJSON(content, flatten = TRUE)
   content_df$data$name
 }

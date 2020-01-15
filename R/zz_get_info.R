@@ -20,8 +20,6 @@
 #' @export
 #' @return A target id or alternatively a list of target ids
 #' 
-#' @import httr jsonlite
-#' 
 #' @examples
 #' zz_get_info()
 

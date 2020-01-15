@@ -6,10 +6,11 @@ Date: 2019-11-19
 Author: Frederik Kok Hansen
 Maintainer: Frederik Kok Hansen <frederik_kok@icloud.com>
 Imports:
-    testthat,
     httr,
-    jsonlite,
-    dplyr
+    jsonlite
+Suggests:
+    roxygen2,
+    testthat
 Description: This package is fkoh111s general utils. It is most likely only relevant for fkoh111.
 License: GPL-3 + file LICENSE
 RoxygenNote: 7.0.1
