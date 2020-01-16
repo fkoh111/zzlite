@@ -24,8 +24,8 @@ zz_format <- function(usr = NULL, origin = NULL) {
   if (is.null(usr)) {
     usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
   }
-
-  if (is.null(origin)) {
+  
+  if (is.null(origin) || origin == "") {
     endpoint <- zz_endpoint()$format[[1]]
     #endpoint <- "https://sandbox.zamzar.com/v1/formats"
   } else {
@@ -41,20 +41,10 @@ zz_format <- function(usr = NULL, origin = NULL) {
                         )
   )
   
-  #httr::stop_for_status(response)
-  
-  #if (httr::http_error(response)) {
-  #  stop(
-  #    sprintf(
-  #      "Whoops, you got a status code of %d", httr::status_code(response)
-  #      )
-  #    )
-  #}
-  
   content <- httr::content(response, as = "text", encoding = "UTF-8")
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)
   
-  if (is.null(origin)) {
+  if (is.null(origin) || origin == "") {
     res <- content_df$data$name
   } else {
     target <- content_df$targets$name
@@ -62,10 +52,18 @@ zz_format <- function(usr = NULL, origin = NULL) {
     res <- list(target = target, cost = cost)
   }
   
-  if (is.list(res) && is.null(res$target)) {
-    warning("Whoops! Seems like you didn't a valid origin param")
-  } else {
-    return(res)
+  if (!response$status_code %in% c(200, 201)) {
+    warning(sprintf("Zamzar responded with: %s, and a status code of: %d",
+                    content_df$errors$message, response$status_code))
+  }
+  
+  if (response$status_code %in% c(200, 201)) {
+    if (is.list(res) && is.null(res$target)) {
+      warning(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
+                      content_df$errors$message, response$status_code))
+    } else {
+      return(res)
+    }
   }
   
 }
