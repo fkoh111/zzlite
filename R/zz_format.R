@@ -12,10 +12,10 @@
 #' The target list contains tagets that you can convert your origin to.
 #' The cost list contains the cost of for converting between origin and target.
 #' 
-#'
 #' @export
-#' @return A list of formats.
+#' @zz_format
 #' 
+#' @return A list of formats from the API
 #' @examples 
 #' \donttest{
 #' zz_format()

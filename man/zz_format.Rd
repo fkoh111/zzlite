@@ -17,7 +17,7 @@ The target list contains tagets that you can convert your origin to.
 The cost list contains the cost of for converting between origin and target.}
 }
 \value{
-A list of formats.
+A list of formats from the API
 }
 \description{
 Simple wrapper for Zamzar endpoint returning a list of formats you can

@@ -33,10 +33,16 @@ zz_get <- function(target_id = NULL,
                    extension = NULL,
                    prod = FALSE) {
   
-  if (is.null(usr)) {
-    usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
+
+  if (is.null(target_id)) {
+    stop("Whoops, seems like you forgot to pass a target_id!")
   }
   
+  if (is.null(usr)) {
+    # Add check for .Renviron token
+    stop("Whoops, seems like you forgot to pass a token to the usr param!")
+  }
+    
   if (is.null(name)) {
     target_id <- as.character(target_id)
   }
