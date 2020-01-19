@@ -11,7 +11,7 @@
 #' Thus you have to keep track of this yourself.
 #'
 #' @param usr The username/API key you are using for Zamzar.
-#' See: https://developers.zamzar.com/user
+#' See: \url{https://developers.zamzar.com/user}
 #'
 #' @param latest Boolean deciding whether or not we should only return the 
 #' latest target id. If switched to false, will return a list of all assigned
@@ -21,14 +21,17 @@
 #' @return A target id or alternatively a list of target ids
 #' 
 #' @examples
+#' \donttest{
 #' zz_get_info()
+#' }
 
 zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   endpoint <- .zz_endpoint()$prod[[2]]
   
   if (is.null(usr)) {
-    usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
+    # Add check for .Renviron token
+    stop("Whoops, seems like you forgot to pass a token to the usr param!")
   }
   
   status <- httr::GET(url = endpoint,

@@ -10,10 +10,10 @@
 #' @param file The file you want to convert. Potentially the path to the file
 #' you want to convert.
 #' 
-#' @param target The file you want to convert to. E.g., "png".
+#' @param target The file type you want to convert to. E.g., "png".
 #' 
 #' @param usr The username/API key you are using for Zamzar.
-#' See: https://developers.zamzar.com/user
+#' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param prod Boolean deciding whether to use a production endpoint or
 #' a development endpoint. Defaults to FALSE (That is, development endpoint).
@@ -21,8 +21,10 @@
 #' @export
 #' @return A response object
 #' 
-#' @examples 
+#' @examples
+#' \donttest{
 #' zz_post()
+#' }
 
 zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   
@@ -32,11 +34,13 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   }
   
   if (is.null(target)) {
-    target <- "png"
+    stop("Excuse me, but i pretty much need to know what file type it is
+         that Zamzar is supposed to convert to")
   }
   
   if (is.null(usr)) {
-    usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
+    # Add check for .Renviron token
+    stop("Whoops, seems like you forgot to pass a token to the usr param!")
   }
   
   if (prod == FALSE) {

@@ -14,10 +14,10 @@ zz_get(
 }
 \arguments{
 \item{target_id}{The target id for a previously passed file. Most likely
-returned from zz_get_id().}
+returned from zz_get_info().}
 
 \item{usr}{The username/API key you are using for Zamzar.
-See: https://developers.zamzar.com/user}
+See: \url{https://developers.zamzar.com/user}}
 
 \item{name}{The name of the file you are fetching from Zamzar. If a name is
 not assigned to the file, then we're using the target_id as name.}
@@ -36,5 +36,7 @@ Per default zz_get() assumes that you're doing development, thus using a
 development endpoint. Set prod bool to TRUE to change this behaviour.
 }
 \examples{
+\donttest{
 zz_get()
+}
 }

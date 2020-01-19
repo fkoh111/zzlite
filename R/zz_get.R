@@ -7,10 +7,10 @@
 #' development endpoint. Set prod bool to TRUE to change this behaviour.
 #'
 #' @param target_id The target id for a previously passed file. Most likely
-#' returned from zz_get_id().
+#' returned from zz_get_info().
 #'
 #' @param usr The username/API key you are using for Zamzar.
-#' See: https://developers.zamzar.com/user
+#' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param name The name of the file you are fetching from Zamzar. If a name is
 #' not assigned to the file, then we're using the target_id as name.
@@ -24,8 +24,10 @@
 #' @export
 #' @return A file written to disk
 #' 
-#' @examples 
+#' @examples
+#'\donttest{
 #' zz_get()
+#' }
 
 zz_get <- function(target_id = NULL,
                    usr = NULL,
@@ -42,13 +44,14 @@ zz_get <- function(target_id = NULL,
     # Add check for .Renviron token
     stop("Whoops, seems like you forgot to pass a token to the usr param!")
   }
-    
-  if (is.null(name)) {
-    target_id <- as.character(target_id)
-  }
   
   if (is.null(extension)) {
-    extension <- as.character("png")
+    stop("Excuse me, I'm not that smart, please let me know what file it is
+         that I am supposed to get")
+  }
+  
+  if (is.null(name)) {
+    target_id <- as.character(target_id)
   }
   
   if (prod == FALSE) {
@@ -58,7 +61,6 @@ zz_get <- function(target_id = NULL,
   if (prod == TRUE) {
     endpoint <- .zz_endpoint()$dev[[2]]
   }
-  
   
   # Concatenating an URL
   url <- paste0(endpoint, target_id, "/content")
