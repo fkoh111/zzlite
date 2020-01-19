@@ -8,7 +8,7 @@ zz_get_info(usr = NULL, latest = TRUE)
 }
 \arguments{
 \item{usr}{The username/API key you are using for Zamzar.
-See: https://developers.zamzar.com/user}
+See: \url{https://developers.zamzar.com/user}}
 
 \item{latest}{Boolean deciding whether or not we should only return the 
 latest target id. If switched to false, will return a list of all assigned
@@ -27,5 +27,7 @@ assigned to either the development or production endpoint.
 Thus you have to keep track of this yourself.
 }
 \examples{
+\donttest{
 zz_get_info()
+}
 }

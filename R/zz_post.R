@@ -10,10 +10,10 @@
 #' @param file The file you want to convert. Potentially the path to the file
 #' you want to convert.
 #' 
-#' @param target The file you want to convert to. E.g., "png".
+#' @param extension The file type you want to convert to. E.g., "png".
 #' 
 #' @param usr The username/API key you are using for Zamzar.
-#' See: https://developers.zamzar.com/user
+#' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param prod Boolean deciding whether to use a production endpoint or
 #' a development endpoint. Defaults to FALSE (That is, development endpoint).
@@ -21,22 +21,26 @@
 #' @export
 #' @return A response object
 #' 
-#' @examples 
+#' @examples
+#' \donttest{
 #' zz_post()
+#' }
 
-zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
+zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
   
+  # Creating temp file if no file has been passed to the file param 
   if (is.null(file)) {
-    file <- tempfile(fileext = ".png")
-    writeLines("Potentially write something smart here", file)
+    file <- tempfile(fileext = ".tmp")
+    writeLines("temp", file)
   }
   
-  if (is.null(target)) {
-    target <- "png"
+  if (is.null(extension)) {
+    stop("Excuse me, but I need to know the extension type; please pass it :-)")
   }
   
   if (is.null(usr)) {
-    usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
+    # Add check for .Renviron token
+    stop("Whoops, seems like you forgot to pass a token to the usr param!")
   }
   
   if (prod == FALSE) {
@@ -48,7 +52,7 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   }
   
   body <- list(source_file = httr::upload_file(path = file),
-               target_format = target)
+               target_format = extension)
   
   response <- httr::POST(url = endpoint,
        config = httr::authenticate(

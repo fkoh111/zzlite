@@ -13,7 +13,6 @@
 #' The cost list contains the cost of for converting between origin and target.
 #' 
 #' @export
-#' @zz_format
 #' 
 #' @return A list of formats from the API
 #' @examples 

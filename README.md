@@ -14,6 +14,9 @@ devtools::install_github("fkoh111/fkoh111")
 
 [![codecov](https://codecov.io/gh/fkoh111/fkoh111/branch/master/graph/badge.svg)](https://codecov.io/gh/fkoh111/fkoh111)  
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)  
+
+
 ---
 
 http://fkhonline.com

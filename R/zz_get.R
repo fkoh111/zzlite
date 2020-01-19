@@ -6,14 +6,14 @@
 #' Per default zz_get() assumes that you're doing development, thus using a 
 #' development endpoint. Set prod bool to TRUE to change this behaviour.
 #'
-#' @param target_id The target id for a previously passed file. Most likely
-#' returned from zz_get_id().
+#' @param id The target id for a previously passed file. Most likely
+#' returned from zz_get_info().
 #'
 #' @param usr The username/API key you are using for Zamzar.
-#' See: https://developers.zamzar.com/user
+#' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param name The name of the file you are fetching from Zamzar. If a name is
-#' not assigned to the file, then we're using the target_id as name.
+#' not assigned to the file, then we're using the id as name.
 #'
 #' @param extension The extension of the file you are fetching from Zamzar. 
 #' If an extension is not assigned, then we're using .png extension.
@@ -24,31 +24,33 @@
 #' @export
 #' @return A file written to disk
 #' 
-#' @examples 
+#' @examples
+#' \donttest{
 #' zz_get()
+#' }
 
-zz_get <- function(target_id = NULL,
+zz_get <- function(id = NULL,
                    usr = NULL,
                    name = NULL,
                    extension = NULL,
                    prod = FALSE) {
   
 
-  if (is.null(target_id)) {
-    stop("Whoops, seems like you forgot to pass a target_id!")
+  if (is.null(id)) {
+    stop("Whoops, seems like you forgot to pass a id!")
   }
   
   if (is.null(usr)) {
     # Add check for .Renviron token
     stop("Whoops, seems like you forgot to pass a token to the usr param!")
   }
-    
-  if (is.null(name)) {
-    target_id <- as.character(target_id)
-  }
   
   if (is.null(extension)) {
-    extension <- as.character("png")
+    stop("Excuse me, I'm not that smart, please let me know what file format I should get.")
+  }
+  
+  if (is.null(name)) {
+    id <- as.character(id)
   }
   
   if (prod == FALSE) {
@@ -59,12 +61,11 @@ zz_get <- function(target_id = NULL,
     endpoint <- .zz_endpoint()$dev[[2]]
   }
   
-  
   # Concatenating an URL
-  url <- paste0(endpoint, target_id, "/content")
+  url <- paste0(endpoint, id, "/content")
   
   httr::GET(url,
-      httr::write_disk(paste0(target_id, ".", extension), overwrite = TRUE),
+      httr::write_disk(paste0(id, ".", extension), overwrite = TRUE),
       config = httr::authenticate(
         user = usr,
         password = "",
