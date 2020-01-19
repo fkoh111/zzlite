@@ -46,8 +46,7 @@ zz_get <- function(target_id = NULL,
   }
   
   if (is.null(extension)) {
-    stop("Excuse me, I'm not that smart, please let me know what file it is
-         that I am supposed to get")
+    stop("Excuse me, I'm not that smart, please let me know what file format I should get.")
   }
   
   if (is.null(name)) {

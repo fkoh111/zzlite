@@ -10,7 +10,7 @@
 #' @param file The file you want to convert. Potentially the path to the file
 #' you want to convert.
 #' 
-#' @param target The file type you want to convert to. E.g., "png".
+#' @param extension The file type you want to convert to. E.g., "png".
 #' 
 #' @param usr The username/API key you are using for Zamzar.
 #' See: \url{https://developers.zamzar.com/user}
@@ -26,7 +26,7 @@
 #' zz_post()
 #' }
 
-zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
+zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
   
   # Creating temp file if no file has been passed to the file param 
   if (is.null(file)) {
@@ -34,9 +34,8 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
     writeLines("temp", file)
   }
   
-  if (is.null(target)) {
-    stop("Excuse me, but i pretty much need to know what file type it is
-         that Zamzar is supposed to convert to")
+  if (is.null(extension)) {
+    stop("Excuse me, but I need to know the extension type; please pass it :-)")
   }
   
   if (is.null(usr)) {
@@ -53,7 +52,7 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   }
   
   body <- list(source_file = httr::upload_file(path = file),
-               target_format = target)
+               target_format = extension)
   
   response <- httr::POST(url = endpoint,
        config = httr::authenticate(

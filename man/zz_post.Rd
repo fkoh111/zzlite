@@ -4,13 +4,13 @@
 \alias{zz_post}
 \title{Simple wrapper for Zamzar endpoint accepting images for conversion}
 \usage{
-zz_post(file = NULL, target = NULL, usr = NULL, prod = FALSE)
+zz_post(file = NULL, extension = NULL, usr = NULL, prod = FALSE)
 }
 \arguments{
 \item{file}{The file you want to convert. Potentially the path to the file
 you want to convert.}
 
-\item{target}{The file type you want to convert to. E.g., "png".}
+\item{extension}{The file type you want to convert to. E.g., "png".}
 
 \item{usr}{The username/API key you are using for Zamzar.
 See: \url{https://developers.zamzar.com/user}}
