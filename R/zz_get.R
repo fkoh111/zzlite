@@ -25,7 +25,7 @@
 #' @return A file written to disk
 #' 
 #' @examples
-#'\donttest{
+#' \donttest{
 #' zz_get()
 #' }
 

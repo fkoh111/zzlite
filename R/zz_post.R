@@ -28,9 +28,10 @@
 
 zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   
+  # Creating temp file if no file has been passed to the file param 
   if (is.null(file)) {
-    file <- tempfile(fileext = ".png")
-    writeLines("Potentially write something smart here", file)
+    file <- tempfile(fileext = ".tmp")
+    writeLines("temp", file)
   }
   
   if (is.null(target)) {
