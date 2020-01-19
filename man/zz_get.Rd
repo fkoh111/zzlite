@@ -4,23 +4,17 @@
 \alias{zz_get}
 \title{Simple wrapper for Zamzar endpoint to fetch a file from a target id}
 \usage{
-zz_get(
-  target_id = NULL,
-  usr = NULL,
-  name = NULL,
-  extension = NULL,
-  prod = FALSE
-)
+zz_get(id = NULL, usr = NULL, name = NULL, extension = NULL, prod = FALSE)
 }
 \arguments{
-\item{target_id}{The target id for a previously passed file. Most likely
+\item{id}{The target id for a previously passed file. Most likely
 returned from zz_get_info().}
 
 \item{usr}{The username/API key you are using for Zamzar.
 See: \url{https://developers.zamzar.com/user}}
 
 \item{name}{The name of the file you are fetching from Zamzar. If a name is
-not assigned to the file, then we're using the target_id as name.}
+not assigned to the file, then we're using the id as name.}
 
 \item{extension}{The extension of the file you are fetching from Zamzar. 
 If an extension is not assigned, then we're using .png extension.}
