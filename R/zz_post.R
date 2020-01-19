@@ -40,11 +40,11 @@ zz_post <- function(file = NULL, target = NULL, usr = NULL, prod = FALSE) {
   }
   
   if (prod == FALSE) {
-    endpoint <- endpoint <- zz_endpoint()$dev[[1]]
+    endpoint <- endpoint <- .zz_endpoint()$dev[[1]]
   } 
   
   if (prod == TRUE) {
-    endpoint <- endpoint <- zz_endpoint()$prod[[1]]
+    endpoint <- endpoint <- .zz_endpoint()$prod[[1]]
   }
   
   body <- list(source_file = httr::upload_file(path = file),

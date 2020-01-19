@@ -1,12 +1,9 @@
 # zz_endpoint
 #' 
-#' An auxiliary object to hold endpoints that are being used by various functions
-#'
-#' @return Nuttin
-#' 
+#' An auxiliary object that holds endpoints for various functions
 #' @keywords internal
 
-zz_endpoint <- function() {
+.zz_endpoint <- function() {
   
   prod <- list(
     post <- c("https://api.zamzar.com/v1/jobs"),
