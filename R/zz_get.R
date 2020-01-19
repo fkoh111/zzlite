@@ -46,11 +46,11 @@ zz_get <- function(target_id = NULL,
   }
   
   if (prod == FALSE) {
-    endpoint <- zz_endpoint()$prod[[2]]
+    endpoint <- .zz_endpoint()$prod[[2]]
   } 
   
   if (prod == TRUE) {
-    endpoint <- zz_endpoint()$dev[[2]]
+    endpoint <- .zz_endpoint()$dev[[2]]
   }
   
   

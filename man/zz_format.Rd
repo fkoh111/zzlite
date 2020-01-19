@@ -9,7 +9,7 @@ zz_format(usr = NULL, origin = NULL)
 }
 \arguments{
 \item{usr}{The username/API key you are using for Zamzar.
-See: https://developers.zamzar.com/user}
+See: \url{https://developers.zamzar.com/user}}
 
 \item{origin}{The origin format you want to convert. If param origin is passed,
 zz_format returns a list containing a list of targets and a list of costs.
@@ -24,5 +24,13 @@ Simple wrapper for Zamzar endpoint returning a list of formats you can
 convert between
 }
 \examples{
+\donttest{
 zz_format()
+
+zz_format(usr = "79b88ef9889d909d533c0099h7432")
+
+#' #' zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "exe")
+
+#' zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "emf")
+}
 }

@@ -25,7 +25,7 @@
 
 zz_get_info <- function(usr = NULL, latest = TRUE) {
   
-  endpoint <- zz_endpoint()$prod[[2]]
+  endpoint <- .zz_endpoint()$prod[[2]]
   
   if (is.null(usr)) {
     usr <- as.character(sample(999999:99999999, 1)) # Dummy username if nothing has been passed as param
