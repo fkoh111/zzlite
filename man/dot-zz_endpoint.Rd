@@ -2,11 +2,11 @@
 % Please edit documentation in R/zzz.R
 \name{.zz_endpoint}
 \alias{.zz_endpoint}
-\title{An auxiliary object that holds endpoints for various functions}
+\title{An auxiliary object that holds Zamzar endpoints}
 \usage{
 .zz_endpoint()
 }
 \description{
-An auxiliary object that holds endpoints for various functions
+An auxiliary object that holds Zamzar endpoints
 }
 \keyword{internal}

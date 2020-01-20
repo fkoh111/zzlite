@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_get.R
 \name{zz_get}
 \alias{zz_get}
-\title{Simple wrapper for Zamzar endpoint to fetch a file from a target id}
+\title{Get file from Zamzar endpoint}
 \usage{
 zz_get(id = NULL, usr = NULL, name = NULL, extension = NULL, prod = FALSE)
 }
@@ -26,8 +26,7 @@ a development endpoint. Defaults to FALSE (That is, development endpoint).}
 A file written to disk
 }
 \description{
-Per default zz_get() assumes that you're doing development, thus using a 
-development endpoint. Set prod bool to TRUE to change this behaviour.
+Get file from Zamzar endpoint
 }
 \examples{
 \donttest{

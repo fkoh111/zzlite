@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_from.R
 \name{import_from}
 \alias{import_from}
-\title{Import script files for the R programming language from a given folder.}
+\title{Import script files from a given folder}
 \usage{
 import_from(src, strict = TRUE)
 }
@@ -19,14 +19,7 @@ Returns object(s) assigned in .R files located in the folder imported
 by import_from
 }
 \description{
-Per default import_from will only import files with a capitalized
-extension, that is an .R extension, and not files with a lowercase
-.r exension.
-}
-\details{
-This is in accordance with general guidelines in the community, as well as
-advised by authorities within the community, e.g.:
-Wickham, H. (2015). Advanced R . Boca Raton, FL: CRC Press.
+Import script files from a given folder
 }
 \examples{
 import_from("R")

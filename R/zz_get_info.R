@@ -1,9 +1,12 @@
 # zz_get_info
 #' 
-#' Simple wrapper for Zamzar endpoint returning an id(s) for a posted file(s)
+#' Get info from Zamzar
+#' 
+#' @section 
+#' Get info on files submitted to the Zamzar API via your current token
 #'
-#' Per default zz_get_info() assumes that you only want the target id for the latest 
-#' assigned file. Set latest bool to FALSE to change this behaviour.
+#' Per default zz_get_info() assumes you only want the target id for the last 
+#' submitted file. Set latest bool to FALSE to change this behaviour.
 #'
 #' Please note: zz_get_info() doesn't differentiate between files that have been
 #' assigned to either the development or production endpoint.

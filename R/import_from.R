@@ -1,8 +1,8 @@
 # import_from
 #' 
-#' Import script files for the R programming language from a given folder. 
+#' Import script files from a given folder
 #' 
-#' 
+#' @section 
 #' Per default import_from will only import files with a capitalized
 #' extension, that is an .R extension, and not files with a lowercase
 #' .r exension.
@@ -10,9 +10,7 @@
 #' This is in accordance with general guidelines in the community, as well as
 #' advised by authorities within the community, e.g.:
 #' Wickham, H. (2015). Advanced R . Boca Raton, FL: CRC Press.
-#' 
-#' 
-#' 
+#'  
 #' @param src The the folder containg .R files that you want to import.
 #' This can either be the name of a folder, or the relative path to a given folder.
 #' If no folder or path is provided, the current wd is imported.

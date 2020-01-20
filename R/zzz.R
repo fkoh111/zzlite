@@ -1,6 +1,6 @@
 # zz_endpoint
 #' 
-#' An auxiliary object that holds endpoints for various functions
+#' An auxiliary object that holds Zamzar endpoints
 #' @keywords internal
 
 .zz_endpoint <- function() {

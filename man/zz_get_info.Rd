@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_get_info.R
 \name{zz_get_info}
 \alias{zz_get_info}
-\title{Simple wrapper for Zamzar endpoint returning an id(s) for a posted file(s)}
+\title{Get Zamzar info}
 \usage{
 zz_get_info(usr = NULL, latest = TRUE)
 }
@@ -18,13 +18,7 @@ target ids}
 A target id or alternatively a list of target ids
 }
 \description{
-Per default zz_get_info() assumes that you only want the target id for the latest 
-assigned file. Set latest bool to FALSE to change this behaviour.
-}
-\details{
-Please note: zz_get_info() doesn't differentiate between files that have been
-assigned to either the development or production endpoint.
-Thus you have to keep track of this yourself.
+Get Zamzar info
 }
 \examples{
 \donttest{

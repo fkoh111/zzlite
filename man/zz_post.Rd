@@ -2,10 +2,7 @@
 % Please edit documentation in R/zz_post.R
 \name{zz_post}
 \alias{zz_post}
-\title{Post file to Zamzar endpoint
- 
-Per default zz_post() assumes that you're doing development, thus using a 
-development endpoint. Set prod bool to TRUE to change this behaviour.}
+\title{Post file to Zamzar endpoint}
 \usage{
 zz_post(file = NULL, extension = NULL, usr = NULL, prod = FALSE)
 }
@@ -25,9 +22,6 @@ A response object as defined by httr::message_for_status()
 }
 \description{
 Post file to Zamzar endpoint
- 
-Per default zz_post() assumes that you're doing development, thus using a 
-development endpoint. Set prod bool to TRUE to change this behaviour.
 }
 \examples{
 \donttest{

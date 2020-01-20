@@ -1,8 +1,9 @@
 # zz_get
 #' 
-#' Simple wrapper for Zamzar endpoint to fetch a file from a target id
+#' Get file from Zamzar endpoint
 #' 
-#' 
+#' @section 
+#' Get file from Zamzar endpoint via id.
 #' Per default zz_get() assumes that you're doing development, thus using a 
 #' development endpoint. Set prod bool to TRUE to change this behaviour.
 #'

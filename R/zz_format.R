@@ -1,8 +1,9 @@
 # zz_format
-#' 
-#' Simple wrapper for Zamzar endpoint returning a list of formats you can
-#' convert between
 #'
+#' Get formats from Zamzar
+#' 
+#' @section  
+#' Get a list of formats you can convert between via the Zamzar API
 #'
 #' @param usr The username/API key you are using for Zamzar.
 #' See: \url{https://developers.zamzar.com/user}
