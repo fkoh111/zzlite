@@ -2,31 +2,47 @@
 % Please edit documentation in R/zz_post.R
 \name{zz_post}
 \alias{zz_post}
-\title{Simple wrapper for Zamzar endpoint accepting images for conversion}
+\title{Post file to Zamzar endpoint
+ 
+Per default zz_post() assumes that you're doing development, thus using a 
+development endpoint. Set prod bool to TRUE to change this behaviour.}
 \usage{
 zz_post(file = NULL, extension = NULL, usr = NULL, prod = FALSE)
 }
 \arguments{
-\item{file}{The file you want to convert. Potentially the path to the file
-you want to convert.}
+\item{file}{The path to the file you want to convert.}
 
 \item{extension}{The file type you want to convert to. E.g., "png".}
 
 \item{usr}{The username/API key you are using for Zamzar.
 See: \url{https://developers.zamzar.com/user}}
 
-\item{prod}{Boolean deciding whether to use a production endpoint or
-a development endpoint. Defaults to FALSE (That is, development endpoint).}
+\item{prod}{Boolean deciding whether to use prod or dev endpoint.
+Defaults to FALSE (That is, dev endpoint).}
 }
 \value{
-A response object
+A response object as defined by httr::message_for_status()
 }
 \description{
+Post file to Zamzar endpoint
+ 
 Per default zz_post() assumes that you're doing development, thus using a 
 development endpoint. Set prod bool to TRUE to change this behaviour.
 }
 \examples{
 \donttest{
-zz_post()
+
+# Per default zz_post uses the development endpoint
+zz_post(file = "avatar.emf", usr = "passwd", extension = "png")
+
+# Setting prod param to FALSE is the same as above
+zz_post(file = "avatar.emf", usr = "passwd", extension = "png", prod = FALSE)
+
+# You need to flip prod to TRUE if you want to use the production endpoint
+zz_post(file = "avatar.emf", usr = "passwd", extension = "png", prod = TRUE)
+
 }
+}
+\seealso{
+[zz_format()] for a list of formats you can convert to.
 }

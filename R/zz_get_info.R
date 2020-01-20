@@ -1,7 +1,6 @@
 # zz_get_info
 #' 
 #' Simple wrapper for Zamzar endpoint returning an id(s) for a posted file(s)
-#' 
 #'
 #' Per default zz_get_info() assumes that you only want the target id for the latest 
 #' assigned file. Set latest bool to FALSE to change this behaviour.
