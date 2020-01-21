@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_format.R
 \name{zz_format}
 \alias{zz_format}
-\title{Get Zamzar formats}
+\title{Get formats from Zamzar}
 \usage{
 zz_format(usr = NULL, origin = NULL)
 }
@@ -19,7 +19,7 @@ The cost list contains the cost of for converting between origin and target.}
 A list of formats from the API
 }
 \description{
-Get Zamzar formats
+Get formats from Zamzar
 }
 \section{Get a list of formats you can convert between via the Zamzar API}{
 NA

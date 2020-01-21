@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_get_info.R
 \name{zz_get_info}
 \alias{zz_get_info}
-\title{Get Zamzar info}
+\title{Get info from Zamzar}
 \usage{
 zz_get_info(usr = NULL, latest = TRUE)
 }
@@ -18,7 +18,7 @@ target ids}
 A target id or alternatively a list of target ids
 }
 \description{
-Get Zamzar info
+Get info from Zamzar
 }
 \examples{
 \donttest{

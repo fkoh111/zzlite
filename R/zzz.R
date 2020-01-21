@@ -23,3 +23,7 @@
   class(conf) <- "config"
   conf
 }
+
+.zz_endpoint_content <- function(endpoint, id) {
+  url <- paste0(endpoint, id, "/content")
+}
