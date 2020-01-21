@@ -23,10 +23,15 @@ A response object as defined by httr::message_for_status()
 \description{
 Post file to Zamzar endpoint
 }
+\section{zz_post}{
+
+Per default zz_post() assumes that you're doing development, thus using a 
+development endpoint. Set prod bool to TRUE to change this behaviour.
+}
+
 \examples{
 \donttest{
-
-# Per default zz_post uses the development endpoint
+#' # Per default zz_post uses the development endpoint
 zz_post(file = "avatar.emf", usr = "passwd", extension = "png")
 
 # Setting prod param to FALSE is the same as above

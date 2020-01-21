@@ -2,7 +2,7 @@
 #'
 #' Get formats from Zamzar
 #' 
-#' @section  
+#' @section zz_format: 
 #' Get a list of formats you can convert between via the Zamzar API
 #'
 #' @param usr The username/API key you are using for Zamzar.
