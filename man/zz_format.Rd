@@ -21,8 +21,9 @@ A list of formats from the API
 \description{
 Get formats from Zamzar
 }
-\section{Get a list of formats you can convert between via the Zamzar API}{
-NA
+\section{zz_format}{
+ 
+Get a list of formats you can convert between via the Zamzar API
 }
 
 \examples{

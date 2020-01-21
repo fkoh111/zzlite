@@ -28,6 +28,13 @@ A file written to disk
 \description{
 Get file from Zamzar endpoint
 }
+\section{zz-get}{
+
+Get file from Zamzar endpoint via id.
+Per default zz_get() assumes that you're doing development, thus using a 
+development endpoint. Set prod bool to TRUE to change this behaviour.
+}
+
 \examples{
 \donttest{
 zz_get()

@@ -21,6 +21,17 @@ by import_from
 \description{
 Import script files from a given folder
 }
+\section{import_from}{
+
+Per default import_from will only import files with a capitalized
+extension, that is an .R extension, and not files with a lowercase
+.r exension.
+
+This is in accordance with general guidelines in the community, as well as
+advised by authorities within the community, e.g.:
+Wickham, H. (2015). Advanced R . Boca Raton, FL: CRC Press.
+}
+
 \examples{
 import_from("R")
 

@@ -2,7 +2,7 @@
 #' 
 #' Import script files from a given folder
 #' 
-#' @section 
+#' @section import_from:
 #' Per default import_from will only import files with a capitalized
 #' extension, that is an .R extension, and not files with a lowercase
 #' .r exension.
