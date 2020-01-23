@@ -11,28 +11,29 @@ zz_format(usr = NULL, origin = NULL)
 See: \url{https://developers.zamzar.com/user}}
 
 \item{origin}{The origin format you want to convert.
-If param origin is passed, zz_format() returns a list containing a list of targets and a list of costs.
-The target list contains tagets that you can convert your origin to.
-The cost list contains the cost of for converting between origin and target.}
+If param origin is passed, zz_format() returns a list of $targets and of $costs.
+The target vector contains tagets that you can convert your origin to.
+The cost vector contains the cost for conversion between your origin and target.
+See: \url{https://developers.zamzar.com/formats}
+
+If no orign param has been passed to zz_format(), a type of character of
+all the origin formats accepted by the Zamzar API is returned.
+See: \url{https://developers.zamzar.com/formats}}
 }
 \value{
-A list of formats from the API
+Either a list of formats from the API that you can convert to,
+or a type character of all the origin formats accepted by the Zamzar API
 }
 \description{
 Get formats from Zamzar
 }
-\section{zz_format}{
- 
-Get a list of formats you can convert between via the Zamzar API
-}
-
 \examples{
 \donttest{
 zz_format()
 
 zz_format(usr = "79b88ef9889d909d533c0099h7432")
 
-zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "exe")
+zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "invalid_origin")
 
 zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "emf")
 }
