@@ -14,12 +14,13 @@
 #' The cost vector contains the cost for conversion between your origin and target.
 #' See: \url{https://developers.zamzar.com/formats}
 #' 
-#' If no orign param has been passed to zz_format(), a character describing
+#' If no orign param has been passed to zz_format(), a type of character of
 #' all the origin formats accepted by the Zamzar API is returned.
 #' See: \url{https://developers.zamzar.com/formats}
 #' 
 #' @export
-#' @return A list of formats from the API
+#' @return Either a list of formats from the API that you can convert to,
+#' or a type character of all the origin formats accepted by the Zamzar API
 #' 
 #' @examples 
 #' \donttest{
