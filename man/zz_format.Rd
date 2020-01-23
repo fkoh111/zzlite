@@ -10,8 +10,8 @@ zz_format(usr = NULL, origin = NULL)
 \item{usr}{The username/API key you are using for Zamzar.
 See: \url{https://developers.zamzar.com/user}}
 
-\item{origin}{The origin format you want to convert. If param origin is passed,
-zz_format returns a list containing a list of targets and a list of costs.
+\item{origin}{The origin format you want to convert.
+If param origin is passed, zz_format() returns a list containing a list of targets and a list of costs.
 The target list contains tagets that you can convert your origin to.
 The cost list contains the cost of for converting between origin and target.}
 }

@@ -11,9 +11,14 @@ zz_get_info(usr = NULL, latest = TRUE)
 See: \url{https://developers.zamzar.com/user}}
 
 \item{latest}{Boolean deciding whether or not zz_get_info() should solely
-return attributes for the latest target id. If switched to FALSE, zz_get_info()
-will return attributes for all files that have been sumitted to the API
-within a reasonable timeframe.}
+return attributes for the latest target id.  
+If switched to FALSE, zz_get_info() will return attributes for all files
+that have been sumitted to the API within a reasonable timeframe.
+
+The returned list contains the following attributes:
+* `id`: The unique file identifier assigned to a file by Zamzar.
+* `extension`: The extension representing the format of the file.
+* `created_at`: The time at which the file was created at the Zamzar servers.}
 }
 \value{
 A list of file attributes.
@@ -21,19 +26,11 @@ A list of file attributes.
 \description{
 Get info from Zamzar
 }
-\details{
-The returned list contains the following attributes:
-\itemize{
-\item \code{id} The unique file identifier assigned to a file by Zamzar.
-\item \code{extension} The extension representing the format of the file.
-\item \code{created_at} The time at which the file was created at the Zamzar servers.
-}
-}
 \section{zz_get_info}{
 
 Get info on files submitted to the Zamzar API via your current token
 
-Per default zz_get_info() assumes you want information for the last
+Per default zz_get_info() assumes you want information for the last 
 submitted file. To get information on all the files that have been submitted
 within a reasonable timeframe, set bool latest to FALSE.
 
@@ -47,8 +44,8 @@ production endpoint. You have to keep track of this yourself.
 # Provided a valid token, will return a list of attributes
 zz_get_info(usr = "passwd")
 
-# Provided a valid token, will return a list of files submitted to the API
-# within a reasonable timeframe.
+# Provided a valid token, will return a list of files
+# submitted to the API within a reasonable timeframe.
 zz_get_info(usr = "passwd", latest = FALSE)
 
 }
