@@ -7,9 +7,11 @@
 #' See: \url{https://developers.zamzar.com/user}
 #'
 #' @param origin The origin format you want to convert.
-#' If param origin is passed, zz_format() returns a list of $targets and of $costs.
-#' The target vector contains tagets that you can convert your origin to.
-#' The cost vector contains the cost for conversion between your origin and target.  
+#' If param origin is passed, zz_format() returns a list of targets and costs.  
+#' 
+#' The target vector contains tagets that you can convert your origin to.  
+#' 
+#' The cost vector contains the cost for conversion between your origin and a given target.  
 #' 
 #' See: \url{https://developers.zamzar.com/formats}
 #' 
@@ -68,14 +70,16 @@ zz_format <- function(usr = NULL, origin = NULL) {
   
   if (!response$status_code %in% c(200, 201)) {
     stop(sprintf("Zamzar responded with: %s, and a status code of: %d",
-                    content_df$errors$message, response$status_code))
+                    content_df$errors$message, response$status_code)
+         )
   }
   
   
   if (response$status_code %in% c(200, 201)) {
     if (is.list(res) && is.null(res$target)) {
       stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
-                      content_df$errors$message, response$status_code))
+                      content_df$errors$message, response$status_code)
+           )
     } else {
       return(res)
     }

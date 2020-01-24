@@ -12,9 +12,11 @@ zz_format(usr = NULL, origin = NULL)
 See: \url{https://developers.zamzar.com/user}}
 
 \item{origin}{The origin format you want to convert.
-If param origin is passed, zz_format() returns a list of $targets and of $costs.
-The target vector contains tagets that you can convert your origin to.
-The cost vector contains the cost for conversion between your origin and target.  
+If param origin is passed, zz_format() returns a list of targets and costs.  
+
+The target vector contains tagets that you can convert your origin to.  
+
+The cost vector contains the cost for conversion between your origin and a given target.  
 
 See: \url{https://developers.zamzar.com/formats}
 
