@@ -16,7 +16,7 @@ The target vector contains tagets that you can convert your origin to.
 The cost vector contains the cost for conversion between your origin and target.
 See: \url{https://developers.zamzar.com/formats}
 
-If no orign param has been passed to zz_format(), a type of character of
+If no orign param has been passed to zz_format(), a character type of
 all the origin formats accepted by the Zamzar API is returned.
 See: \url{https://developers.zamzar.com/formats}}
 }
@@ -29,12 +29,12 @@ Get formats from Zamzar
 }
 \examples{
 \donttest{
-zz_format()
-
 zz_format(usr = "79b88ef9889d909d533c0099h7432")
 
-zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "invalid_origin")
+zz_format(usr = "79b88ef9889d909d533c0099h7432",
+          origin = "invalid_origin")
 
-zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "emf")
+zz_format(usr = "79b88ef9889d909d533c0099h7432",
+          origin = "emf")
 }
 }
