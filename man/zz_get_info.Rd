@@ -20,7 +20,7 @@ that have been sumitted to the API within a reasonable timeframe.
 The returned list contains the following attributes:
 \itemize{
 \item \code{id}: The unique file identifier assigned to a file by Zamzar.
-\item \code{extension}: The extension representing the format of the file.
+\item \code{extension}: The extension representing the format of the file you can download.
 \item \code{created_at}: The time at which the file was created at the Zamzar servers.
 }}
 }

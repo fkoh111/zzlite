@@ -26,7 +26,7 @@
 #' The returned list contains the following attributes:  
 #' 
 #'   * `id`: The unique file identifier assigned to a file by Zamzar. 
-#'   * `extension`: The extension representing the format of the file. 
+#'   * `extension`: The extension representing the format of the file you can download. 
 #'   * `created_at`: The time at which the file was created at the Zamzar servers. 
 #'
 #'@md
