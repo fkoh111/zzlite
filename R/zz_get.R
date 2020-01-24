@@ -2,7 +2,7 @@
 #' 
 #' Get file from Zamzar endpoint
 #' 
-#' @section zz-get:
+#' @section zz_get:
 #' Get file from Zamzar endpoint via id.
 #' Per default zz_get() assumes that you're doing development, thus using a 
 #' development endpoint. Set prod bool to TRUE to change this behaviour.
@@ -14,10 +14,9 @@
 #' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param name The name of the file you are fetching from Zamzar. If a name is
-#' not assigned to the file, then we're using the id as name.
+#' not assigned to the file, then we're using the id as file name.
 #'
 #' @param extension The extension of the file you are fetching from Zamzar. 
-#' If an extension is not assigned, then we're using .png extension.
 #'
 #' @param prod Boolean deciding whether to use a production endpoint or
 #' a development endpoint. Defaults to FALSE (That is, development endpoint).
@@ -27,8 +26,14 @@
 #' 
 #' @examples
 #' \donttest{
-#' zz_get()
+#' # An example of zz_get() utilized with hardcoded arguments
+#' zz_get(id = 12345678, usr = "key", name = "my_avatar", extension = "png")
+#' 
+#' # An example zz_get() used in conjunction with zz_get_info()
+#' response <- zz_get_info(usr = "key", latest = TRUE)
+#' zz_get(usr = usr, id = response$id, extension = response$extension, prod = TRUE)
 #' }
+
 
 zz_get <- function(id = NULL,
                    usr = NULL,

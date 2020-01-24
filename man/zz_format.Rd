@@ -29,12 +29,10 @@ Get formats from Zamzar
 }
 \examples{
 \donttest{
-zz_format(usr = "79b88ef9889d909d533c0099h7432")
+zz_format(usr = "key")
 
-zz_format(usr = "79b88ef9889d909d533c0099h7432",
-          origin = "invalid_origin")
+zz_format(usr = "key", origin = "invalid_origin")
 
-zz_format(usr = "79b88ef9889d909d533c0099h7432",
-          origin = "emf")
+zz_format(usr = "key", origin = "emf")
 }
 }
