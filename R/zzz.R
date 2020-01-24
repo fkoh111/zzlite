@@ -1,7 +1,11 @@
-# zz_endpoint
+# zzz
 #' 
-#' An auxiliary object that holds Zamzar endpoints
+#' Auxiliary functions and object
+#' 
+#' 
 #' @keywords internal
+ 
+
 
 .zz_endpoint <- function() {
   
@@ -23,6 +27,9 @@
   class(conf) <- "config"
   conf
 }
+
+
+
 
 .zz_endpoint_content <- function(endpoint, id) {
   url <- paste0(endpoint, id, "/content")
