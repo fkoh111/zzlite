@@ -10,7 +10,7 @@
 #' 
 #' @param extension The file type you want to convert to. E.g., "png".
 #' 
-#' @seealso [zz_format()] for a list of formats you can convert to.
+#' @seealso \code{\link{zz_format}} for a list of formats you can convert to.
 #' 
 #' @param usr The username/API key you are using for Zamzar.
 #' See: \url{https://developers.zamzar.com/user}
@@ -23,7 +23,7 @@
 #' 
 #' @examples
 #' \donttest{
-#' #' # Per default zz_post uses the development endpoint
+#' # Per default zz_post uses the development endpoint
 #' zz_post(file = "avatar.emf", usr = "passwd", extension = "png")
 #' 
 #' # Setting prod param to FALSE is the same as above

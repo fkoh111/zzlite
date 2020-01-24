@@ -1,11 +1,10 @@
-# zzz
+# .zzz_endpoint
 #' 
-#' Auxiliary functions and object
+#' Auxiliary function
 #' 
+#' Holds Zamzar API endpoints
 #' 
 #' @keywords internal
- 
-
 
 .zz_endpoint <- function() {
   
@@ -28,8 +27,13 @@
   conf
 }
 
-
-
+# .zz_endpoint_content
+#' 
+#' Auxiliary function
+#' 
+#' Decorate an endpoint with a content path
+#' 
+#' @keywords internal
 
 .zz_endpoint_content <- function(endpoint, id) {
   url <- paste0(endpoint, id, "/content")
