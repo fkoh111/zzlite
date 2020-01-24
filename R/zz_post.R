@@ -12,7 +12,8 @@
 #' 
 #' @seealso \code{\link{zz_format}} for a list of formats you can convert to.
 #' 
-#' @param usr The username/API key you are using for Zamzar.
+#' @param usr The username/API key you are using for Zamzar.  
+#' 
 #' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param prod Boolean deciding whether to use prod or dev endpoint.

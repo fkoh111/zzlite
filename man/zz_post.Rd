@@ -12,6 +12,7 @@ zz_post(file = NULL, extension = NULL, usr = NULL, prod = FALSE)
 \item{extension}{The file type you want to convert to. E.g., "png".}
 
 \item{usr}{The username/API key you are using for Zamzar.
+
 See: \url{https://developers.zamzar.com/user}}
 
 \item{prod}{Boolean deciding whether to use prod or dev endpoint.

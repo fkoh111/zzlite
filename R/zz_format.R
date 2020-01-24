@@ -2,17 +2,20 @@
 #'
 #' Get formats from Zamzar
 #' 
-#' @param usr The username/API key you are using for Zamzar.
+#' @param usr The username/API key you are using for Zamzar.  
+#' 
 #' See: \url{https://developers.zamzar.com/user}
 #'
 #' @param origin The origin format you want to convert.
 #' If param origin is passed, zz_format() returns a list of $targets and of $costs.
 #' The target vector contains tagets that you can convert your origin to.
-#' The cost vector contains the cost for conversion between your origin and target.
+#' The cost vector contains the cost for conversion between your origin and target.  
+#' 
 #' See: \url{https://developers.zamzar.com/formats}
 #' 
 #' If no orign param has been passed to zz_format(), a character type of
-#' all the origin formats accepted by the Zamzar API is returned.
+#' all the origin formats accepted by the Zamzar API is returned.  
+#' 
 #' See: \url{https://developers.zamzar.com/formats}
 #' 
 #' @export

@@ -8,17 +8,21 @@ zz_get_info(usr = NULL, latest = TRUE)
 }
 \arguments{
 \item{usr}{The username/API key you are using for Zamzar.
+
 See: \url{https://developers.zamzar.com/user}}
 
 \item{latest}{Boolean deciding whether or not zz_get_info() should solely
-return attributes for the latest target id.  
+return attributes for the latest target id.
+
 If switched to FALSE, zz_get_info() will return attributes for all files
 that have been sumitted to the API within a reasonable timeframe.
 
 The returned list contains the following attributes:
-* `id`: The unique file identifier assigned to a file by Zamzar.
-* `extension`: The extension representing the format of the file.
-* `created_at`: The time at which the file was created at the Zamzar servers.}
+\itemize{
+\item \code{id}: The unique file identifier assigned to a file by Zamzar.
+\item \code{extension}: The extension representing the format of the file.
+\item \code{created_at}: The time at which the file was created at the Zamzar servers.
+}}
 }
 \value{
 A list of file attributes.
@@ -30,7 +34,7 @@ Get info from Zamzar
 
 Get info on files submitted to the Zamzar API via your current token
 
-Per default zz_get_info() assumes you want information for the last 
+Per default zz_get_info() assumes you want information for the last
 submitted file. To get information on all the files that have been submitted
 within a reasonable timeframe, set bool latest to FALSE.
 

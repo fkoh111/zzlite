@@ -11,6 +11,7 @@ zz_get(id = NULL, usr = NULL, name = NULL, extension = NULL, prod = FALSE)
 returned from zz_get_info().}
 
 \item{usr}{The username/API key you are using for Zamzar.
+
 See: \url{https://developers.zamzar.com/user}}
 
 \item{name}{The name of the file you are fetching from Zamzar. If a name is

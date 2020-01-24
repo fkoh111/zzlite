@@ -10,7 +10,8 @@
 #' @param id The target id for a previously passed file. Most likely
 #' returned from zz_get_info().
 #'
-#' @param usr The username/API key you are using for Zamzar.
+#' @param usr The username/API key you are using for Zamzar.  
+#' 
 #' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param name The name of the file you are fetching from Zamzar. If a name is

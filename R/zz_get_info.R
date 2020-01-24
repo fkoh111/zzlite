@@ -13,18 +13,23 @@
 #' between files that have been assigned to either the development or
 #' production endpoint. You have to keep track of this yourself.
 #'
-#' @param usr The username/API key you are using for Zamzar.
+#' @param usr The username/API key you are using for Zamzar.  
+#' 
 #' See: \url{https://developers.zamzar.com/user}
 #'
 #' @param latest Boolean deciding whether or not zz_get_info() should solely
 #' return attributes for the latest target id.  
+#' 
 #' If switched to FALSE, zz_get_info() will return attributes for all files
-#' that have been sumitted to the API within a reasonable timeframe.
+#' that have been sumitted to the API within a reasonable timeframe.  
+#' 
+#' The returned list contains the following attributes:  
+#' 
+#'   * `id`: The unique file identifier assigned to a file by Zamzar. 
+#'   * `extension`: The extension representing the format of the file. 
+#'   * `created_at`: The time at which the file was created at the Zamzar servers. 
 #'
-#' The returned list contains the following attributes:
-#' * `id`: The unique file identifier assigned to a file by Zamzar.
-#' * `extension`: The extension representing the format of the file.
-#' * `created_at`: The time at which the file was created at the Zamzar servers.
+#'@md
 #'
 #' @export
 #' @return A list of file attributes.
