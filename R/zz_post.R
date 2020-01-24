@@ -25,13 +25,13 @@
 #' @examples
 #' \donttest{
 #' # Per default zz_post uses the development endpoint
-#' zz_post(file = "avatar.emf", usr = "passwd", extension = "png")
+#' zz_post(file = "avatar.emf", usr = "key", extension = "png")
 #' 
 #' # Setting prod param to FALSE is the same as above
-#' zz_post(file = "avatar.emf", usr = "passwd", extension = "png", prod = FALSE)
+#' zz_post(file = "avatar.emf", usr = "key", extension = "png", prod = FALSE)
 #' 
 #' # You need to flip prod to TRUE if you want to use the production endpoint
-#' zz_post(file = "avatar.emf", usr = "passwd", extension = "png", prod = TRUE)
+#' zz_post(file = "avatar.emf", usr = "key", extension = "png", prod = TRUE)
 #' 
 #' }
 

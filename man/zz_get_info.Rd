@@ -46,11 +46,11 @@ production endpoint. You have to keep track of this yourself.
 \examples{
 \donttest{
 # Provided a valid token, will return a list of attributes
-zz_get_info(usr = "passwd")
+zz_get_info(usr = "key")
 
 # Provided a valid token, will return a list of files
 # submitted to the API within a reasonable timeframe.
-zz_get_info(usr = "passwd", latest = FALSE)
+zz_get_info(usr = "key", latest = FALSE)
 
 }
 }
