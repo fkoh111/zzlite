@@ -17,26 +17,26 @@
 #' See: \url{https://developers.zamzar.com/user}
 #'
 #' @param latest Boolean deciding whether or not zz_get_info() should solely
-#' return attributes for the latest target id. If switched to FALSE, zz_get_info()
-#' will return attributes for all files that have been sumitted to the API
-#' within a reasonable timeframe.
+#' return attributes for the latest target id.  
+#' If switched to FALSE, zz_get_info() will return attributes for all files
+#' that have been sumitted to the API within a reasonable timeframe.
+#'
+#' The returned list contains the following attributes:
+#' * `id`: The unique file identifier assigned to a file by Zamzar.
+#' * `extension`: The extension representing the format of the file.
+#' * `created_at`: The time at which the file was created at the Zamzar servers.
 #'
 #' @export
 #' @return A list of file attributes.
 #' 
-#' @details The returned list contains the following attributes:
-#' * `id` The unique file identifier assigned to a file by Zamzar.
-#' * `extension` The extension representing the format of the file.
-#' * `created_at` The time at which the file was created at the Zamzar servers.
-#' @md
 #' 
 #' @examples
 #' \donttest{
 #' # Provided a valid token, will return a list of attributes
 #' zz_get_info(usr = "passwd")
 #' 
-#' # Provided a valid token, will return a list of files submitted to the API
-#' # within a reasonable timeframe.
+#' # Provided a valid token, will return a list of files
+#' # submitted to the API within a reasonable timeframe.
 #' zz_get_info(usr = "passwd", latest = FALSE)
 #' 
 #' }

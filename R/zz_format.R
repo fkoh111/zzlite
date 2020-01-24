@@ -2,29 +2,32 @@
 #'
 #' Get formats from Zamzar
 #' 
-#' @section zz_format: 
-#' Get a list of formats you can convert between via the Zamzar API
-#'
 #' @param usr The username/API key you are using for Zamzar.
 #' See: \url{https://developers.zamzar.com/user}
 #'
-#' @param origin The origin format you want to convert. If param origin is passed,
-#' zz_format returns a list containing a list of targets and a list of costs.
-#' The target list contains tagets that you can convert your origin to.
-#' The cost list contains the cost of for converting between origin and target.
+#' @param origin The origin format you want to convert.
+#' If param origin is passed, zz_format() returns a list of $targets and of $costs.
+#' The target vector contains tagets that you can convert your origin to.
+#' The cost vector contains the cost for conversion between your origin and target.
+#' See: \url{https://developers.zamzar.com/formats}
+#' 
+#' If no orign param has been passed to zz_format(), a character type of
+#' all the origin formats accepted by the Zamzar API is returned.
+#' See: \url{https://developers.zamzar.com/formats}
 #' 
 #' @export
+#' @return Either a list of formats from the API that you can convert to,
+#' or a type character of all the origin formats accepted by the Zamzar API
 #' 
-#' @return A list of formats from the API
 #' @examples 
 #' \donttest{
-#' zz_format()
-#' 
 #' zz_format(usr = "79b88ef9889d909d533c0099h7432")
 #' 
-#' zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "exe")
+#' zz_format(usr = "79b88ef9889d909d533c0099h7432",
+#'           origin = "invalid_origin")
 #' 
-#' zz_format(usr = "79b88ef9889d909d533c0099h7432", origin = "emf")
+#' zz_format(usr = "79b88ef9889d909d533c0099h7432",
+#'           origin = "emf")
 #' }
 
 zz_format <- function(usr = NULL, origin = NULL) {
@@ -54,7 +57,7 @@ zz_format <- function(usr = NULL, origin = NULL) {
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)
   
   if (is.null(origin) || origin == "") {
-    res <- content_df$data$name
+    origin <- content_df$data$name
   } else {
     target <- content_df$targets$name
     cost <- content_df$targets$credit_cost
