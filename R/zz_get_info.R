@@ -50,13 +50,10 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   endpoint <- .zz_endpoint()$prod[[2]]
   
-  if (is.null(usr)) {
-    # Add check for .Renviron token
-    stop("Whoops, seems like you forgot to pass a token to the usr param!")
-  }
+  usr <- .zz_get_token(usr = usr)
   
   status <- httr::GET(url = endpoint,
-                config = httr::authenticate(
+                  config = httr::authenticate(
                   user = usr,
                   password = "",
                   type = "basic"
@@ -65,6 +62,12 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   content <- httr::content(status, as = "text", encoding = "UTF-8")
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)
+  
+  #Temporary solution:
+  if (is.null(content_df$data$id[[1]]) && is.null(content_df$data$id[[1]]) && is.null(content_df$data$created_at[[1]])) {
+    stop("Whoops, seems like your .Renviron doesn't contain a valid token, alternatively, you haven't passed a valid token to the usr param!")
+  } 
+  
 
   if (latest == TRUE) {
     id <- content_df$paging$first
@@ -72,7 +75,7 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
     created_at <- content_df$data$created_at[[1]]
   } else {
     id <- content_df$data$id
-    extension <- content_df$data$format
+    extension <- content_df$data$id
     created_at <- content_df$data$created_at
   }
 

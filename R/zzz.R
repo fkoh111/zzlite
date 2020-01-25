@@ -5,7 +5,6 @@
 #' Holds Zamzar API endpoints
 #' 
 #' @keywords internal
-
 .zz_endpoint <- function() {
   
   prod <- list(
@@ -34,7 +33,22 @@
 #' Decorate an endpoint with a content path
 #' 
 #' @keywords internal
-
 .zz_endpoint_content <- function(endpoint, id) {
   url <- paste0(endpoint, id, "/content")
 }
+
+# .zz_verify_token
+#' 
+#' Auxiliary function
+#' 
+#' Get Zamzar token from .Renviron
+#' 
+#' @keywords internal
+.zz_get_token <- function(usr) {
+  if (is.null(usr)) {
+    Sys.getenv("ZAMZAR_USR", "")
+  } else {
+    usr <- usr
+  }
+}
+
