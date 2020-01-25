@@ -1,1 +1,0 @@
-dummy_with_lowercase_extension <- TRUE

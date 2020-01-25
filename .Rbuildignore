@@ -5,5 +5,4 @@
 ^README\.md$
 ^\.travis\.yml$
 sandbox.R
-config.json
 ^.*\.png$

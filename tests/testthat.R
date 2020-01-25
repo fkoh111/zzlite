@@ -1,4 +1,4 @@
 library(testthat)
-library(fkoh111)
+library(zzlite)
 
-test_check("fkoh111")
+test_check("zzlite")
