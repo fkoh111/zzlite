@@ -1,4 +1,4 @@
-## zz_lite  
+## zzlite  
 
 An experimental wrapper for the [Zamzar API](https://www.zamzar.com/)  
 
