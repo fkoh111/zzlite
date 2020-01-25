@@ -1,3 +1,4 @@
 library(testthat)
+library(zzlite)
 
-#test_check("zzlite")
+test_check("zzlite")
