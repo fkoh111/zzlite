@@ -1,8 +1,8 @@
-Package: fkoh111
+Package: zzlite
 Type: Package
-Title: Fkoh111s Utils
+Title: Lite wrapper for the Zamzar conversion API
 Version: 0.1.0
-Date: 2019-11-19
+Date: 2020-01-25
 Author: Frederik Kok Hansen
 Maintainer: Frederik Kok Hansen <frederik_kok@icloud.com>
 Imports:
@@ -11,9 +11,9 @@ Imports:
 Suggests:
     roxygen2,
     testthat
-Description: This package is fkoh111s general utils. It is most likely only relevant for fkoh111.
+Description: A lite wrapper for the Zamzar API. Utilize the Zamzar API directly through R.
 License: GPL-3 + file LICENSE
 RoxygenNote: 7.0.2
 Encoding: UTF-8
-BugReports: https://github.com/fkoh111/fkoh111/issues
+BugReports: https://github.com/fkoh111/zz_lite/issues
 Depends: R (>= 3.2)
