@@ -48,10 +48,7 @@ zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
     stop("Excuse me, but I need to know the extension type; please pass it :-)")
   }
   
-  if (is.null(usr)) {
-    # Add check for .Renviron token
-    stop("Whoops, seems like you forgot to pass a token to the usr param!")
-  }
+  usr <- .zz_get_key(usr = usr)
   
   if (prod == FALSE) {
     endpoint <- .zz_endpoint()$dev[[1]]

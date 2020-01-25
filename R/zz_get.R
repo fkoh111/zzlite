@@ -41,16 +41,13 @@ zz_get <- function(id = NULL,
                    name = NULL,
                    extension = NULL,
                    prod = FALSE) {
-  
+
 
   if (is.null(id)) {
-    stop("Whoops, seems like you forgot to pass a id!")
+    stop("Whoops, seems like you forgot to pass an id!")
   }
   
-  if (is.null(usr)) {
-    # Add check for .Renviron token
-    stop("Whoops, seems like you forgot to pass a token to the usr param!")
-  }
+  usr <- .zz_get_key(usr = usr)
   
   if (is.null(extension)) {
     stop("Excuse me, I'm not that smart, please let me know what file format I should get.")
@@ -71,14 +68,26 @@ zz_get <- function(id = NULL,
   # Concatenating an URL
   url <- .zz_endpoint_content(endpoint = endpoint, id = id)
   
-  httr::GET(url,
-      httr::write_disk(paste0(id, ".", extension), overwrite = TRUE),
+  identifier <- paste0(id, ".", extension)
+  
+  response <- httr::GET(url,
+      httr::write_disk(identifier, overwrite = TRUE),
       config = httr::authenticate(
         user = usr,
         password = "",
         type = "basic"
       )
   )
+  
+  if (!response$status_code %in% c(200, 201)) {
+    stop(sprintf("Zamzar responded with a status code of: %d",
+                 response$status_code)
+    )
+  }
+ 
+  # Delete file if status code indicates so 
+  if (response$status_code %in% c(404)) {
+    unlink(identifier)
+  }
 
 }
-
