@@ -50,7 +50,7 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   endpoint <- .zz_endpoint()$prod[[2]]
   
-  usr <- .zz_get_token(usr = usr)
+  usr <- .zz_get_key(usr = usr)
   
   status <- httr::GET(url = endpoint,
                   config = httr::authenticate(

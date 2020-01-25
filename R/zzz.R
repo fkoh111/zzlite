@@ -37,14 +37,14 @@
   url <- paste0(endpoint, id, "/content")
 }
 
-# .zz_verify_token
+# .zz_get_key
 #' 
 #' Auxiliary function
 #' 
-#' Get Zamzar token from .Renviron
+#' Get Zamzar key from .Renviron
 #' 
 #' @keywords internal
-.zz_get_token <- function(usr) {
+.zz_get_key <- function(usr) {
   if (is.null(usr)) {
     Sys.getenv("ZAMZAR_USR", "")
   } else {
