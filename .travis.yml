@@ -1,0 +1,32 @@
+language: r
+
+r:
+  - oldrel
+  - release
+  - devel
+  - bioc-devel
+
+r_packages:
+  - testthat
+  - covr
+  - httr
+  - jsonlite
+  - dplyr
+
+cache:
+  - packages
+
+warnings_are_errors: true
+
+branches:
+  only:
+  - master
+  - develop
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+after_success:
+  - Rscript -e 'covr::codecov()'
