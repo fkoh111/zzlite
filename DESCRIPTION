@@ -15,5 +15,5 @@ Description: A lite wrapper for the Zamzar API. Utilize the Zamzar API directly 
 License: GPL-3 + file LICENSE
 RoxygenNote: 7.0.2
 Encoding: UTF-8
-BugReports: https://github.com/fkoh111/zz_lite/issues
+BugReports: https://github.com/fkoh111/zzlite/issues
 Depends: R (>= 3.2)
