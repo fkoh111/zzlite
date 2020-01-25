@@ -40,17 +40,12 @@
 
 zz_format <- function(usr = NULL, origin = NULL) {
   
-  if (is.null(usr)) {
-    # Add check for .Renviron token
-    stop("Whoops, seems like you forgot to pass a token to the usr param!")
-  }
+  usr <- .zz_get_key(usr = usr)
   
   if (is.null(origin) || origin == "") {
     endpoint <- .zz_endpoint()$format[[1]]
-    #endpoint <- "https://sandbox.zamzar.com/v1/formats"
   } else {
     endpoint <- paste0(.zz_endpoint()$format[[1]], "/", origin)
-    #endpoint <- paste0("https://sandbox.zamzar.com/v1/formats/", origin)
   }
   
   response <- httr::GET(endpoint,
@@ -65,7 +60,7 @@ zz_format <- function(usr = NULL, origin = NULL) {
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)
   
   if (is.null(origin) || origin == "") {
-    origin <- content_df$data$name
+    res <- content_df$data$name
   } else {
     target <- content_df$targets$name
     cost <- content_df$targets$credit_cost
