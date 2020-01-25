@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_format.R
 \name{zz_format}
 \alias{zz_format}
-\title{Get formats from Zamzar}
+\title{Get vector of accepted formats from Zamzar}
 \usage{
 zz_format(usr = NULL, origin = NULL)
 }
@@ -11,33 +11,37 @@ zz_format(usr = NULL, origin = NULL)
 
 See: \url{https://developers.zamzar.com/user}}
 
-\item{origin}{The origin format you want to convert.
-If param origin is passed, zz_format() returns a list of targets and costs.  
+\item{origin}{The origin format you want to convert from.
+If a valid param is passed to origin, zz_format() returns a list of \strong{targets} and \strong{costs}.
+\itemize{
+\item \code{targets}: A vector containing the formats your origin can be converted to.
+\item \code{costs}: A vector containing the cost for converting between your origin and a given target.
+}
 
-The target vector contains tagets that you can convert your origin to.  
+See also: \url{https://developers.zamzar.com/formats}
 
-The cost vector contains the cost for conversion between your origin and a given target.  
-
-See: \url{https://developers.zamzar.com/formats}
-
-If no orign param has been passed to zz_format(), a character type of
-all the origin formats accepted by the Zamzar API is returned.  
+If no orign param is passed to zz_format(), a character vector containing all
+the accepted formats for the \strong{origin} param is returned.
 
 See: \url{https://developers.zamzar.com/formats}}
 }
 \value{
 Either a list of formats from the API that you can convert to,
-or a type character of all the origin formats accepted by the Zamzar API
+or a character vector of accepted origin formats.
 }
 \description{
-Get formats from Zamzar
+Get vector of accepted formats from Zamzar
 }
 \examples{
 \donttest{
+# Returns a character vector of all the accepted formats for the origin param
 zz_format(usr = "key")
 
+# Returns an error since the origin param isn't recognized by the Zamzar API
 zz_format(usr = "key", origin = "invalid_origin")
 
+# Returns a list of targets that origin can be converted to, and of the cost of
+# converting to a given target.
 zz_format(usr = "key", origin = "emf")
 }
 }

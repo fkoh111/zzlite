@@ -1,35 +1,40 @@
 # zz_format
 #'
-#' Get formats from Zamzar
+#' Get vector of accepted formats from Zamzar
 #' 
 #' @param usr The username/API key you are using for Zamzar.  
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #'
-#' @param origin The origin format you want to convert.
-#' If param origin is passed, zz_format() returns a list of targets and costs.  
+#' @param origin The origin format you want to convert from.
+#' If a valid param is passed to origin, zz_format() returns a list of __targets__ and __costs__.  
 #' 
-#' The target vector contains tagets that you can convert your origin to.  
+#'   * `targets`: A vector containing the formats your origin can be converted to.
+#'   * `costs`: A vector containing the cost for converting between your origin and a given target.
 #' 
-#' The cost vector contains the cost for conversion between your origin and a given target.  
+#' See also: \url{https://developers.zamzar.com/formats}  
+#'
+#' If no orign param is passed to zz_format(), a character vector containing all
+#' the accepted formats for the __origin__ param is returned.  
 #' 
 #' See: \url{https://developers.zamzar.com/formats}
 #' 
-#' If no orign param has been passed to zz_format(), a character type of
-#' all the origin formats accepted by the Zamzar API is returned.  
-#' 
-#' See: \url{https://developers.zamzar.com/formats}
+#' @md
 #' 
 #' @export
 #' @return Either a list of formats from the API that you can convert to,
-#' or a type character of all the origin formats accepted by the Zamzar API
+#' or a character vector of accepted origin formats.
 #' 
 #' @examples 
 #' \donttest{
+#' # Returns a character vector of all the accepted formats for the origin param
 #' zz_format(usr = "key")
 #' 
+#' # Returns an error since the origin param isn't recognized by the Zamzar API
 #' zz_format(usr = "key", origin = "invalid_origin")
 #' 
+#' # Returns a list of targets that origin can be converted to, and of the cost of
+#' # converting to a given target.
 #' zz_format(usr = "key", origin = "emf")
 #' }
 
