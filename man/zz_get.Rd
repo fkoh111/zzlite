@@ -11,7 +11,7 @@ zz_get(id = NULL, usr = NULL, name = NULL, extension = NULL, prod = FALSE)
 returned from zz_get_info().}
 
 \item{usr}{The username/API key you are using for Zamzar. If not set, zz_get()
-will see if a key exists as `ZAMZAR_USR` variable  in .Renviron and use that.    
+will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.    
 
 See: \url{https://developers.zamzar.com/user}}
 
@@ -45,7 +45,8 @@ Zamzar key extracted from the .Renviron.
 zz_get(id = 12345678, usr = "key", name = "my_avatar", extension = "png")
 
 # An example zz_get() used in conjunction with zz_get_info()
-response <- zz_get_info(usr = "key", latest = TRUE)
-zz_get(usr = usr, id = response$id, extension = response$extension, prod = TRUE)
+# Please note this example assumes a valid key in .Renviron
+response <- zz_get_info(latest = TRUE)
+zz_get(id = response$id, extension = response$extension, prod = TRUE)
 }
 }

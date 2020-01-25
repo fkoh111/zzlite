@@ -18,7 +18,7 @@
 #'
 #'
 #' @param usr The username/API key you are using for Zamzar. If not set, zz_get_info()
-#' will see if a key exists as `ZAMZAR_USR` variable  in .Renviron and use that.   
+#' will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.   
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #'
@@ -42,13 +42,18 @@
 #' 
 #' @examples
 #' \donttest{
-#' # Provided a valid token, will return a list of attributes
-#' zz_get_info(usr = "key")
+#' # Provided a valid token in .Renvirion, a list of attributes will be returned
+#' zz_get_info()
 #' 
+#' # Same as above, we're just passing the key manually
+#' zz_get_info(usr = "key")
+#'  
 #' # Provided a valid token, will return a list of files
 #' # submitted to the API within a reasonable timeframe.
 #' zz_get_info(usr = "key", latest = FALSE)
 #' 
+#' # Same as above, we're just using the .Renviron
+#' zz_get_info(latest = FALSE)
 #' }
 
 zz_get_info <- function(usr = NULL, latest = TRUE) {

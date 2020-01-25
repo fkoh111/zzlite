@@ -8,7 +8,7 @@
 #' 
 #' 
 #' @param usr The username/API key you are using for Zamzar. If not set, zz_format()
-#' will see if a key exists as `ZAMZAR_USR` variable  in .Renviron and use that.    
+#' will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.    
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #'
@@ -36,12 +36,15 @@
 #' # Returns a character vector of all the accepted formats for the origin param
 #' zz_format(usr = "key")
 #' 
+#' # Same as above (assuming a valid key in .Renviron)
+#' zz_format()
+#' 
 #' # Returns an error since the origin param isn't recognized by the Zamzar API
-#' zz_format(usr = "key", origin = "invalid_origin")
+#' zz_format(origin = "invalid_origin")
 #' 
 #' # Returns a list of targets that origin can be converted to, and of the cost of
 #' # converting to a given target.
-#' zz_format(usr = "key", origin = "emf")
+#' zz_format(origin = "emf")
 #' }
 
 zz_format <- function(usr = NULL, origin = NULL) {
