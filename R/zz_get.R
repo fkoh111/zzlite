@@ -41,10 +41,7 @@ zz_get <- function(id = NULL,
                    name = NULL,
                    extension = NULL,
                    prod = FALSE) {
-  #id <- 66283858
-  #usr <- NULL
-  #extension <- "png"
-  #prod <- FALSE
+
 
   if (is.null(id)) {
     stop("Whoops, seems like you forgot to pass an id!")
@@ -71,8 +68,10 @@ zz_get <- function(id = NULL,
   # Concatenating an URL
   url <- .zz_endpoint_content(endpoint = endpoint, id = id)
   
+  identifier <- paste0(id, ".", extension)
+  
   response <- httr::GET(url,
-      httr::write_disk(paste0(id, ".", extension), overwrite = TRUE),
+      httr::write_disk(identifier, overwrite = TRUE),
       config = httr::authenticate(
         user = usr,
         password = "",
@@ -85,6 +84,10 @@ zz_get <- function(id = NULL,
                  response$status_code)
     )
   }
+ 
+  # Delete file if status code indicates so 
+  if (response$status_code %in% c(404)) {
+    unlink(identifier)
+  }
 
 }
-
