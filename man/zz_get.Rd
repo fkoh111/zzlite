@@ -10,7 +10,8 @@ zz_get(id = NULL, usr = NULL, name = NULL, extension = NULL, prod = FALSE)
 \item{id}{The target id for a previously passed file. Most likely
 returned from zz_get_info().}
 
-\item{usr}{The username/API key you are using for Zamzar.
+\item{usr}{The username/API key you are using for Zamzar. If not set, zz_get()
+will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.    
 
 See: \url{https://developers.zamzar.com/user}}
 
@@ -28,11 +29,14 @@ A file written to disk
 \description{
 Get file from Zamzar endpoint
 }
-\section{zz_get}{
+\section{Details}{
 
 Get file from Zamzar endpoint via id.
 Per default zz_get() assumes that you're doing development, thus using a 
 development endpoint. Set prod bool to TRUE to change this behaviour.
+
+Please note that a Zamzar key passed as usr param takes precedence over a
+Zamzar key extracted from the .Renviron.
 }
 
 \examples{
@@ -41,7 +45,8 @@ development endpoint. Set prod bool to TRUE to change this behaviour.
 zz_get(id = 12345678, usr = "key", name = "my_avatar", extension = "png")
 
 # An example zz_get() used in conjunction with zz_get_info()
-response <- zz_get_info(usr = "key", latest = TRUE)
-zz_get(usr = usr, id = response$id, extension = response$extension, prod = TRUE)
+# Please note this example assumes a valid key in .Renviron
+response <- zz_get_info(latest = TRUE)
+zz_get(id = response$id, extension = response$extension, prod = TRUE)
 }
 }
