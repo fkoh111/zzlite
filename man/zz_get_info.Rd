@@ -7,7 +7,8 @@
 zz_get_info(usr = NULL, latest = TRUE)
 }
 \arguments{
-\item{usr}{The username/API key you are using for Zamzar.
+\item{usr}{The username/API key you are using for Zamzar. If not set, zz_get_info()
+will see if a key exists as \code{ZAMZAR_USR} variable  in .Renviron and use that.
 
 See: \url{https://developers.zamzar.com/user}}
 
@@ -30,7 +31,7 @@ A list of file attributes.
 \description{
 Get info from Zamzar
 }
-\section{zz_get_info}{
+\section{Details}{
 
 Get info on files submitted to the Zamzar API via your current token
 
@@ -41,6 +42,9 @@ within a reasonable timeframe, set bool latest to FALSE.
 Please note: objects returned from zz_get_info() doesn't differentiate
 between files that have been assigned to either the development or
 production endpoint. You have to keep track of this yourself.
+
+Please note that a Zamzar key passed as usr param takes precedence over a
+Zamzar key extracted from the .Renviron.
 }
 
 \examples{

@@ -2,9 +2,13 @@
 #' 
 #' Post file to Zamzar endpoint
 #' 
-#' @section zz_post:
+#' @section Details:
 #' Per default zz_post() assumes that you're doing development, thus using a 
 #' development endpoint. Set prod bool to TRUE to change this behaviour.
+#'
+#' Please note that a Zamzar key passed as usr param takes precedence over a
+#' Zamzar key extracted from the .Renviron.  
+#'
 #'
 #' @param file The path to the file you want to convert.
 #' 
@@ -12,7 +16,8 @@
 #' 
 #' @seealso \code{\link{zz_format}} for a list of formats you can convert to.
 #' 
-#' @param usr The username/API key you are using for Zamzar.  
+#' @param usr The username/API key you are using for Zamzar. If not set, zz_post()
+#' will see if a key exists as `ZAMZAR_USR` variable  in .Renviron and use that. 
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #' 

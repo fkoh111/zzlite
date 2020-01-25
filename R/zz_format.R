@@ -2,7 +2,13 @@
 #'
 #' Get vector of accepted formats from Zamzar
 #' 
-#' @param usr The username/API key you are using for Zamzar.  
+#' @section Details:
+#' Please note that a Zamzar key passed as usr param takes precedence over a
+#' Zamzar key extracted from the .Renviron.  
+#' 
+#' 
+#' @param usr The username/API key you are using for Zamzar. If not set, zz_format()
+#' will see if a key exists as `ZAMZAR_USR` variable  in .Renviron and use that.    
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #'

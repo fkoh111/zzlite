@@ -7,7 +7,8 @@
 zz_format(usr = NULL, origin = NULL)
 }
 \arguments{
-\item{usr}{The username/API key you are using for Zamzar.
+\item{usr}{The username/API key you are using for Zamzar. If not set, zz_format()
+will see if a key exists as \code{ZAMZAR_USR} variable  in .Renviron and use that.
 
 See: \url{https://developers.zamzar.com/user}}
 
@@ -32,6 +33,12 @@ or a character vector of accepted origin formats.
 \description{
 Get vector of accepted formats from Zamzar
 }
+\section{Details}{
+
+Please note that a Zamzar key passed as usr param takes precedence over a
+Zamzar key extracted from the .Renviron.
+}
+
 \examples{
 \donttest{
 # Returns a character vector of all the accepted formats for the origin param

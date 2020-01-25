@@ -2,7 +2,7 @@
 #' 
 #' Get info from Zamzar
 #' 
-#' @section zz_get_info:
+#' @section Details:
 #' Get info on files submitted to the Zamzar API via your current token
 #'
 #' Per default zz_get_info() assumes you want information for the last 
@@ -13,7 +13,12 @@
 #' between files that have been assigned to either the development or
 #' production endpoint. You have to keep track of this yourself.
 #'
-#' @param usr The username/API key you are using for Zamzar.  
+#' Please note that a Zamzar key passed as usr param takes precedence over a
+#' Zamzar key extracted from the .Renviron.  
+#'
+#'
+#' @param usr The username/API key you are using for Zamzar. If not set, zz_get_info()
+#' will see if a key exists as `ZAMZAR_USR` variable  in .Renviron and use that.   
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #'
