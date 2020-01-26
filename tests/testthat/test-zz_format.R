@@ -1,6 +1,6 @@
 with_mock_api({
   
-  test_that("ABOUT TO TEST zz_format", {
+  test_that("zz_format is extracting proper values if no origin param is provided", {
     
     out <- zz_format()
     testthat::expect_output(print(out[[1]]), "3g2")
@@ -8,7 +8,10 @@ with_mock_api({
     testthat::expect_output(print(out[[27]]), "emf")
     testthat::expect_output(print(out[[35]]), "gvi")
     testthat::expect_output(print(out[[50]]), "msg")
+
+    # General sanity
     testthat::expect_length(out, 50)
+    
   })
   
 })
