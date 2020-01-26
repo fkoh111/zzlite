@@ -58,12 +58,8 @@ zz_format <- function(usr = NULL, origin = NULL) {
   }
   
   response <- httr::GET(endpoint,
-                        config = httr::authenticate(
-                          user = usr,
-                          password = "",
-                          type = "basic"
+                        config = .zz_authenticate(usr)
                         )
-  )
   
   content <- httr::content(response, as = "text", encoding = "UTF-8")
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)

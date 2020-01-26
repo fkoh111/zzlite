@@ -52,3 +52,17 @@
   }
 }
 
+# .zz_authenticate
+#' 
+#' Auxiliary function
+#' 
+#' Wrapper for httr auth
+#' 
+#' @keywords internal
+.zz_authenticate <- function(usr) {
+  httr::authenticate(
+    user = usr,
+    password = "",
+    type = "basic"
+  )
+}

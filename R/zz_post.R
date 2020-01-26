@@ -71,11 +71,7 @@ zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
                target_format = extension)
   
   response <- httr::POST(url = endpoint,
-       config = httr::authenticate(
-         user = usr,
-         password = "",
-         type = "basic"
-       ),
+       config = .zz_authenticate(usr),
        body = body
   )
 

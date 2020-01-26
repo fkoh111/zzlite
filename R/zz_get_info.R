@@ -63,11 +63,7 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   usr <- .zz_get_key(usr = usr)
   
   status <- httr::GET(url = endpoint,
-                  config = httr::authenticate(
-                  user = usr,
-                  password = "",
-                  type = "basic"
-                )
+                      config = .zz_authenticate(usr)
   )
   
   content <- httr::content(status, as = "text", encoding = "UTF-8")
