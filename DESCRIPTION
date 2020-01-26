@@ -5,10 +5,11 @@ Version: 0.1.0
 Date: 2020-01-25
 Author: Frederik Kok Hansen
 Maintainer: Frederik Kok Hansen <frederik_kok@icloud.com>
-Imports:
+Imports: 
     httr,
     jsonlite
-Suggests:
+Suggests: 
+    httptest,
     roxygen2,
     testthat
 Description: A lite wrapper for the Zamzar API. Utilize the Zamzar API directly through R.

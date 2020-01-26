@@ -43,3 +43,4 @@ rsconnect/
 # misc
 temp.png
 *.png
+.DS_Store
