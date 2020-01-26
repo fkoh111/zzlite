@@ -48,7 +48,7 @@
 #' }
 
 zz_format <- function(usr = NULL, origin = NULL) {
-  
+
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(origin) || origin == "") {
