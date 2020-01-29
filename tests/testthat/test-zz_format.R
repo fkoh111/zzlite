@@ -12,6 +12,9 @@ with_mock_api({
     # General sanity
     testthat::expect_length(out, 50)
     
+    testthat::expect_is(out, "character")
+    
+    
   })
   
 })
