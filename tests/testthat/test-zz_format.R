@@ -17,4 +17,24 @@ with_mock_api({
     
   })
   
+  test_that("zz_format is extracting proper values if a origin jpeg is provided", {
+    
+    out <- zz_format(origin = "jpeg")
+    testthat::expect_output(print(out$target[[1]]), "bmp")
+    testthat::expect_output(print(out$target[[3]]), "ico")
+    testthat::expect_output(print(out$target[[5]]), "pdf")
+    testthat::expect_output(print(out$target[[9]]), "thumbnail")
+    testthat::expect_equal(print(out$cost[[1]]), 1)
+    testthat::expect_equivalent(print(out$cost[[1]]), 1)
+    
+    # General sanity
+    testthat::expect_length(out, 2)
+    
+    testthat::expect_is(out, "list")
+    
+  })
+  
 })
+
+
+
