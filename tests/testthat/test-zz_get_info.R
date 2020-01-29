@@ -12,3 +12,10 @@ with_mock_api({
   })
   
 })
+
+
+test_that("zz_get_info throws a proper error if an invalid usr has been passed", {
+  
+  testthat::expect_error(zz_get_info(usr = "foo"), "Whoops, seems like your .Renviron doesn't contain a valid token, alternatively, you haven't passed a valid token to the usr param!")
+  
+})
