@@ -1,0 +1,19 @@
+---
+title: "a-primer-on-zzlite"
+output: pdf_document
+vignette: >
+  %\VignetteIndexEntry{a-primer-on-zzlite}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(zzlite)
+```

@@ -10,6 +10,7 @@
 sandbox.R
 config.json
 emf_to_png_libre.sh
+update.R
 
 # Output files from R CMD build
 /*.tar.gz
@@ -44,3 +45,6 @@ rsconnect/
 temp.png
 *.png
 .DS_Store
+inst/doc
+doc
+Meta

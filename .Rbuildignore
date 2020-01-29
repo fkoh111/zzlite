@@ -5,5 +5,8 @@
 ^README\.md$
 ^\.travis\.yml$
 sandbox.R
+update.R
 ^.*\.png$
 ^\.tar\.gz$
+^doc$
+^Meta$
