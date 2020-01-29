@@ -6,3 +6,4 @@
 ^\.travis\.yml$
 sandbox.R
 ^.*\.png$
+^\.tar\.gz$
