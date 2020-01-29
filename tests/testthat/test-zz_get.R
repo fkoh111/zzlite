@@ -5,13 +5,3 @@ test_that("An error is thrown if we forget various params", {
 
           }
         )
-
-
-with_mock_api({
-  
-  test_that("ABOUT TO GET FAMILIAR WITH HTTPTEST", {
-
-        zz_get(id = 66297673, extension = "png")
-  })
-
-})
