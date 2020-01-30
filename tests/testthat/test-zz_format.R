@@ -30,7 +30,7 @@ with_mock_api({
     # General sanity
     testthat::expect_length(out, 2)
     
-    testthat::expect_is(out, "list")
+    testthat::expect_is(out, "data.frame")
     
   })
   

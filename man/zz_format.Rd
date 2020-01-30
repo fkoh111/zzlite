@@ -4,14 +4,9 @@
 \alias{zz_format}
 \title{Get vector of accepted formats from Zamzar}
 \usage{
-zz_format(usr = NULL, origin = NULL)
+zz_format(origin = NULL, usr = NULL)
 }
 \arguments{
-\item{usr}{The username/API key you are using for Zamzar. If not set, zz_format()
-will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.
-
-See: \url{https://developers.zamzar.com/user}}
-
 \item{origin}{The origin format you want to convert from.
 If a valid param is passed to origin, zz_format() returns a list of \strong{targets} and \strong{costs}.
 \itemize{
@@ -25,6 +20,11 @@ If no orign param is passed to zz_format(), a character vector containing all
 the accepted formats for the \strong{origin} param is returned.
 
 See: \url{https://developers.zamzar.com/formats}}
+
+\item{usr}{The username/API key you are using for Zamzar. If not set, zz_format()
+will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.
+
+See: \url{https://developers.zamzar.com/user}}
 }
 \value{
 Either a list of formats from the API that you can convert to,

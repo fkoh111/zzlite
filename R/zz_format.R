@@ -6,11 +6,6 @@
 #' Please note that a Zamzar key passed as usr param takes precedence over a
 #' Zamzar key extracted from the .Renviron.  
 #' 
-#' 
-#' @param usr The username/API key you are using for Zamzar. If not set, zz_format()
-#' will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.    
-#' 
-#' See: \url{https://developers.zamzar.com/user}
 #'
 #' @param origin The origin format you want to convert from.
 #' If a valid param is passed to origin, zz_format() returns a list of __targets__ and __costs__.  
@@ -24,7 +19,14 @@
 #' the accepted formats for the __origin__ param is returned.  
 #' 
 #' See: \url{https://developers.zamzar.com/formats}
+#'
+#'
+#' @param usr The username/API key you are using for Zamzar. If not set, zz_format()
+#' will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.    
 #' 
+#' See: \url{https://developers.zamzar.com/user}
+#'
+#'  
 #' @md
 #' 
 #' @export
@@ -47,8 +49,11 @@
 #' zz_format(origin = "emf")
 #' }
 
-zz_format <- function(usr = NULL, origin = NULL) {
+zz_format <- function(origin = NULL, usr = NULL) {
 
+  #origin <- "jpeg"
+  #usr <- NULL
+  
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(origin) || origin == "") {
@@ -67,9 +72,8 @@ zz_format <- function(usr = NULL, origin = NULL) {
   if (is.null(origin) || origin == "") {
     res <- content_df$data$name
   } else {
-    target <- content_df$targets$name
-    cost <- content_df$targets$credit_cost
-    res <- list(target = target, cost = cost)
+    res <- data.frame(target = content_df$targets$name, cost = content_df$targets$credit_cost)
+
   }
   
   
