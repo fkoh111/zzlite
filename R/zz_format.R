@@ -51,9 +51,6 @@
 
 zz_format <- function(origin = NULL, usr = NULL) {
 
-  #origin <- "jpeg"
-  #usr <- NULL
-  
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(origin) || origin == "") {
@@ -70,16 +67,20 @@ zz_format <- function(origin = NULL, usr = NULL) {
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)
   
   if (is.null(origin) || origin == "") {
-    res <- content_df$data$name
+    res <- data.frame(target = content_df$data$name,
+                      stringsAsFactors = FALSE)
   } else {
-    res <- data.frame(target = content_df$targets$name, cost = content_df$targets$credit_cost)
+    res <- data.frame(target = content_df$targets$name,
+                      cost = content_df$targets$credit_cost,
+                      stringsAsFactors = FALSE)
 
   }
   
   
   if (!response$status_code %in% c(200, 201)) {
     stop(sprintf("Zamzar responded with: %s, and a status code of: %d",
-                    content_df$errors$message, response$status_code)
+                 content_df$errors$message,
+                 response$status_code)
          )
   }
   
@@ -87,7 +88,8 @@ zz_format <- function(origin = NULL, usr = NULL) {
   if (response$status_code %in% c(200, 201)) {
     if (is.list(res) && is.null(res$target)) {
       stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
-                      content_df$errors$message, response$status_code)
+                   content_df$errors$message,
+                   response$status_code)
            )
     } else {
       return(res)
