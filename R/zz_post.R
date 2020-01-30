@@ -46,11 +46,8 @@
 
 zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
   
-  # Creating temp file if no file has been passed to the file param
-  #TODO: Consider whether or not this is a good enough approach
   if (is.null(file)) {
-    file <- tempfile(fileext = ".tmp")
-    writeLines("temp", file)
+    stop("Pretty pls, Zamzar needs a file!")
   }
   
   if (is.null(extension)) {
