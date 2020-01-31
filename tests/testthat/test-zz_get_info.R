@@ -7,7 +7,7 @@ with_mock_api({
     testthat::expect_output(print(info$id), "66741653")
     testthat::expect_output(print(info$created_at), "2020-01-29T15:27:41Z")
     
-    testthat::expect_is(info, "list")
+    testthat::expect_is(info, "data.frame")
 
   })
   
