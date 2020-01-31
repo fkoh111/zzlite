@@ -55,7 +55,7 @@ zz_get <- function(id = NULL,
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(extension)) {
-    stop("Excuse me, I'm not that smart, please let me know what file format I should get.")
+    stop("Whoops, please let me know the format of the file I should get.")
   }
   
   if (is.null(name)) {

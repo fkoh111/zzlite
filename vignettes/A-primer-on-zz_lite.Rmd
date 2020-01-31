@@ -1,0 +1,60 @@
+---
+title: "A primer on zz_lite"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A-primer-on-zz_lite}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `zz_lite` package is a collection of functions that simplifies communication between R and the [Zamzar Online file conversion](https://developers.zamzar.com/user) API.  
+
+By utilizing `zz_lite` (and thereby the Zamzar API) you can easily convert between [hundreds](https://developers.zamzar.com/formats) of file formats from R.
+
+## The basics
+
+The following section serves as a simple introduction to get you started with the `zz_lite` package. It is assumed that you already have a valid (and nonexhausted) Zamzar API key at your disposal. If not, go signup via [Zamzar](https://developers.zamzar.com/)s website. Otherwise, keep on reading.  
+
+
+### On Zamzar API keys in `zz_lite`
+
+There's two ways in which you can pass a Zamzar key to `zz_lite`.  
+
+1. By passing a hardcoded Zamzar key as an argument to the `usr` parameter. The `usr` parameter is available in all functions that are communication with Zamzars webservice.  
+
+2. By leveraging an `.Renviron` file. Simply create a variable called `ZAMZAR_USR` in your `.Renviron` and pass it your Zamzar key. If done succesfully, you can skip passing a key to `usr` param whenever you're invoking a `zz_lite` function.  
+
+
+<center>_Example of .Renviron:_</center>
+```sh
+## Zamzar key used by zz_lite 
+ZAMZAR_USR=77c39dh6lo03g7598t98h659ihg99b7ny7213q
+
+
+
+
+```
+
+
+
+### `zz_format()`
+
+
+
+### `zz_post()`
+
+### `zz_get_info()`
+
+### `zz_get()`
+
+```{r setup}
+library(zzlite)
+```
+
