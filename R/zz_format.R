@@ -36,7 +36,7 @@
 #' @examples 
 #' \donttest{
 #' # Returns a single column dataframe of all the accepted formats
-#' for the origin param.
+#' # for the origin param.
 #' zz_format(usr = "key")
 #' 
 #' # Same as above (assuming a valid key in .Renviron).
@@ -46,7 +46,7 @@
 #' zz_format(origin = "invalid_origin")
 #' 
 #' # Returns a dataframe of targets that origin can be converted to,
-#' and of the cost of converting to a given target.
+#' # and of the cost of converting to a given target.
 #' zz_format(origin = "emf")
 #' }
 

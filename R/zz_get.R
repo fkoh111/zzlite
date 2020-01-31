@@ -47,8 +47,7 @@ zz_get <- function(id = NULL,
                    name = NULL,
                    extension = NULL,
                    prod = FALSE) {
-
-
+  
   if (is.null(id)) {
     stop("Whoops, seems like you forgot to pass an id!")
   }
@@ -85,6 +84,8 @@ zz_get <- function(id = NULL,
     stop(sprintf("Zamzar responded with a status code of: %d",
                  response$status_code)
     )
+  } else {
+    message(sprintf("Writing file %s to %s", identifier, getwd()))
   }
  
   # Delete file if status code indicates so 

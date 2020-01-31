@@ -4,7 +4,13 @@
 \alias{zz_post}
 \title{Post file to Zamzar endpoint}
 \usage{
-zz_post(file = NULL, extension = NULL, usr = NULL, prod = FALSE)
+zz_post(
+  file = NULL,
+  extension = NULL,
+  usr = NULL,
+  prod = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{file}{The path to the file you want to convert.}
@@ -18,6 +24,9 @@ See: \url{https://developers.zamzar.com/user}}
 
 \item{prod}{Boolean deciding whether to use prod or dev endpoint.
 Defaults to FALSE (That is, dev endpoint).}
+
+\item{verbose}{Boolean deciding whether or not zz_post should return a 
+verbose status message from the Zamzar API. Defaults to FALSE.}
 }
 \value{
 A response object as defined by httr::message_for_status()
@@ -36,17 +45,17 @@ Zamzar key extracted from the .Renviron.
 
 \examples{
 \donttest{
-# Per default zz_post uses the development endpoint
+# Per default zz_post uses the development endpoint.
 zz_post(file = "avatar.emf", extension = "png")
 
-# Setting prod param to FALSE is the same as above
+# Setting prod param to FALSE is the same as above.
 zz_post(file = "avatar.emf", extension = "png", prod = FALSE)
 
-# You need to flip prod to TRUE if you want to use the production endpoint
+# You need to flip prod to TRUE if you want to use the production endpoint.
 zz_post(file = "avatar.emf", extension = "png", prod = TRUE)
 
 # Remember you can always pass a Zamzar key to the usr param if you don't
-# want to use an .Renviron file
+# want to use an .Renviron file.
 zz_post(file = "avatar.emf", usr = "key", extension = "png", prod = TRUE)
  
 }
