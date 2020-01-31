@@ -44,3 +44,4 @@ rsconnect/
 temp.png
 *.png
 .DS_Store
+inst/doc
