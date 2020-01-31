@@ -65,7 +65,7 @@ zz_get <- function(id = NULL,
   
   if (prod == FALSE) {
     endpoint <- .zz_endpoint()$dev[[2]]
-  } 
+  }
   
   if (prod == TRUE) {
     endpoint <- .zz_endpoint()$prod[[2]]

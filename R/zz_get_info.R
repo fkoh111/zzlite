@@ -28,7 +28,7 @@
 #' If switched to FALSE, zz_get_info() will return attributes for all files
 #' that have been sumitted to the API within a reasonable timeframe.  
 #' 
-#' The returned list contains the following attributes:  
+#' The returned dataframe contains the following columns:  
 #' 
 #'   * `id`: The unique file identifier assigned to a file by Zamzar. 
 #'   * `extension`: The extension representing the format of the file you can download. 
@@ -37,22 +37,23 @@
 #'@md
 #'
 #' @export
-#' @return A list of file attributes.
+#' @return A dataframe.
 #' 
 #' 
 #' @examples
 #' \donttest{
-#' # Provided a valid token in .Renvirion, a list of attributes will be returned
+#' # Provided a valid token in .Renvirion, a dataframe of metadata for the last 
+#' # submitted file will be returned.
 #' zz_get_info()
 #' 
-#' # Same as above, we're just passing the key manually
+#' # Same as above, we're just passing the key manually.
 #' zz_get_info(usr = "key")
 #'  
-#' # Provided a valid token, will return a list of files
+#' # Provided a valid token, will return a dataframe of files
 #' # submitted to the API within a reasonable timeframe.
 #' zz_get_info(usr = "key", latest = FALSE)
 #' 
-#' # Same as above, we're just using the .Renviron
+#' # Same as above, we're just using the .Renviron.
 #' zz_get_info(latest = FALSE)
 #' }
 

@@ -8,27 +8,27 @@ zz_format(origin = NULL, usr = NULL)
 }
 \arguments{
 \item{origin}{The origin format you want to convert from.
-If a valid param is passed to origin, zz_format() returns a list of \strong{targets} and \strong{costs}.
+If a valid param is passed to origin, zz_format() returns a dataframe with cols \strong{targets} and \strong{costs}.
 \itemize{
-\item \code{targets}: A vector containing the formats your origin can be converted to.
-\item \code{costs}: A vector containing the cost for converting between your origin and a given target.
+\item \code{targets}: The formats your origin can be converted to.
+\item \code{costs}: The cost for converting between your origin and a given target.
 }
 
 See also: \url{https://developers.zamzar.com/formats}
 
-If no orign param is passed to zz_format(), a character vector containing all
+If no orign param is passed to zz_format(), a dataframe containing all
 the accepted formats for the \strong{origin} param is returned.
 
 See: \url{https://developers.zamzar.com/formats}}
 
 \item{usr}{The username/API key you are using for Zamzar. If not set, zz_format()
-will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.
+will see if a key exists as a ZAMZAR_USR variable  in .Renviron and use that.
 
 See: \url{https://developers.zamzar.com/user}}
 }
 \value{
-Either a list of formats from the API that you can convert to,
-or a character vector of accepted origin formats.
+Either a dataframe of formats from the API that you can convert to,
+or a single column dataframe of accepted origin formats.
 }
 \description{
 Get vector of accepted formats from Zamzar
@@ -41,7 +41,7 @@ Zamzar key extracted from the .Renviron.
 
 \examples{
 \donttest{
-# Returns a character vector of all the accepted formats for the origin param
+# Returns a single column dataframe of all the accepted formats for the origin param
 zz_format(usr = "key")
 
 # Same as above (assuming a valid key in .Renviron)
@@ -50,7 +50,7 @@ zz_format()
 # Returns an error since the origin param isn't recognized by the Zamzar API
 zz_format(origin = "invalid_origin")
 
-# Returns a list of targets that origin can be converted to, and of the cost of
+# Returns a dataframe of targets that origin can be converted to, and of the cost of
 # converting to a given target.
 zz_format(origin = "emf")
 }
