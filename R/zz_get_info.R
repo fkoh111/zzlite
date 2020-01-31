@@ -77,11 +77,13 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   if (latest == TRUE) {
     res <- data.frame(id = content_df$paging$first,
                       extension = content_df$data$format[[1]],
-                      created_at = content_df$data$created_at[[1]])
+                      created_at = content_df$data$created_at[[1]],
+                      stringsAsFactors = FALSE)
   } else {
     res <- data.frame(id = content_df$data$id,
                       extension = content_df$data$id,
-                      created_at = content_df$data$created_at)
+                      created_at = content_df$data$created_at,
+                      stringsAsFactors = FALSE)
   }
   
   return(res)
