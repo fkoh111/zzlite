@@ -41,17 +41,18 @@ Zamzar key extracted from the .Renviron.
 
 \examples{
 \donttest{
-# Returns a single column dataframe of all the accepted formats for the origin param
+# Returns a single column dataframe of all the accepted formats
+# for the origin param.
 zz_format(usr = "key")
 
-# Same as above (assuming a valid key in .Renviron)
+# Same as above (assuming a valid key in .Renviron).
 zz_format()
 
-# Returns an error since the origin param isn't recognized by the Zamzar API
+# Returns an error since the origin param isn't recognized by the Zamzar API.
 zz_format(origin = "invalid_origin")
 
-# Returns a dataframe of targets that origin can be converted to, and of the cost of
-# converting to a given target.
+# Returns a dataframe of targets that origin can be converted to,
+# and of the cost of converting to a given target.
 zz_format(origin = "emf")
 }
 }

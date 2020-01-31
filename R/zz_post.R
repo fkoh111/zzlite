@@ -23,6 +23,9 @@
 #' 
 #' @param prod Boolean deciding whether to use prod or dev endpoint.
 #' Defaults to FALSE (That is, dev endpoint).
+#' 
+#' @param verbose Boolean deciding whether or not zz_post should return a 
+#' verbose status message from the Zamzar API. Defaults to FALSE.
 #'
 #' @export
 #' @return A response object as defined by httr::message_for_status()
@@ -44,8 +47,8 @@
 #'  
 #' }
 
-zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
-  
+zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE, verbose = FALSE) {
+
   if (is.null(file)) {
     stop("Pretty pls, Zamzar needs a file!")
   }
@@ -71,6 +74,16 @@ zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
        config = .zz_authenticate(usr),
        body = body
   )
-
-  httr::message_for_status(response)
+  
+  res <- data.frame(status = response$status_code,
+                    endpoint = response$url,
+                    date = response$date)
+  
+  if (verbose == TRUE) {
+    res <- res
+  } else {
+    res <- res$status
+  }
+  
+  return(res)
 }
