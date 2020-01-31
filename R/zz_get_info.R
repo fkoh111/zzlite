@@ -72,19 +72,18 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   #Temporary solution:
   if (is.null(content_df$data$id[[1]]) && is.null(content_df$data$id[[1]]) && is.null(content_df$data$created_at[[1]])) {
     stop("Whoops, seems like your .Renviron doesn't contain a valid token, alternatively, you haven't passed a valid token to the usr param!")
-  } 
-  
-
-  if (latest == TRUE) {
-    id <- content_df$paging$first
-    extension <- content_df$data$format[[1]]
-    created_at <- content_df$data$created_at[[1]]
-  } else {
-    id <- content_df$data$id
-    extension <- content_df$data$id
-    created_at <- content_df$data$created_at
   }
 
-  res <- list(id = id, extension = extension, created_at = created_at)
+  if (latest == TRUE) {
+    res <- data.frame(id = content_df$paging$first,
+                      extension = content_df$data$format[[1]],
+                      created_at = content_df$data$created_at[[1]])
+  } else {
+    res <- data.frame(id = content_df$data$id,
+                      extension = content_df$data$id,
+                      created_at = content_df$data$created_at)
+  }
   
+  return(res)
+
 }
