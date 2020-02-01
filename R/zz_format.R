@@ -66,11 +66,11 @@ zz_format <- function(origin = NULL, usr = NULL) {
                         )
   
   content <- httr::content(response, as = "text", encoding = "UTF-8")
-  content_df <- jsonlite::fromJSON(content, flatten = TRUE)
+  content_flat <- jsonlite::fromJSON(content, flatten = TRUE)
   
   if (!response$status_code %in% c(200, 201)) {
     stop(sprintf("Whoops! Zamzar responded with: %s, and a status code of: %d",
-                 content_df$errors$message,
+                 content_flat$errors$message,
                  response$status_code)
     )
   }
@@ -78,16 +78,16 @@ zz_format <- function(origin = NULL, usr = NULL) {
   if(!is.character(origin)) {
   
     ## Dealing with paging for NULL origin  
-    if (content_df$paging$total_count > length(content_df$data$name)) {
+    if (content_flat$paging$total_count > length(content_flat$data$name)) {
       did_paging <- TRUE
     
-      init <- data.frame(target = content_df$data$name,
+      init <- data.frame(target = content_flat$data$name,
                          stringsAsFactors = FALSE)
     
-      counter <- ceiling(content_df$paging$total_count / length(content_df$data$name)) - 1
+      counter <- ceiling(content_flat$paging$total_count / length(content_flat$data$name)) - 1
     
       for(i in 1:counter) {
-        state_last_target <- content_df$paging$last
+        state_last_target <- content_flat$paging$last
       
         paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
       
@@ -96,9 +96,9 @@ zz_format <- function(origin = NULL, usr = NULL) {
         )
       
         paged_content <- httr::content(paged_response, as = "text", encoding = "UTF-8")
-        content_df <- jsonlite::fromJSON(paged_content, flatten = TRUE)
+        content_flat <- jsonlite::fromJSON(paged_content, flatten = TRUE)
       
-        temp <- data.frame(target = content_df$data$name,
+        temp <- data.frame(target = content_flat$data$name,
                            stringsAsFactors = FALSE)
       
         init <- rbind(init, temp)
@@ -114,12 +114,12 @@ zz_format <- function(origin = NULL, usr = NULL) {
     if (did_paging == TRUE) {
       res <- init
     } else {
-      res <- data.frame(target = content_df$data$name,
+      res <- data.frame(target = content_flat$data$name,
                         stringsAsFactors = FALSE)
     }
   } else {
-    res <- data.frame(target = content_df$targets$name,
-                      cost = content_df$targets$credit_cost,
+    res <- data.frame(target = content_flat$targets$name,
+                      cost = content_flat$targets$credit_cost,
                       stringsAsFactors = FALSE)
   }
   
@@ -127,7 +127,7 @@ zz_format <- function(origin = NULL, usr = NULL) {
   if (response$status_code %in% c(200, 201)) {
     if (is.list(res) && is.null(res$target)) {
       stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
-                   content_df$errors$message,
+                   content_flat$errors$message,
                    response$status_code)
            )
     } else {
