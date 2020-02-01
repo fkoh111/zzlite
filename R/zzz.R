@@ -71,18 +71,20 @@
 #' 
 #' Auxiliary function
 #' 
+#' Function that deals with paging
+#' 
 #' @keywords internal
-.zz_do_paging <- function(content_flat, endpoint = endpoint, usr = usr) {
-  if (content_flat$paging$total_count > length(content_flat$data$name)) {
+.zz_do_paging <- function(content, endpoint = endpoint, usr = usr) {
+  if (content$paging$total_count > length(content$data$name)) {
     
     storage <- list()
-    container <- data.frame(target = content_flat$data$name,
+    container <- data.frame(target = content$data$name,
                             stringsAsFactors = FALSE)
     
-    counter <- ceiling(content_flat$paging$total_count / length(content_flat$data$name))
+    counter <- ceiling(content$paging$total_count / length(content$data$name))
     
     for(i in 1:counter) {
-      state_last_target <- content_flat$paging$last
+      state_last_target <- content$paging$last
       
       paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
       
@@ -91,9 +93,9 @@
       )
       
       content <- httr::content(paged_response, as = "text", encoding = "UTF-8")
-      content_flat <- jsonlite::fromJSON(content, flatten = TRUE)
+      content <- jsonlite::fromJSON(content, flatten = TRUE)
       
-      temp <- data.frame(target = content_flat$data$name,
+      temp <- data.frame(target = content$data$name,
                          stringsAsFactors = FALSE)
       
       storage[[i]] <- temp
@@ -109,8 +111,10 @@
 #' 
 #' Auxiliary function
 #' 
+#' Wrapper for parsing of responses
+#' 
 #' @keywords internal
 .zz_parse_response <- function(response) {
   content <- httr::content(response, as = "text", encoding = "UTF-8")
-  content_flat <- jsonlite::fromJSON(content, flatten = TRUE)
+  content <- jsonlite::fromJSON(content, flatten = TRUE)
 }

@@ -65,18 +65,18 @@ zz_format <- function(origin = NULL, usr = NULL) {
                         config = .zz_authenticate(usr = usr)
                         )
   
-  content_flat <- .zz_parse_response(response = response)
+  content <- .zz_parse_response(response = response)
 
   if (!response$status_code %in% c(200, 201)) {
     stop(sprintf("Whoops! Zamzar responded with: %s, and a status code of: %d",
-                 content_flat$errors$message,
+                 content$errors$message,
                  response$status_code)
     )
   }
   
 
   if(!is.character(origin)) {
-    container <- .zz_do_paging(content_flat = content_flat, endpoint = endpoint, usr = usr)
+    container <- .zz_do_paging(content = content, endpoint = endpoint, usr = usr)
     did_paging <- TRUE
   }
 
@@ -86,12 +86,12 @@ zz_format <- function(origin = NULL, usr = NULL) {
     if (did_paging == TRUE) {
       res <- container
     } else {
-      res <- data.frame(target = content_flat$data$name,
+      res <- data.frame(target = content$data$name,
                         stringsAsFactors = FALSE)
     }
   } else {
-    res <- data.frame(target = content_flat$targets$name,
-                      cost = content_flat$targets$credit_cost,
+    res <- data.frame(target = content$targets$name,
+                      cost = content$targets$credit_cost,
                       stringsAsFactors = FALSE)
   }
   
@@ -99,7 +99,7 @@ zz_format <- function(origin = NULL, usr = NULL) {
   if (response$status_code %in% c(200, 201)) {
     if (is.list(res) && is.null(res$target)) {
       stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
-                   content_flat$errors$message,
+                   content$errors$message,
                    response$status_code)
            )
     } else {
