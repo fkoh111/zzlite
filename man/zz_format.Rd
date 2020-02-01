@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_format.R
 \name{zz_format}
 \alias{zz_format}
-\title{Get vector of accepted formats from Zamzar}
+\title{Get accepted formats from Zamzar}
 \usage{
 zz_format(origin = NULL, usr = NULL)
 }
@@ -31,7 +31,7 @@ Either a dataframe of formats from the API that you can convert to,
 or a single column dataframe of accepted origin formats.
 }
 \description{
-Get vector of accepted formats from Zamzar
+Get accepted formats from Zamzar
 }
 \section{Details}{
 

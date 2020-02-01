@@ -51,9 +51,10 @@
 #' }
 
 zz_format <- function(origin = NULL, usr = NULL) {
+  did_paging <- FALSE
   
-  origin <- NULL
-  usr <- NULL
+  #origin <- "png"
+  #usr <- NULL
 
   usr <- .zz_get_key(usr = usr)
   
@@ -70,40 +71,52 @@ zz_format <- function(origin = NULL, usr = NULL) {
   content <- httr::content(response, as = "text", encoding = "UTF-8")
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)
   
-  if (content_df$paging$total_count > length(content_df$data$name)) {
-    init <- data.frame(target = content_df$data$name,
-                      stringsAsFactors = FALSE)
+  if(!is.character(origin)) {
+  
+    ## Dealing with paging for NULL origin  
+    if (content_df$paging$total_count > length(content_df$data$name)) {
+      did_paging <- TRUE
     
-    counter <- ceiling(content_df$paging$total_count / length(content_df$data$name)) - 1
-    
-    for(i in 1:counter) {
-      state_last_target <- content_df$paging$last
-      
-      paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
-      
-      paged_response <- httr::GET(paged_endpoint,
-                                  config = .zz_authenticate(usr)
-      )
-      
-      paged_content <- httr::content(paged_response, as = "text", encoding = "UTF-8")
-      content_df <- jsonlite::fromJSON(paged_content, flatten = TRUE)
-      
-      temp <- data.frame(target = content_df$data$name,
+      init <- data.frame(target = content_df$data$name,
                          stringsAsFactors = FALSE)
+    
+      counter <- ceiling(content_df$paging$total_count / length(content_df$data$name)) - 1
+    
+      for(i in 1:counter) {
+        state_last_target <- content_df$paging$last
       
-      init <- rbind(init, temp)
+        paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
       
+        paged_response <- httr::GET(paged_endpoint,
+                                    config = .zz_authenticate(usr)
+        )
+      
+        paged_content <- httr::content(paged_response, as = "text", encoding = "UTF-8")
+        content_df <- jsonlite::fromJSON(paged_content, flatten = TRUE)
+      
+        temp <- data.frame(target = content_df$data$name,
+                           stringsAsFactors = FALSE)
+      
+        init <- rbind(init, temp)
+      
+      }
     }
   }
-  
+
+
   if (is.null(origin) || origin == "") {
-    res <- data.frame(target = content_df$data$name,
-                      stringsAsFactors = FALSE)
+    #res <- data.frame(target = content_df$data$name,
+    #                  stringsAsFactors = FALSE)
+    if (did_paging == TRUE) {
+      res <- init
+    } else {
+      res <- data.frame(target = content_df$data$name,
+                        stringsAsFactors = FALSE)
+    }
   } else {
     res <- data.frame(target = content_df$targets$name,
                       cost = content_df$targets$credit_cost,
                       stringsAsFactors = FALSE)
-
   }
   
   
