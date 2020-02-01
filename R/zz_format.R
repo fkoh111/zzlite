@@ -51,11 +51,7 @@
 #' }
 
 zz_format <- function(origin = NULL, usr = NULL) {
-  # Potentially make a did_paging function instead of these flags
   did_paging <- FALSE
-  
-  #origin <- NULL
-  #usr <- NULL
   
   usr <- .zz_get_key(usr = usr)
   
@@ -66,12 +62,11 @@ zz_format <- function(origin = NULL, usr = NULL) {
   }
   
   response <- httr::GET(endpoint,
-                        config = .zz_authenticate(usr)
+                        config = .zz_authenticate(usr = usr)
                         )
   
-  content <- httr::content(response, as = "text", encoding = "UTF-8")
-  content_flat <- jsonlite::fromJSON(content, flatten = TRUE)
-  
+  content_flat <- .zz_parse_response(response = response)
+
   if (!response$status_code %in% c(200, 201)) {
     stop(sprintf("Whoops! Zamzar responded with: %s, and a status code of: %d",
                  content_flat$errors$message,
@@ -81,41 +76,8 @@ zz_format <- function(origin = NULL, usr = NULL) {
   
 
   if(!is.character(origin)) {
-  
-    ## Dealing with paging for NULL origin  
-    if (content_flat$paging$total_count > length(content_flat$data$name)) {
-    
-      storage <- list()
-      container <- data.frame(target = content_flat$data$name,
-                         stringsAsFactors = FALSE)
-    
-      counter <- ceiling(content_flat$paging$total_count / length(content_flat$data$name))
-    
-      for(i in 1:counter) {
-        state_last_target <- content_flat$paging$last
-      
-        paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
-      
-        paged_response <- httr::GET(paged_endpoint,
-                                    config = .zz_authenticate(usr)
-        )
-      
-        paged_content <- httr::content(paged_response, as = "text", encoding = "UTF-8")
-        content_flat <- jsonlite::fromJSON(paged_content, flatten = TRUE)
-      
-        temp <- data.frame(target = content_flat$data$name,
-                           stringsAsFactors = FALSE)
-        
-        storage[[i]] <- temp
-
-      }
-      
-      storage <- do.call(rbind, storage)
-      container <- rbind(container, storage)
-    }
-    
+    container <- .zz_do_paging(content_flat = content_flat, endpoint = endpoint, usr = usr)
     did_paging <- TRUE
-    
   }
 
 

@@ -72,4 +72,45 @@
 #' Auxiliary function
 #' 
 #' @keywords internal
+.zz_do_paging <- function(content_flat, endpoint = endpoint, usr = usr) {
+  if (content_flat$paging$total_count > length(content_flat$data$name)) {
+    
+    storage <- list()
+    container <- data.frame(target = content_flat$data$name,
+                            stringsAsFactors = FALSE)
+    
+    counter <- ceiling(content_flat$paging$total_count / length(content_flat$data$name))
+    
+    for(i in 1:counter) {
+      state_last_target <- content_flat$paging$last
+      
+      paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
+      
+      paged_response <- httr::GET(paged_endpoint,
+                                  config = .zz_authenticate(usr)
+      )
+      
+      content <- httr::content(paged_response, as = "text", encoding = "UTF-8")
+      content_flat <- jsonlite::fromJSON(content, flatten = TRUE)
+      
+      temp <- data.frame(target = content_flat$data$name,
+                         stringsAsFactors = FALSE)
+      
+      storage[[i]] <- temp
+      
+    }
+    
+    storage <- do.call(rbind, storage)
+    container <- rbind(container, storage)
+  }
+}
 
+# .zz_parse_response
+#' 
+#' Auxiliary function
+#' 
+#' @keywords internal
+.zz_parse_response <- function(response) {
+  content <- httr::content(response, as = "text", encoding = "UTF-8")
+  content_flat <- jsonlite::fromJSON(content, flatten = TRUE)
+}

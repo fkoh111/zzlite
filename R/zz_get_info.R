@@ -63,12 +63,11 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   usr <- .zz_get_key(usr = usr)
   
-  status <- httr::GET(url = endpoint,
+  response <- httr::GET(url = endpoint,
                       config = .zz_authenticate(usr)
   )
   
-  content <- httr::content(status, as = "text", encoding = "UTF-8")
-  content_flat <- jsonlite::fromJSON(content, flatten = TRUE)
+  content_flat <- .zz_parse_response(response = response)
   
   #Temporary solution:
   if (is.null(content_flat$data$id[[1]]) && is.null(content_flat$data$id[[1]]) && is.null(content_flat$data$created_at[[1]])) {
