@@ -50,7 +50,7 @@
 zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE, verbose = FALSE) {
 
   if (is.null(file)) {
-    stop("Pretty pls, Zamzar needs a file!")
+    stop("Whoops, please pass a file!")
   }
   
   if (is.null(extension)) {
