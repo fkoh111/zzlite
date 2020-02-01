@@ -74,8 +74,8 @@ zz_format <- function(origin = NULL, usr = NULL) {
     )
   }
   
-
-  if(!is.character(origin)) {
+  # Checking if we should do paging (more than 50)
+  if(length(content$data$name) >= 50) {
     container <- .zz_do_paging(content = content, endpoint = endpoint, usr = usr)
     did_paging <- TRUE
   }
