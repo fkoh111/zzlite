@@ -54,6 +54,9 @@ zz_format <- function(origin = NULL, usr = NULL) {
   # Potentially make a did_paging function instead of these flags
   did_paging <- FALSE
   
+  #origin <- NULL
+  #usr <- NULL
+  
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(origin) || origin == "") {
@@ -76,16 +79,17 @@ zz_format <- function(origin = NULL, usr = NULL) {
     )
   }
   
+
   if(!is.character(origin)) {
   
     ## Dealing with paging for NULL origin  
     if (content_flat$paging$total_count > length(content_flat$data$name)) {
-      did_paging <- TRUE
     
-      init <- data.frame(target = content_flat$data$name,
+      storage <- list()
+      container <- data.frame(target = content_flat$data$name,
                          stringsAsFactors = FALSE)
     
-      counter <- ceiling(content_flat$paging$total_count / length(content_flat$data$name)) - 1
+      counter <- ceiling(content_flat$paging$total_count / length(content_flat$data$name))
     
       for(i in 1:counter) {
         state_last_target <- content_flat$paging$last
@@ -101,19 +105,24 @@ zz_format <- function(origin = NULL, usr = NULL) {
       
         temp <- data.frame(target = content_flat$data$name,
                            stringsAsFactors = FALSE)
-      
-        init <- rbind(init, temp)
-      
-      }
-    }
+        
+        storage[[i]] <- temp
 
+      }
+      
+      storage <- do.call(rbind, storage)
+      container <- rbind(container, storage)
+    }
+    
+    did_paging <- TRUE
+    
   }
 
 
   if (is.null(origin) || origin == "") {
 
     if (did_paging == TRUE) {
-      res <- init
+      res <- container
     } else {
       res <- data.frame(target = content_flat$data$name,
                         stringsAsFactors = FALSE)

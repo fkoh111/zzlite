@@ -66,3 +66,10 @@
     type = "basic"
   )
 }
+
+# .zz_do_paging
+#' 
+#' Auxiliary function
+#' 
+#' @keywords internal
+
