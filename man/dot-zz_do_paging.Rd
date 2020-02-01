@@ -4,9 +4,9 @@
 \alias{.zz_do_paging}
 \title{Auxiliary function}
 \usage{
-.zz_do_paging(content, endpoint = endpoint, usr = usr)
+.zz_do_paging(content, endpoint, usr = usr)
 }
 \description{
-Auxiliary function
+Function that deals with paging
 }
 \keyword{internal}

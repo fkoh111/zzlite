@@ -7,6 +7,6 @@
 .zz_parse_response(response)
 }
 \description{
-Auxiliary function
+Wrapper for parsing of responses
 }
 \keyword{internal}
