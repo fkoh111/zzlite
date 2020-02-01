@@ -2,6 +2,9 @@ with_mock_api({
   
   test_that("zz_format is extracting proper values if no origin param is provided", {
     
+    # You should get a new fixture for formats-48c24b.json
+    # (it's merely a subset containing the first fifty. Actually there should be over 100)
+    
     out <- zz_format()
     testthat::expect_output(print(out[1,]), "3g2")
     testthat::expect_output(print(out[20,]), "csv")

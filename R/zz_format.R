@@ -51,11 +51,8 @@
 #' }
 
 zz_format <- function(origin = NULL, usr = NULL) {
-  did_paging <- FALSE
-  
-  #origin <- "png"
-  #usr <- NULL
 
+  did_paging <- FALSE
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(origin) || origin == "") {
@@ -70,6 +67,13 @@ zz_format <- function(origin = NULL, usr = NULL) {
   
   content <- httr::content(response, as = "text", encoding = "UTF-8")
   content_df <- jsonlite::fromJSON(content, flatten = TRUE)
+  
+  if (!response$status_code %in% c(200, 201)) {
+    stop(sprintf("Whoops! Zamzar responded with: %s, and a status code of: %d",
+                 content_df$errors$message,
+                 response$status_code)
+    )
+  }
   
   if(!is.character(origin)) {
   
@@ -101,12 +105,12 @@ zz_format <- function(origin = NULL, usr = NULL) {
       
       }
     }
+
   }
 
 
   if (is.null(origin) || origin == "") {
-    #res <- data.frame(target = content_df$data$name,
-    #                  stringsAsFactors = FALSE)
+
     if (did_paging == TRUE) {
       res <- init
     } else {
@@ -117,14 +121,6 @@ zz_format <- function(origin = NULL, usr = NULL) {
     res <- data.frame(target = content_df$targets$name,
                       cost = content_df$targets$credit_cost,
                       stringsAsFactors = FALSE)
-  }
-  
-  
-  if (!response$status_code %in% c(200, 201)) {
-    stop(sprintf("Whoops! Zamzar responded with: %s, and a status code of: %d",
-                 content_df$errors$message,
-                 response$status_code)
-         )
   }
   
   
