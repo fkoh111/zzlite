@@ -66,3 +66,55 @@
     type = "basic"
   )
 }
+
+# .zz_do_paging
+#' 
+#' Auxiliary function
+#' 
+#' Function that deals with paging
+#' 
+#' @keywords internal
+.zz_do_paging <- function(content, endpoint = endpoint, usr = usr) {
+  if (content$paging$total_count > length(content$data$name)) {
+    
+    storage <- list()
+    container <- data.frame(target = content$data$name,
+                            stringsAsFactors = FALSE)
+    
+    counter <- ceiling(content$paging$total_count / length(content$data$name))
+    
+    for(i in 1:counter) {
+      state_last_target <- content$paging$last
+      
+      paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
+      
+      paged_response <- httr::GET(paged_endpoint,
+                                  config = .zz_authenticate(usr)
+      )
+      
+      content <- httr::content(paged_response, as = "text", encoding = "UTF-8")
+      content <- jsonlite::fromJSON(content, flatten = TRUE)
+      
+      temp <- data.frame(target = content$data$name,
+                         stringsAsFactors = FALSE)
+      
+      storage[[i]] <- temp
+      
+    }
+    
+    storage <- do.call(rbind, storage)
+    container <- rbind(container, storage)
+  }
+}
+
+# .zz_parse_response
+#' 
+#' Auxiliary function
+#' 
+#' Wrapper for parsing of responses
+#' 
+#' @keywords internal
+.zz_parse_response <- function(response) {
+  content <- httr::content(response, as = "text", encoding = "UTF-8")
+  content <- jsonlite::fromJSON(content, flatten = TRUE)
+}

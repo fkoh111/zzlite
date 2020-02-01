@@ -63,27 +63,26 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   usr <- .zz_get_key(usr = usr)
   
-  status <- httr::GET(url = endpoint,
+  response <- httr::GET(url = endpoint,
                       config = .zz_authenticate(usr)
   )
   
-  content <- httr::content(status, as = "text", encoding = "UTF-8")
-  content_flat <- jsonlite::fromJSON(content, flatten = TRUE)
+  content <- .zz_parse_response(response = response)
   
   #Temporary solution:
-  if (is.null(content_flat$data$id[[1]]) && is.null(content_flat$data$id[[1]]) && is.null(content_flat$data$created_at[[1]])) {
+  if (is.null(content$data$id[[1]]) && is.null(content$data$id[[1]]) && is.null(content$data$created_at[[1]])) {
     stop("Whoops, we can't find any valid key!")
   }
 
   if (latest == TRUE) {
-    res <- data.frame(id = content_flat$data$id[[1]],
-                      extension = content_flat$data$format[[1]],
-                      created_at = content_flat$data$created_at[[1]],
+    res <- data.frame(id = content$data$id[[1]],
+                      extension = content$data$format[[1]],
+                      created_at = content$data$created_at[[1]],
                       stringsAsFactors = FALSE)
   } else {
-    res <- data.frame(id = content_flat$data$id,
-                      extension = content_flat$data$id,
-                      created_at = content_flat$data$created_at,
+    res <- data.frame(id = content$data$id,
+                      extension = content$data$format,
+                      created_at = content$data$created_at,
                       stringsAsFactors = FALSE)
   }
   
