@@ -51,8 +51,9 @@
 #' }
 
 zz_format <- function(origin = NULL, usr = NULL) {
-
+  # Potentially make a did_paging function instead of these flags
   did_paging <- FALSE
+  
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(origin) || origin == "") {
