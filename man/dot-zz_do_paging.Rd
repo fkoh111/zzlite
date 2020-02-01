@@ -4,7 +4,7 @@
 \alias{.zz_do_paging}
 \title{Auxiliary function}
 \usage{
-.zz_do_paging(content, endpoint, usr = usr)
+.zz_do_paging(content, container, endpoint, usr = usr)
 }
 \description{
 Function that deals with paging

@@ -51,8 +51,7 @@
 #' }
 
 zz_format <- function(origin = NULL, usr = NULL) {
-  did_paging <- FALSE
-  
+
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(origin) || origin == "") {
@@ -74,21 +73,20 @@ zz_format <- function(origin = NULL, usr = NULL) {
     )
   }
   
+  container <- data.frame(target = content$data$name,
+                          stringsAsFactors = FALSE)
+  
   # Checking if we should do paging (more than 50)
   if(length(content$data$name) >= 50) {
-    container <- .zz_do_paging(content = content, endpoint = endpoint, usr = usr)
-    did_paging <- TRUE
+    container <- .zz_do_paging(content = content,
+                               container = container,
+                               endpoint = endpoint,
+                               usr = usr)
   }
 
 
   if (is.null(origin) || origin == "") {
-
-    if (did_paging == TRUE) {
-      res <- container
-    } else {
-      res <- data.frame(target = content$data$name,
-                        stringsAsFactors = FALSE)
-    }
+    res <- container
   } else {
     res <- data.frame(target = content$targets$name,
                       cost = content$targets$credit_cost,
