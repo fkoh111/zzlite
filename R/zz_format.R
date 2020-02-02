@@ -93,15 +93,13 @@ zz_format <- function(origin = NULL, usr = NULL) {
                       stringsAsFactors = FALSE)
   }
   
-  
+
   if (response$status_code %in% c(200, 201)) {
-    if (is.list(res) && is.null(res$target)) {
-      stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
-                   content$errors$message,
-                   response$status_code)
-           )
-    } else {
-      return(res)
-    }
+    return(res)
+  } else {
+    stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
+                 content$errors$message,
+                 response$status_code)
+    )
   }
 }
