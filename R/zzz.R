@@ -86,7 +86,7 @@
 #' Function that deals with paging
 #' 
 #' @keywords internal
-.zz_do_paging <- function(content, container, endpoint, usr = usr) {
+.zz_do_paging <- function(content, container, endpoint, usr) {
   if (content$paging$total_count > length(content$data$name)) {
     
     storage <- list()
