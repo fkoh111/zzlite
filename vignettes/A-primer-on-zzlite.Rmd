@@ -192,10 +192,37 @@ zzlite::zz_post(file = "avatar.emf", extension = "png", prod = TRUE)
 
 ```
 
-In the example above, `avatar.emf` is the file that I've requested Zamzar to convert. The extension is the requested extension that I want my file to have _after_ conversion. The prod bool decides whether or not we should use a development endpoint or a production endpoint. For more information on differences between endpoints, see: [Test and production environments](https://developers.zamzar.com/docs) in the official Zamzar documentation.
+In the example above, `avatar.emf` is the file that we've requested Zamzar to convert. The extension is the requested extension that we want the file to have _after_ conversion. The prod bool decides whether or not we should use a development endpoint or a production endpoint.  
+For more information on differences between endpoints, see: [Test and production environments](https://developers.zamzar.com/docs) in the official Zamzar documentation.
 
 Please note that `zz_post()` will respond with an appropriate HTTP status code. See also Zamzars official documentation on [response codes](https://developers.zamzar.com/docs).  
 
 ### `zz_get_info()`
 
+So how do we obtain a file after you've posted it to the Zamzar API and requested conversion? `zz_get_info()` to the rescue!  
+
+Assuming that we've posted the `avatar.emf` to Zamzar and have received a 201 reply from API, a subsequent invocation of `zz_get_info()` will return a table like this:
+
+```r
+zzlite::zz_get_info()
+
+#>         id extension           created_at
+#> 1 61920045       png 2020-02-02T13:41:53Z
+```
+
+This tells us, that a file with id 61920045 and an extension of png is in the top of our stack of files associated with our Zamzar account.  
+
+Now, how do we get a file from the stack?
+
 ### `zz_get()`
+
+You get back a file by invoking `zz_get()` with the appropriate arguments.  
+
+A minimal example for obtaining the converted avatar is:
+
+```r
+zzlite::zz_get(id = 61920045, extension = "png", prod = TRUE)
+
+#> Writing file 61920045.png to /Users/fkoh111/Documents/conversions
+```
+
