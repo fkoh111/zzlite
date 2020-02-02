@@ -45,3 +45,6 @@ temp.png
 *.png
 .DS_Store
 inst/doc
+
+# Testdata
+robo.mov
