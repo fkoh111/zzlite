@@ -1,28 +1,27 @@
-# zz_format
-#'
-#' Get accepted formats from Zamzar
+#' Accepted formats from Zamzar
 #' 
-#' @section Details:
-#' Please note that a Zamzar key passed as usr param takes precedence over a
-#' Zamzar key extracted from the .Renviron.  
+#' Get a dataframe of all the formats accepted by Zamzar, or a dataframe of formats
+#' you can convert an origin to.
 #' 
-#'
+#' Please note that a Zamzar key passed as argument to `usr` takes precedence over a
+#' Zamzar key extracted from an `.Renviron`.  
+#' 
 #' @param origin The origin format you want to convert from.
-#' If a valid param is passed to origin, zz_format() returns a dataframe with cols __targets__ and __costs__.  
+#' If a valid argument is passed to `origin`, `zz_format()` returns a dataframe of:  
 #' 
 #'   * `targets`: The formats your origin can be converted to.
-#'   * `costs`: The cost for converting between your origin and a given target.
+#'   * `costs`: The cost for converting between your origin and a given target.  
 #' 
 #' See also: \url{https://developers.zamzar.com/formats}  
 #'
-#' If no orign param is passed to zz_format(), a dataframe containing all
-#' the accepted formats for the __origin__ param is returned.  
+#' If no argument has been passed to `orign`, a dataframe containing all
+#' the accepted formats by the Zamzar API is returned.  
 #' 
 #' See: \url{https://developers.zamzar.com/formats}
 #'
 #'
-#' @param usr The username/API key you are using for Zamzar. If not set, zz_format()
-#' will see if a key exists as a ZAMZAR_USR variable  in .Renviron and use that.    
+#' @param usr The username/API key you are using. If not set, `zz_format()`
+#' will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #'
@@ -30,8 +29,8 @@
 #' @md
 #' 
 #' @export
-#' @return Either a dataframe of formats from the API that you can convert to,
-#' or a single column dataframe of accepted origin formats.
+#' @return Either a dataframe of formats that you can convert to, or a
+#' dataframe of accepted origin formats.
 #' 
 #' @examples 
 #' \donttest{
@@ -42,7 +41,7 @@
 #' # Same as above (assuming a valid key in .Renviron).
 #' zz_format()
 #' 
-#' # Returns an error since the origin param isn't recognized by the Zamzar API.
+#' # Returns an error since the origin argument isn't recognized by the Zamzar API.
 #' zz_format(origin = "invalid_origin")
 #' 
 #' # Returns a dataframe of targets that origin can be converted to,

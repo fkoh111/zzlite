@@ -1,32 +1,31 @@
-# zz_get_info
-#' 
 #' Get info from Zamzar
 #' 
-#' @section Details:
-#' Get info on files submitted to the Zamzar API via your current token
+#' Get info on the files submitted to the Zamzar API via your current key.
 #'
-#' Per default zz_get_info() assumes you want information for the last 
+#' Per default `zz_get_info()` assumes you want information for the last 
 #' submitted file. To get information on all the files that have been submitted
-#' within a reasonable timeframe, set bool latest to FALSE.
+#' within a reasonable timeframe, set param `latest` to `FALSE`.
 #' 
-#' Please note: objects returned from zz_get_info() doesn't differentiate
-#' between files that have been assigned to either the development or
-#' production endpoint. You have to keep track of this yourself.
+#' Please note: objects returned from `zz_get_info()` doesn't differentiate
+#' between development or production endpoint. You have to keep track of 
+#' this yourself.  
 #'
-#' Please note that a Zamzar key passed as usr param takes precedence over a
-#' Zamzar key extracted from the .Renviron.  
+#' Please note that a Zamzar key passed as argument to `usr` takes precedence over a
+#' Zamzar key extracted from an `.Renviron`.  
 #'
 #'
-#' @param usr The username/API key you are using for Zamzar. If not set, zz_get_info()
-#' will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.   
+#' @param usr The username/API key you are using. If not set, `zz_format()`
+#' will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #'
-#' @param latest Boolean deciding whether or not zz_get_info() should solely
-#' return attributes for the latest target id.  
+#' @param latest Boolean deciding whether or not metadata on all files that 
+#' have been submitted within a reasonable timeframe should be returned.  
 #' 
-#' If switched to FALSE, zz_get_info() will return attributes for all files
-#' that have been sumitted to the API within a reasonable timeframe.  
+#' If switched to `FALSE`, metadata on all files that have been sumitted to
+#' the Zamzar API within a reasonable timeframe will be returned.  
+#' 
+#' Defaults to `TRUE`.
 #' 
 #' The returned dataframe contains the following columns:  
 #' 
@@ -49,7 +48,7 @@
 #' # Same as above, we're just passing the key manually.
 #' zz_get_info(usr = "key")
 #'  
-#' # Provided a valid token, will return a dataframe of files
+#' # Provided a valid token, will return metadata for all files
 #' # submitted to the API within a reasonable timeframe.
 #' zz_get_info(usr = "key", latest = FALSE)
 #' 

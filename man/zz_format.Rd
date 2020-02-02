@@ -2,13 +2,13 @@
 % Please edit documentation in R/zz_format.R
 \name{zz_format}
 \alias{zz_format}
-\title{Get accepted formats from Zamzar}
+\title{Accepted formats from Zamzar}
 \usage{
 zz_format(origin = NULL, usr = NULL)
 }
 \arguments{
 \item{origin}{The origin format you want to convert from.
-If a valid param is passed to origin, zz_format() returns a dataframe with cols \strong{targets} and \strong{costs}.
+If a valid argument is passed to \code{origin}, \code{zz_format()} returns a dataframe of:
 \itemize{
 \item \code{targets}: The formats your origin can be converted to.
 \item \code{costs}: The cost for converting between your origin and a given target.
@@ -16,29 +16,28 @@ If a valid param is passed to origin, zz_format() returns a dataframe with cols 
 
 See also: \url{https://developers.zamzar.com/formats}
 
-If no orign param is passed to zz_format(), a dataframe containing all
-the accepted formats for the \strong{origin} param is returned.
+If no argument has been passed to \code{orign}, a dataframe containing all
+the accepted formats by the Zamzar API is returned.
 
 See: \url{https://developers.zamzar.com/formats}}
 
-\item{usr}{The username/API key you are using for Zamzar. If not set, zz_format()
-will see if a key exists as a ZAMZAR_USR variable  in .Renviron and use that.
+\item{usr}{The username/API key you are using. If not set, \code{zz_format()}
+will see if a key exists as a \code{ZAMZAR_USR} variable  in \code{.Renviron} and use that.
 
 See: \url{https://developers.zamzar.com/user}}
 }
 \value{
-Either a dataframe of formats from the API that you can convert to,
-or a single column dataframe of accepted origin formats.
+Either a dataframe of formats that you can convert to, or a
+dataframe of accepted origin formats.
 }
 \description{
-Get accepted formats from Zamzar
+Get a dataframe of all the formats accepted by Zamzar, or a dataframe of formats
+you can convert an origin to.
 }
-\section{Details}{
-
-Please note that a Zamzar key passed as usr param takes precedence over a
-Zamzar key extracted from the .Renviron.
+\details{
+Please note that a Zamzar key passed as argument to \code{usr} takes precedence over a
+Zamzar key extracted from an \code{.Renviron}.
 }
-
 \examples{
 \donttest{
 # Returns a single column dataframe of all the accepted formats
@@ -48,7 +47,7 @@ zz_format(usr = "key")
 # Same as above (assuming a valid key in .Renviron).
 zz_format()
 
-# Returns an error since the origin param isn't recognized by the Zamzar API.
+# Returns an error since the origin argument isn't recognized by the Zamzar API.
 zz_format(origin = "invalid_origin")
 
 # Returns a dataframe of targets that origin can be converted to,

@@ -1,34 +1,31 @@
-# zz_post
-#' 
 #' Post file to Zamzar endpoint
 #' 
-#' @section Details:
-#' Per default zz_post() assumes that you're doing development, thus using a 
-#' development endpoint. Set prod bool to TRUE to change this behaviour.
+#' Per default `zz_post()` assumes that you're doing development, thus using a 
+#' development endpoint. Set param `prod` to `TRUE` to change this behaviour.  
 #'
-#' Please note that a Zamzar key passed as usr param takes precedence over a
-#' Zamzar key extracted from the .Renviron.  
+#' Please note that a Zamzar key passed as argument to `usr` takes precedence over a
+#' Zamzar key extracted from an `.Renviron`.  
 #'
 #'
-#' @param file The path to the file you want to convert.
+#' @param file The path to the file you want to convert.  
 #' 
-#' @param extension The file type you want to convert to. E.g., "png".
+#' @param extension The file type you want to convert to. E.g., `png`.  
 #' 
 #' @seealso \code{\link{zz_format}} for a list of formats you can convert to.
 #' 
-#' @param usr The username/API key you are using for Zamzar. If not set, zz_post()
-#' will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that. 
+#' @param usr The username/API key you are using. If not set, `zz_format()`
+#' will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param prod Boolean deciding whether to use prod or dev endpoint.
-#' Defaults to FALSE (That is, dev endpoint).
+#' Defaults to `FALSE`.
 #' 
-#' @param verbose Boolean deciding whether or not zz_post should return a 
-#' verbose status message from the Zamzar API. Defaults to FALSE.
+#' @param verbose Boolean deciding whether or not verbose status messages
+#' should be returned. Defaults to `FALSE`.
 #'
 #' @export
-#' @return A response object as defined by httr::message_for_status()
+#' @return A status message indicating either success or failure.
 #' 
 #' @examples
 #' \donttest{

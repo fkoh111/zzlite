@@ -15,34 +15,30 @@ zz_post(
 \arguments{
 \item{file}{The path to the file you want to convert.}
 
-\item{extension}{The file type you want to convert to. E.g., "png".}
+\item{extension}{The file type you want to convert to. E.g., `png`.}
 
-\item{usr}{The username/API key you are using for Zamzar. If not set, zz_post()
-will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that. 
+\item{usr}{The username/API key you are using. If not set, `zz_format()`
+will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
 
 See: \url{https://developers.zamzar.com/user}}
 
 \item{prod}{Boolean deciding whether to use prod or dev endpoint.
-Defaults to FALSE (That is, dev endpoint).}
+Defaults to `FALSE`.}
 
-\item{verbose}{Boolean deciding whether or not zz_post should return a 
-verbose status message from the Zamzar API. Defaults to FALSE.}
+\item{verbose}{Boolean deciding whether or not verbose status messages
+should be returned. Defaults to `FALSE`.}
 }
 \value{
-A response object as defined by httr::message_for_status()
+A status message indicating either success or failure.
 }
 \description{
-Post file to Zamzar endpoint
+Per default `zz_post()` assumes that you're doing development, thus using a 
+development endpoint. Set param `prod` to `TRUE` to change this behaviour.
 }
-\section{Details}{
-
-Per default zz_post() assumes that you're doing development, thus using a 
-development endpoint. Set prod bool to TRUE to change this behaviour.
-
-Please note that a Zamzar key passed as usr param takes precedence over a
-Zamzar key extracted from the .Renviron.
+\details{
+Please note that a Zamzar key passed as argument to `usr` takes precedence over a
+Zamzar key extracted from an `.Renviron`.
 }
-
 \examples{
 \donttest{
 # Per default zz_post uses the development endpoint.
