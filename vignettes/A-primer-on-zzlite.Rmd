@@ -20,14 +20,14 @@ By utilizing `zzlite` (and thereby the Zamzar API) you can easily convert betwee
 
 ## The basics
 
-The following section serves as a simple introduction to get you started with the `zzlite` package. It is assumed that you already have a valid (and nonexhausted) Zamzar API key at your disposal. If not, go signup via [Zamzar](https://developers.zamzar.com/)s website. Otherwise, keep on reading.  
+The following section serves as a simple introduction to get you started with the `zzlite` package. Since Zamzar requires authentication, it is assumed that you have a valid (and nonexhausted) key at your disposal. If not, go signup via [Zamzar](https://developers.zamzar.com/)s website to get one. Otherwise, keep on reading.  
 
 
 ### On Zamzar API keys in `zzlite`
 
 There's two ways in which you can pass a Zamzar key to `zzlite`.  
 
-1. By passing a hardcoded Zamzar key as an argument to the `usr` parameter. The `usr` parameter is available in all functions that are communication with Zamzars webservice.  
+1. By passing a hardcoded Zamzar key as an argument to the `usr` parameter.  
 
 2. By leveraging an `.Renviron` file. Simply create a variable called `ZAMZAR_USR` in your `.Renviron` and pass it your Zamzar key. If done succesfully, you can skip passing a key to `usr` param whenever you're invoking a `zzlite` function.  
 
@@ -46,15 +46,156 @@ ZAMZAR_USR=77c39dh6lo03g7598t98h659ihg99b7ny7213q
 
 ### `zz_format()`
 
+In general there's two use cases for `zz_format()`.  
 
+1. If you want to browse through an overview of all the accepted formats (targets) that the Zamzar API can convert for you:
+
+```r
+zzlite::zz_format()
+
+#>      target
+#> 1       3g2
+#> 2       3ga
+#> 3       3gp
+#> 4      3gpp
+#> 5        7z
+#> 6       aac
+#> 7       ac3
+#> 8        ai
+#> 9       asf
+#> 10      avi
+#> 11      azw
+#> 12     azw3
+#> 13      bmp
+#> 14      cab
+#> 15      cbc
+#> 16      cbr
+#> 17      cbz
+#> 18      cdr
+#> 19      chm
+#> 20      csv
+#> 21     djvu
+#> 22      doc
+#> 23     docm
+#> 24     docx
+#> 25      dwg
+#> 26      dxf
+#> 27      emf
+#> 28      eml
+#> 29      eps
+#> 30     epub
+#> 31      fb2
+#> 32     flac
+#> 33      flv
+#> 34      gif
+#> 35      gvi
+#> 36      jpg
+#> 37      lit
+#> 38      lrf
+#> 39      lzh
+#> 40      m4a
+#> 41      m4r
+#> 42      m4v
+#> 43      mkv
+#> 44     mobi
+#> 45      mod
+#> 46      mov
+#> 47      mp3
+#> 48      mp4
+#> 49      mpg
+#> 50      msg
+#> 51      mts
+#> 52      odg
+#> 53      odp
+#> 54      ods
+#> 55      odt
+#> 56      ogg
+#> 57      pcx
+#> 58      pdb
+#> 59      pdf
+#> 60      pml
+#> 61      png
+#> 62      pps
+#> 63     ppsx
+#> 64      ppt
+#> 65     pptm
+#> 66     pptx
+#> 67      prc
+#> 68       ps
+#> 69      psd
+#> 70      pub
+#> 71       ra
+#> 72      ram
+#> 73      rar
+#> 74       rb
+#> 75       rm
+#> 76     rmvb
+#> 77      rtf
+#> 78      svg
+#> 79      tar
+#> 80  tar.bz2
+#> 81   tar.gz
+#> 82      tcr
+#> 83      tga
+#> 84     tiff
+#> 85       ts
+#> 86      txt
+#> 87      vob
+#> 88      wav
+#> 89     wbmp
+#> 90     webm
+#> 91     webp
+#> 92      wks
+#> 93      wma
+#> 94      wmf
+#> 95      wmv
+#> 96      wpd
+#> 97      wps
+#> 98      xlr
+#> 99      xls
+#> 100    xlsm
+#> 101    xlsx
+#> 102     xps
+#> 103     yz1
+#> 104     zip
+```
+
+2. If you want to know what a format can be converted to, as well as the cost in Zamzar credit for conversion, simply pass the `origin` parameter. E.g., to check what formats Zamzar can convert `.emf` to, do:  
+
+```r
+zzlite::zz_format(origin = "emf")
+
+#>       target cost
+#> 1        bmp    1
+#> 2        gif    1
+#> 3        ico    1
+#> 4        jpg    1
+#> 5        pcx    1
+#> 6        pdf    1
+#> 7        png    1
+#> 8         ps    1
+#> 9        tga    1
+#> 10 thumbnail    1
+#> 11      tiff    1
+#> 12      wbmp    1
+#> 13      webp    1
+```
 
 ### `zz_post()`
+
+To do a conversion Zamzar needs your file. Through `zzlite` you post a file to Zamzar by invoking `zz_post()` with the appropriate parameters. E.g.:
+
+```r
+zzlite::zz_post(file = "avatar.emf", extension = "png", prod = TRUE)
+
+#> 201
+
+```
+
+In the example above, `avatar.emf` is the file that I've requested Zamzar to convert. The extension is the requested extension that I want my file to have _after_ conversion. The prod bool decides whether or not we should use a development endpoint or a production endpoint. For more information on differences between endpoints, see: [Test and production environments](https://developers.zamzar.com/docs) in the official Zamzar documentation.
+
+Please note that `zz_post()` will respond with an appropriate HTTP status code. See also Zamzars official documentation on [response codes](https://developers.zamzar.com/docs).  
 
 ### `zz_get_info()`
 
 ### `zz_get()`
-
-```{r setup}
-library(zzlite)
-```
-
