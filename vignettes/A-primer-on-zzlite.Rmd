@@ -226,3 +226,7 @@ zzlite::zz_get(id = 61920045, extension = "png", prod = TRUE)
 #> Writing file 61920045.png to /Users/fkoh111/Documents/conversions
 ```
 
+As indicated by the example above, `zz_get()` will  use the id as filename for the file we're _getting_ if no name has been set prior to invocation.  
+
+## `zz_get*` extended
+
