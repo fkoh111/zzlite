@@ -251,13 +251,9 @@ zzlite::zz_get(id = 61920045, extension = "png", prod = TRUE)
 
 As indicated by the example above, `zz_get()` will  use the id as filename for the file we're _getting_ if no name has been set prior to invocation. The file will be written to the current working directory.  
 
-## `zz_get*` extended
-
-Lets extend a bit on the two `zz_get*` functions.  
+Let's try to briefly mix `zz_get_info()` with `zz_get()`.
 
 
-
-_This is where we're going to elaborate on the zz_get* functionality_
 
 ---
 
