@@ -203,16 +203,37 @@ Please note that upon completion, `zz_post()` will respond with an HTTP status c
 
 So how do we obtain a file after we've posted it to the Zamzar API and requested conversion? `zz_get_info()` to the rescue!  
 
-Assuming that we've posted the `avatar.emf` to Zamzar and have received a 201 reply from the API, a subsequent invocation of `zz_get_info()` will return a table like this:
+Assuming that we've just posted the `avatar.emf` to Zamzar and have received a `201` response from the API, a subsequent invocation of `zz_get_info()` will return a table like this:
 
 ```r
 zzlite::zz_get_info()
 
 #>         id extension           created_at
-#> 1 61920045       png 2020-02-02T13:41:53Z
+#> 1 61920043       emf 2020-02-02T13:41:53Z
 ```
 
-This tells us, that a file with id `61920045` and an extension of `png` is in the top of our stack of files associated with our Zamzar account.  
+This tells us, that a file with id `61920043` and an extension of `emf` is in the top of our stack of files associated with our Zamzar account.  
+
+Now, since we've asked Zamzar to convert _from_ `emf` to `png`, it might seem a bit strange that id `61920043` isn't a `png` file. The reason for this is simply because Zamzar (in this example) isn't done converting the file. If we wait a few seconds and then do a subsequent call to `zz_get_info()`, then we should see the converted file:
+
+```r
+zzlite::zz_get_info()
+
+#>         id extension           created_at
+#> 1 61920045       png 2020-02-02T13:41:55Z
+```
+
+And as expected, Zamzar is done with the conversion, and a file with id `61920045` and an extension of `png` is now in the top of our stack of files associated with our Zamzar account.  
+
+Sometimes it is nice to inspect the entire stack of files for your Zamzar account. This is also possible, just switch the parameter `latest` from `TRUE` to `FALSE` (the parameter defaults to `TRUE`):
+
+```r
+zzlite::zz_get_info(latest = FALSE)
+
+#>         id extension           created_at
+#> 1 61920045       png 2020-02-02T13:41:55Z
+#> 2 61920043       emf 2020-02-02T13:41:53Z
+```
 
 Now, how do we _get_ a file from the stack?
 
@@ -231,6 +252,10 @@ zzlite::zz_get(id = 61920045, extension = "png", prod = TRUE)
 As indicated by the example above, `zz_get()` will  use the id as filename for the file we're _getting_ if no name has been set prior to invocation. The file will be written to the current working directory.  
 
 ## `zz_get*` extended
+
+Lets extend a bit on the two `zz_get*` functions.  
+
+
 
 _This is where we're going to elaborate on the zz_get* functionality_
 
