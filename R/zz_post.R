@@ -1,56 +1,53 @@
-# zz_post
-#' 
 #' Post file to Zamzar endpoint
 #' 
-#' @section Details:
-#' Per default zz_post() assumes that you're doing development, thus using a 
-#' development endpoint. Set prod bool to TRUE to change this behaviour.
+#' Per default `zz_post()` assumes that you're doing development, thus using a 
+#' development endpoint. Set parameter `prod` to `TRUE` to change this behavior.  
 #'
-#' Please note that a Zamzar key passed as usr param takes precedence over a
-#' Zamzar key extracted from the .Renviron.  
+#' Please note that a Zamzar key passed as argument to `usr` takes precedence over a
+#' Zamzar key extracted from an `.Renviron`.  
 #'
 #'
-#' @param file The path to the file you want to convert.
+#' @param file The path to the file you want to convert.  
 #' 
-#' @param extension The file type you want to convert to. E.g., "png".
+#' @param extension The file type you want to convert to. E.g., `png`.  
 #' 
 #' @seealso \code{\link{zz_format}} for a list of formats you can convert to.
 #' 
-#' @param usr The username/API key you are using for Zamzar. If not set, zz_post()
-#' will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that. 
+#' @param usr The username/API key you are using. If not set, `zz_format()`
+#' will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #' 
-#' @param prod Boolean deciding whether to use prod or dev endpoint.
-#' Defaults to FALSE (That is, dev endpoint).
+#' @param prod Boolean deciding whether to use production or development endpoint.
+#' Defaults to `FALSE`.
+#' 
+#' @param verbose Boolean deciding whether or not verbose status messages
+#' should be returned. Defaults to `FALSE`.
 #'
 #' @export
-#' @return A response object as defined by httr::message_for_status()
+#' @return A status message indicating either success or failure.
 #' 
 #' @examples
 #' \donttest{
-#' # Per default zz_post uses the development endpoint
+#' # Per default zz_post uses the development endpoint.
 #' zz_post(file = "avatar.emf", extension = "png")
 #' 
-#' # Setting prod param to FALSE is the same as above
+#' # Setting prod parameter to FALSE is the same as above.
 #' zz_post(file = "avatar.emf", extension = "png", prod = FALSE)
 #' 
-#' # You need to flip prod to TRUE if you want to use the production endpoint
+#' # You need to flip prod to TRUE if you want to use the production endpoint.
 #' zz_post(file = "avatar.emf", extension = "png", prod = TRUE)
 #' 
-#' # Remember you can always pass a Zamzar key to the usr param if you don't
-#' # want to use an .Renviron file
+#' # Remember you can always pass a Zamzar key to the usr parameter if you don't
+#' # want to use an .Renviron file.
 #' zz_post(file = "avatar.emf", usr = "key", extension = "png", prod = TRUE)
 #'  
 #' }
 
-zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
-  
-  # Creating temp file if no file has been passed to the file param
-  #TODO: Consider whether or not this is a good enough approach
+zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE, verbose = FALSE) {
+
   if (is.null(file)) {
-    file <- tempfile(fileext = ".tmp")
-    writeLines("temp", file)
+    stop("Whoops, please pass a file!")
   }
   
   if (is.null(extension)) {
@@ -71,13 +68,19 @@ zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE) {
                target_format = extension)
   
   response <- httr::POST(url = endpoint,
-       config = httr::authenticate(
-         user = usr,
-         password = "",
-         type = "basic"
-       ),
+       config = .zz_authenticate(usr),
        body = body
   )
-
-  httr::message_for_status(response)
+  
+  res <- data.frame(status = response$status_code,
+                    endpoint = response$url,
+                    date = response$date)
+  
+  if (verbose == TRUE) {
+    res <- res
+  } else {
+    res <- res$status
+  }
+  
+  return(res)
 }

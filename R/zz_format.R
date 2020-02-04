@@ -1,53 +1,55 @@
-# zz_format
-#'
-#' Get vector of accepted formats from Zamzar
+#' Accepted formats from Zamzar
 #' 
-#' @section Details:
-#' Please note that a Zamzar key passed as usr param takes precedence over a
-#' Zamzar key extracted from the .Renviron.  
+#' Get a dataframe of all the formats accepted by Zamzar, or a dataframe of formats
+#' you can convert an origin to.
 #' 
+#' Please note that a Zamzar key passed as argument to `usr` takes precedence over a
+#' Zamzar key extracted from an `.Renviron`.  
 #' 
-#' @param usr The username/API key you are using for Zamzar. If not set, zz_format()
-#' will see if a key exists as ZAMZAR_USR variable  in .Renviron and use that.    
-#' 
-#' See: \url{https://developers.zamzar.com/user}
-#'
 #' @param origin The origin format you want to convert from.
-#' If a valid param is passed to origin, zz_format() returns a list of __targets__ and __costs__.  
+#' If a valid argument is passed to `origin`, `zz_format()` returns a dataframe of:  
 #' 
-#'   * `targets`: A vector containing the formats your origin can be converted to.
-#'   * `costs`: A vector containing the cost for converting between your origin and a given target.
+#'   * `targets`: The formats your origin can be converted to.
+#'   * `costs`: The cost for converting between your origin and a given target.  
 #' 
 #' See also: \url{https://developers.zamzar.com/formats}  
 #'
-#' If no orign param is passed to zz_format(), a character vector containing all
-#' the accepted formats for the __origin__ param is returned.  
+#' If no argument has been passed to `orign`, a dataframe containing all
+#' the accepted formats by the Zamzar API is returned.  
 #' 
 #' See: \url{https://developers.zamzar.com/formats}
+#'
+#'
+#' @param usr The username/API key you are using. If not set, `zz_format()`
+#' will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
 #' 
+#' See: \url{https://developers.zamzar.com/user}
+#'
+#'  
 #' @md
 #' 
 #' @export
-#' @return Either a list of formats from the API that you can convert to,
-#' or a character vector of accepted origin formats.
+#' @return Either a dataframe of formats that you can convert to, or a
+#' dataframe of accepted origin formats.
 #' 
 #' @examples 
 #' \donttest{
-#' # Returns a character vector of all the accepted formats for the origin param
+#' # Returns a single column dataframe of all the accepted formats
+#' # for the origin param.
 #' zz_format(usr = "key")
 #' 
-#' # Same as above (assuming a valid key in .Renviron)
+#' # Same as above (assuming a valid key in .Renviron).
 #' zz_format()
 #' 
-#' # Returns an error since the origin param isn't recognized by the Zamzar API
+#' # Returns an error since the origin argument isn't recognized by the Zamzar API.
 #' zz_format(origin = "invalid_origin")
 #' 
-#' # Returns a list of targets that origin can be converted to, and of the cost of
-#' # converting to a given target.
+#' # Returns a dataframe of targets that origin can be converted to,
+#' # and of the cost of converting to a given target.
 #' zz_format(origin = "emf")
 #' }
 
-zz_format <- function(usr = NULL, origin = NULL) {
+zz_format <- function(origin = NULL, usr = NULL) {
   
   usr <- .zz_get_key(usr = usr)
   
@@ -58,39 +60,45 @@ zz_format <- function(usr = NULL, origin = NULL) {
   }
   
   response <- httr::GET(endpoint,
-                        config = httr::authenticate(
-                          user = usr,
-                          password = "",
-                          type = "basic"
+                        config = .zz_authenticate(usr = usr)
                         )
-  )
   
-  content <- httr::content(response, as = "text", encoding = "UTF-8")
-  content_df <- jsonlite::fromJSON(content, flatten = TRUE)
-  
-  if (is.null(origin) || origin == "") {
-    res <- content_df$data$name
-  } else {
-    target <- content_df$targets$name
-    cost <- content_df$targets$credit_cost
-    res <- list(target = target, cost = cost)
-  }
-  
-  
+  content <- .zz_parse_response(response = response)
+
   if (!response$status_code %in% c(200, 201)) {
-    stop(sprintf("Zamzar responded with: %s, and a status code of: %d",
-                    content_df$errors$message, response$status_code)
-         )
+    stop(sprintf("Whoops! Zamzar responded with: %s, and a status code of: %d",
+                 content$errors$message,
+                 response$status_code)
+    )
   }
   
+  container <- data.frame(target = content$data$name,
+                          stringsAsFactors = FALSE)
   
+  # Checking if we should do paging (more than 50)
+  if(length(content$data$name) >= 50) {
+    container <- .zz_do_paging(content = content,
+                               container = container,
+                               endpoint = endpoint,
+                               usr = usr)
+  }
+
+
+  if (is.null(origin) || origin == "") {
+    res <- container
+  } else {
+    res <- data.frame(target = content$targets$name,
+                      cost = content$targets$credit_cost,
+                      stringsAsFactors = FALSE)
+  }
+  
+
   if (response$status_code %in% c(200, 201)) {
-    if (is.list(res) && is.null(res$target)) {
-      stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
-                      content_df$errors$message, response$status_code)
-           )
-    } else {
-      return(res)
-    }
+    return(res)
+  } else {
+    stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
+                 content$errors$message,
+                 response$status_code)
+    )
   }
 }
