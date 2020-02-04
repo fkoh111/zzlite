@@ -68,7 +68,7 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   content <- .zz_parse_response(response = response)
   
-  #Temporary solution:
+  # Null so we must have passed a key that isn't accepted
   if (is.null(content$data$id[[1]]) && is.null(content$data$id[[1]]) && is.null(content$data$created_at[[1]])) {
     stop("Whoops, we can't find any valid key!")
   }
