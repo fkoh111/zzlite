@@ -22,8 +22,6 @@
   )
   
   conf <- list(prod = prod, dev = dev, format = format)
-  class(conf) <- "config"
-  conf
 }
 
 # .zz_endpoint_content
