@@ -27,9 +27,9 @@ The following section serves as a simple introduction to the `zzlite` package. S
 
 There's two ways in which you can pass a Zamzar key to `zzlite`.  
 
-1. By passing a hardcoded Zamzar key as an argument to the `usr` parameter.  
+1. Either by passing a hardcoded Zamzar key as an argument to the `usr` parameter.  
 
-2. By leveraging an `.Renviron` file. Simply create a variable called `ZAMZAR_USR` in your `.Renviron` and pass it a Zamzar key. If done succesfully, you can skip passing your key to the `usr` param whenever you're invoking `zzlite` functions.  
+2. Or by leveraging an `.Renviron` file. Simply create a variable called `ZAMZAR_USR` in your `.Renviron` and pass it a Zamzar key. If done succesfully, you can skip passing a key to the `usr` param whenever you're invoking `zzlite` functions.  
 
 
 <center>_Example of .Renviron:_</center>
@@ -46,9 +46,9 @@ For security reasons (and best practices), the second way is the preferred way t
 
 ### `zz_format()`
 
-In general there's two use cases for `zz_format()`.  
+In general there's two use cases for the `zz_format()` function.  
 
-1. If you're curious about the formats the Zamzar API can convert for you, do:
+1. If you're curious about formats accepted by the Zamzar API, do `zz_format()` and inspect:
 
 ```r
 zzlite::zz_format()
@@ -160,7 +160,7 @@ zzlite::zz_format()
 #> 104     zip
 ```
 
-2. If you're curious about what a given format can be converted to, as well as the cost (in Zamzar credit), pass the origins extension, e.g.:  
+2. If you're curious to know what a format can be converted to, as well as the cost for converting (in Zamzar credit), pass an accepted extension to the origin parameter, e.g.:  
 
 ```r
 zzlite::zz_format(origin = "emf")
@@ -183,7 +183,7 @@ zzlite::zz_format(origin = "emf")
 
 ### `zz_post()`
 
-To do a conversion Zamzar needs a file (surprise!). Through `zzlite` you post a file to Zamzar by invoking `zz_post()` with the appropriate arguments E.g.:
+To do a conversion Zamzar needs a file (surprise!). Through `zzlite` you post a file to Zamzar by invoking `zz_post()` with the appropriate arguments, e.g.:
 
 ```r
 zzlite::zz_post(file = "avatar.emf", extension = "png", prod = TRUE)
@@ -201,38 +201,66 @@ Please note that upon completion, `zz_post()` will respond with an HTTP status c
 
 ### `zz_get_info()`
 
-So how do we obtain a file after we've posted it to the Zamzar API and requested conversion? `zz_get_info()` to the rescue!  
+So how do we get a file after we've posted it to Zamzar for conversion? `zz_get_info()` to the rescue!  
 
-Assuming that we've posted the `avatar.emf` to Zamzar and have received a 201 reply from the API, a subsequent invocation of `zz_get_info()` will return a table like this:
+Assuming that we've just posted the `avatar.emf` to Zamzar and have received a `201` response from the API, a subsequent invocation of `zz_get_info()` will return a dataframe like this:
 
 ```r
 zzlite::zz_get_info()
 
 #>         id extension           created_at
-#> 1 61920045       png 2020-02-02T13:41:53Z
+#> 1 61920043       emf 2020-02-02T13:41:53Z
 ```
 
-This tells us, that a file with id `61920045` and an extension of `png` is in the top of our stack of files associated with our Zamzar account.  
+This tells us, that a file with id `61920043` and an extension of `emf` is in the top of our stack of files associated with our Zamzar account.  
 
-Now, how do we _get_ a file from the stack?
+Now, since we've asked Zamzar to convert _from_ `emf` to `png`, it might seem a bit strange that id `61920043` isn't a `png` file. The reason for this is simply because Zamzar (in this example) isn't done converting the file. If we wait a few seconds and then do a subsequent call to `zz_get_info()`, then we should see the converted file:
+
+```r
+zzlite::zz_get_info()
+
+#>         id extension           created_at
+#> 1 61920045       png 2020-02-02T13:41:55Z
+```
+
+And as expected, Zamzar is done with the conversion, and a file with a new id, `61920045`, and an extension of `png` is now in the top of our stack of files associated with our Zamzar account.  
+
+Sometimes it is nice to inspect the entire backlog of files for your Zamzar account. It is possible to inspect these by switching the parameter `latest` from `TRUE` to `FALSE` (the parameter defaults to `TRUE`):
+
+```r
+zzlite::zz_get_info(latest = FALSE)
+
+#>         id extension           created_at
+#> 1 61920045       png 2020-02-02T13:41:55Z
+#> 2 61920043       emf 2020-02-02T13:41:53Z
+```
+
+Now, how do we _get_ a file that has been converted?
 
 ### `zz_get()`
 
-We can get back a file by invoking `zz_get()` with appropriate arguments.  
+We can get a converted file by invoking `zz_get()` with appropriate arguments.  
 
 A minimal example for obtaining the converted avatar from the previous example would be:
 
 ```r
 zzlite::zz_get(id = 61920045, extension = "png", prod = TRUE)
 
-#> Writing file 61920045.png to /Users/fkoh111/Documents/conversions
+#> Writing file 61920045.png to /Users/whatever/Documents/conversions
 ```
 
 As indicated by the example above, `zz_get()` will  use the id as filename for the file we're _getting_ if no name has been set prior to invocation. The file will be written to the current working directory.  
 
-## `zz_get*` extended
 
-_This is where we're going to elaborate on the zz_get* functionality_
+A slightly more coherent way to obtain a file, could be something around these lines:  
+
+```r
+df <- zz_get_info(latest = TRUE)
+zz_get(id = df$id, extension = df$extension, name = "avatar")
+
+#> Writing file avatar.gif to /Users/whatever/Documents/conversions
+
+```
 
 ---
 

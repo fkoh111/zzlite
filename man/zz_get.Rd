@@ -4,11 +4,18 @@
 \alias{zz_get}
 \title{Get file from Zamzar endpoint}
 \usage{
-zz_get(id = NULL, usr = NULL, name = NULL, extension = NULL, prod = FALSE)
+zz_get(
+  id = NULL,
+  usr = NULL,
+  name = NULL,
+  extension = NULL,
+  overwrite = FALSE,
+  prod = FALSE
+)
 }
 \arguments{
 \item{id}{The target id for a previously passed file. Most likely
-returned from zz_get_info().}
+returned from `zz_get_info()`.}
 
 \item{usr}{The username/API key you are using. If not set, `zz_format()`
 will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
@@ -20,6 +27,9 @@ not assigned to the file, then we're using the id as file name.}
 
 \item{extension}{The extension of the file you are fetching from Zamzar.}
 
+\item{overwrite}{Should `zz_get()` overwrite if a file with the same name already
+exists in directory. Defaults to `FALSE`.}
+
 \item{prod}{Boolean deciding whether to use a production endpoint or
 a development endpoint. Defaults to FALSE (That is, development endpoint).}
 }
@@ -28,8 +38,8 @@ A file written to disk.
 }
 \description{
 Get file from Zamzar endpoint via id.
-Per default zz_get() assumes that you're doing development, thus using a 
-development endpoint. Set prod bool to TRUE to change this behaviour.
+Per default `zz_get()` assumes that you're doing development, thus using a 
+development endpoint. Set prod bool to `TRUE` to change this behaviour.
 }
 \details{
 Please note that a Zamzar key passed as argument to `usr` takes precedence over a
