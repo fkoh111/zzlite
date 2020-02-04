@@ -22,7 +22,7 @@ will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that
 
 See: \url{https://developers.zamzar.com/user}}
 
-\item{prod}{Boolean deciding whether to use prod or dev endpoint.
+\item{prod}{Boolean deciding whether to use production or development endpoint.
 Defaults to `FALSE`.}
 
 \item{verbose}{Boolean deciding whether or not verbose status messages
@@ -33,7 +33,7 @@ A status message indicating either success or failure.
 }
 \description{
 Per default `zz_post()` assumes that you're doing development, thus using a 
-development endpoint. Set param `prod` to `TRUE` to change this behaviour.
+development endpoint. Set parameter `prod` to `TRUE` to change this behavior.
 }
 \details{
 Please note that a Zamzar key passed as argument to `usr` takes precedence over a
@@ -44,13 +44,13 @@ Zamzar key extracted from an `.Renviron`.
 # Per default zz_post uses the development endpoint.
 zz_post(file = "avatar.emf", extension = "png")
 
-# Setting prod param to FALSE is the same as above.
+# Setting prod parameter to FALSE is the same as above.
 zz_post(file = "avatar.emf", extension = "png", prod = FALSE)
 
 # You need to flip prod to TRUE if you want to use the production endpoint.
 zz_post(file = "avatar.emf", extension = "png", prod = TRUE)
 
-# Remember you can always pass a Zamzar key to the usr param if you don't
+# Remember you can always pass a Zamzar key to the usr parameter if you don't
 # want to use an .Renviron file.
 zz_post(file = "avatar.emf", usr = "key", extension = "png", prod = TRUE)
  
