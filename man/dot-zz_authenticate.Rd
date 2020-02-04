@@ -7,6 +7,6 @@
 .zz_authenticate(usr)
 }
 \description{
-Wrapper for httr auth
+Wrapper for httr::authenticate
 }
 \keyword{internal}

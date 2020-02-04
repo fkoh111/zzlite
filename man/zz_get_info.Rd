@@ -13,10 +13,10 @@ will see if a key exists as a \code{ZAMZAR_USR} variable  in \code{.Renviron} an
 See: \url{https://developers.zamzar.com/user}}
 
 \item{latest}{Boolean deciding whether or not metadata on all files that
-have been submitted within a reasonable timeframe should be returned.
+have been submitted within a reasonable time frame should be returned.
 
-If switched to \code{FALSE}, metadata on all files that have been sumitted to
-the Zamzar API within a reasonable timeframe will be returned.
+If switched to \code{FALSE}, metadata on all files that have been submitted to
+the Zamzar API within a reasonable time frame will be returned.
 
 Defaults to \code{TRUE}.
 
@@ -36,7 +36,7 @@ Get info on the files submitted to the Zamzar API via your current key.
 \details{
 Per default \code{zz_get_info()} assumes you want information for the last
 submitted file. To get information on all the files that have been submitted
-within a reasonable timeframe, set param \code{latest} to \code{FALSE}.
+within a reasonable time frame, set parameter \code{latest} to \code{FALSE}.
 
 Please note: objects returned from \code{zz_get_info()} doesn't differentiate
 between development or production endpoint. You have to keep track of
@@ -55,7 +55,7 @@ zz_get_info()
 zz_get_info(usr = "key")
  
 # Provided a valid token, will return metadata for all files
-# submitted to the API within a reasonable timeframe.
+# submitted to the API within a reasonable time frame.
 zz_get_info(usr = "key", latest = FALSE)
 
 # Same as above, we're just using the .Renviron.

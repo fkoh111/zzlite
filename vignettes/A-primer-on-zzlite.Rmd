@@ -20,16 +20,16 @@ By utilizing `zzlite` (and thereby the Zamzar API) you can easily convert betwee
 
 ## The basics
 
-The following section serves as a simple introduction to the `zzlite` package. Since Zamzar requires authentication, it is assumed that you have a valid (and nonexhausted) key at your disposal. If not, go signup via [Zamzar](https://developers.zamzar.com/)s website to get one. Otherwise, keep on reading.  
+The following section serves as a simple introduction to the `zzlite` package. Since Zamzar requires authentication, it is assumed that you have a valid (and not exhausted) key at your disposal. If not, go sign up via [Zamzar](https://developers.zamzar.com/)s website to get one. Otherwise, keep on reading.  
 
 
 ### On Zamzar API keys in `zzlite`
 
 There's two ways in which you can pass a Zamzar key to `zzlite`.  
 
-1. Either by passing a hardcoded Zamzar key as an argument to the `usr` parameter.  
+1. Either by passing a hard coded Zamzar key as an argument to the `usr` parameter.  
 
-2. Or by leveraging an `.Renviron` file. Simply create a variable called `ZAMZAR_USR` in your `.Renviron` and pass it a Zamzar key. If done succesfully, you can skip passing a key to the `usr` param whenever you're invoking `zzlite` functions.  
+2. Or by leveraging an `.Renviron` file. Simply create a variable called `ZAMZAR_USR` in your `.Renviron` and pass it a Zamzar key. If done successfully, you can skip passing a key to the `usr` parameter whenever you're invoking `zzlite` functions.  
 
 
 <center>_Example of .Renviron:_</center>
@@ -193,7 +193,7 @@ zzlite::zz_post(file = "avatar.emf", extension = "png", prod = TRUE)
 ```
 
 In the example above, `avatar.emf` is the file that we've requested Zamzar to convert. The extension is the extension/format we want the file to have _after_ conversion.  
-The prod bool decides whether or not we should use a development endpoint or a production endpoint.  
+The prod boolean decides whether or not we should use a development endpoint or a production endpoint.  
 
 For more information on differences between endpoints, see: [test and production environments](https://developers.zamzar.com/docs) in the official Zamzar documentation.
 
@@ -264,4 +264,4 @@ zz_get(id = df$id, extension = df$extension, name = "avatar")
 
 ---
 
-> *Please note that the package has a strict focus on rather simple conversions via Zamzar (implied by the _lite_ suffix in the name). It is intentional that the package doesn't focuse on deletion of files, cloud integration etc.  
+> *Please note that the package has a strict focus on rather simple conversions via Zamzar (implied by the _lite_ suffix in the name). It is intentional that the package doesn't focus on deletion of files, cloud integration etc.  

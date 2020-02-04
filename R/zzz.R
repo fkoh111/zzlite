@@ -56,7 +56,7 @@
 #' 
 #' Auxiliary function
 #' 
-#' Wrapper for httr auth
+#' Wrapper for httr::authenticate
 #' 
 #' @keywords internal
 .zz_authenticate <- function(usr) {

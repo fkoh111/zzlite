@@ -2,7 +2,7 @@
 #' 
 #' Get file from Zamzar endpoint via id.
 #' Per default `zz_get()` assumes that you're doing development, thus using a 
-#' development endpoint. Set prod bool to `TRUE` to change this behaviour.
+#' development endpoint. Set prod boolean to `TRUE` to change this behavior.
 #'
 #' Please note that a Zamzar key passed as argument to `usr` takes precedence over a
 #' Zamzar key extracted from an `.Renviron`.  
