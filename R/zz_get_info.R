@@ -40,7 +40,7 @@
 #' 
 #' 
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Provided a valid token in .Renvirion, a dataframe of metadata for the last 
 #' # submitted file will be returned.
 #' zz_get_info()

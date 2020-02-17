@@ -31,7 +31,7 @@
 #' @return A file written to disk.
 #' 
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # An example of zz_get() utilized with hardcoded arguments
 #' zz_get(id = 12345678, usr = "key", name = "my_avatar", extension = "png")
 #' 

@@ -39,7 +39,7 @@ Please note that a Zamzar key passed as argument to \code{usr} takes precedence 
 Zamzar key extracted from an \code{.Renviron}.
 }
 \examples{
-\donttest{
+\dontrun{
 # Returns a single column dataframe of all the accepted formats
 # for the origin param.
 zz_format(usr = "key")

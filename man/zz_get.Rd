@@ -46,7 +46,7 @@ Please note that a Zamzar key passed as argument to `usr` takes precedence over 
 Zamzar key extracted from an `.Renviron`.
 }
 \examples{
-\donttest{
+\dontrun{
 # An example of zz_get() utilized with hardcoded arguments
 zz_get(id = 12345678, usr = "key", name = "my_avatar", extension = "png")
 
