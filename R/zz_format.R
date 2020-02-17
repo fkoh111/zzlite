@@ -32,8 +32,8 @@
 #' @return Either a dataframe of formats that you can convert to, or a
 #' dataframe of accepted origin formats.
 #' 
-#' @examples 
-#' \donttest{
+#' @examples
+#' \dontrun{
 #' # Returns a single column dataframe of all the accepted formats
 #' # for the origin param.
 #' zz_format(usr = "key")

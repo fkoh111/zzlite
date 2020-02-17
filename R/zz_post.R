@@ -28,7 +28,7 @@
 #' @return A status message indicating either success or failure.
 #' 
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Per default zz_post uses the development endpoint.
 #' zz_post(file = "avatar.emf", extension = "png")
 #' 
