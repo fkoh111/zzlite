@@ -15,7 +15,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-License: GPL-3 + file LICENSE
+License: GPL-3
 RoxygenNote: 7.0.2
 Encoding: UTF-8
 Language: en-US
