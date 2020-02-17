@@ -40,7 +40,7 @@ Please note that a Zamzar key passed as argument to `usr` takes precedence over 
 Zamzar key extracted from an `.Renviron`.
 }
 \examples{
-\donttest{
+\dontrun{
 # Per default zz_post uses the development endpoint.
 zz_post(file = "avatar.emf", extension = "png")
 
