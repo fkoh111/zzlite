@@ -58,7 +58,8 @@
 
 zz_get_info <- function(usr = NULL, latest = TRUE) {
   
-  endpoint <- .zz_endpoint()$prod[[2]]
+  endpoints <- .zz_endpoints()
+  endpoint <- endpoints$prod[[2]]
   
   usr <- .zz_get_key(usr = usr)
   
