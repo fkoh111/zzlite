@@ -1,6 +1,6 @@
 Package: zzlite
 Title: Lite Wrapper for the 'Zamzar File Conversion' API
-Version: 0.1.1
+Version: 0.1.2
 Date: 2020-02-05
 Author: Frederik Kok Hansen
 Maintainer: Frederik Kok Hansen <frederik_kok@icloud.com>
