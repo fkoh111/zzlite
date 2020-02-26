@@ -56,19 +56,21 @@ zz_get <- function(id = NULL,
   usr <- .zz_get_key(usr = usr)
   
   if (is.null(extension)) {
-    stop("Whoops, please let me know the format of the file I should get.")
+    stop("Whoops, please let me know the extension of the file I should get.")
   }
   
   if (is.null(name)) {
     id <- as.character(id)
   }
   
+  endpoints <- .zz_endpoints()
+  
   if (prod == FALSE) {
-    endpoint <- .zz_endpoint()$dev[[2]]
+    endpoint <- endpoints$dev[[2]]
   }
   
   if (prod == TRUE) {
-    endpoint <- .zz_endpoint()$prod[[2]]
+    endpoint <- endpoints$prod[[2]]
   }
   
   # Concatenating an URL

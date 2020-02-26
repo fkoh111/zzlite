@@ -1,12 +1,9 @@
-# .zzz_endpoint
+# .zz_endpoints
 #' 
-#' Auxiliary function
-#' 
-#' Holds Zamzar API endpoints
+#' Auxiliary object to hold Zamzar API endpoints
 #' 
 #' @keywords internal
-.zz_endpoint <- function() {
-  
+.zz_endpoints <- function() {
   prod <- list(
     post <- c("https://api.zamzar.com/v1/jobs"),
     get <- c("https://api.zamzar.com/v1/files/")
@@ -22,6 +19,9 @@
   )
   
   conf <- list(prod = prod, dev = dev, format = format)
+  
+  invisible(structure(conf, class = "zz_config"))
+  
 }
 
 # .zz_endpoint_content

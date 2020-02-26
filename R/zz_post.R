@@ -56,12 +56,14 @@ zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE, ver
   
   usr <- .zz_get_key(usr = usr)
   
+  endpoints <- .zz_endpoints()
+  
   if (prod == FALSE) {
-    endpoint <- .zz_endpoint()$dev[[1]]
+    endpoint <- endpoints$dev[[1]]
   } 
   
   if (prod == TRUE) {
-    endpoint <- .zz_endpoint()$prod[[1]]
+    endpoint <- endpoints$prod[[1]]
   }
   
   body <- list(source_file = httr::upload_file(path = file),
