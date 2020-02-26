@@ -8,3 +8,4 @@ sandbox.R
 ^.*\.png$
 ^\.tar\.gz$
 cran-comments.md
+^appveyor\.yml$
