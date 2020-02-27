@@ -13,8 +13,8 @@
 #' 
 #' @seealso \code{\link{zz_format}} for a list of formats you can convert to.
 #' 
-#' @param usr The username/API key you are using. If not set, `zz_format()`
-#' will see if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
+#' @param usr The username/API key you are using. If not set, the function
+#' will check if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #' 
