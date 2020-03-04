@@ -17,7 +17,7 @@ Get the current release via [CRAN](https://cran.r-project.org/package=zzlite):
 ```r
 install.packages("zzlite")
 ```  
-Get the development version from [GitHub](https://github.com/fkoh111/zzlite):
+Get the development version from [GitHub](https://github.com/fkoh111/zzlite/tree/develop):
 ```r
 devtools::install_github("fkoh111/zzlite", ref = "develop")
 ```  
