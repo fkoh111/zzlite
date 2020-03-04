@@ -71,7 +71,8 @@ zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE, ver
   
   response <- httr::POST(url = endpoint,
        config = .zz_authenticate(usr),
-       body = body
+       body = body,
+       .zz_user_agent()
   )
   
   res <- data.frame(status = response$status_code,

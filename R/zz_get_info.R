@@ -64,7 +64,8 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   usr <- .zz_get_key(usr = usr)
   
   response <- httr::GET(url = endpoint,
-                      config = .zz_authenticate(usr)
+                      config = .zz_authenticate(usr),
+                      .zz_user_agent()
   )
   
   content <- .zz_parse_response(response = response)
