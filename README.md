@@ -23,6 +23,4 @@ devtools::install_github("fkoh111/zzlite", ref = "develop")
 ```  
 
 
----
-
 http://fkhonline.net
