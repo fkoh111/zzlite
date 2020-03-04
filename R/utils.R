@@ -77,6 +77,15 @@
   content <- jsonlite::fromJSON(content, flatten = TRUE)
 }
 
+# .zz_user_agent
+#' 
+#' Auxiliary wrapper for user agent
+#'  
+#' @keywords internal
+.zz_user_agent <- function() {
+  httr::user_agent("zzlite - https://github.com/fkoh111/zzlite")
+}
+
 # .zz_do_paging
 #' 
 #' Auxiliary function
@@ -97,7 +106,8 @@
       paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
       
       paged_response <- httr::GET(paged_endpoint,
-                                  config = .zz_authenticate(usr)
+                                  config = .zz_authenticate(usr),
+                                  .zz_user_agent()
       )
       
       content <- .zz_parse_response(response = paged_response)

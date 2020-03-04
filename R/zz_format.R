@@ -62,7 +62,8 @@ zz_format <- function(origin = NULL, usr = NULL) {
   }
   
   response <- httr::GET(endpoint,
-                        config = .zz_authenticate(usr = usr)
+                        config = .zz_authenticate(usr = usr),
+                        .zz_user_agent()
                         )
   
   content <- .zz_parse_response(response = response)

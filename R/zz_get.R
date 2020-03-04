@@ -84,7 +84,8 @@ zz_get <- function(id = NULL,
   
   response <- httr::GET(url,
       httr::write_disk(identifier, overwrite = overwrite),
-      config = .zz_authenticate(usr)
+      config = .zz_authenticate(usr),
+      .zz_user_agent()
   )
   
   if (!response$status_code %in% c(200, 201)) {
