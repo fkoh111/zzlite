@@ -22,5 +22,3 @@ Get the development version from [GitHub](https://github.com/fkoh111/zzlite):
 devtools::install_github("fkoh111/zzlite", ref = "develop")
 ```  
 
-
-http://fkhonline.net
