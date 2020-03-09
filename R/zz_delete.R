@@ -8,6 +8,12 @@ endpoint <- endpoints[['dev']][[2]]
 
 response <- httr::DELETE(url = paste0(endpoint, "71047841"),
              config = .zz_authenticate(usr),
+             .zz_user_agent()
              )
 
 response[['status_code']]
+
+
+zz_delete <- function(id = NULL, usr = NULL, prod = FALSE) {
+  
+}
