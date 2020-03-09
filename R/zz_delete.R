@@ -1,17 +1,17 @@
-usr <- NULL
-usr <- .zz_get_key(usr = usr)
+#usr <- NULL
+#usr <- .zz_get_key(usr = usr)
 
-endpoints <- .zz_endpoints()
+#endpoints <- .zz_endpoints()
 
-endpoints[['prod']][[2]]
-endpoint <- endpoints[['dev']][[2]]
+#endpoints[['prod']][[2]]
+#endpoint <- endpoints[['dev']][[2]]
 
-response <- httr::DELETE(url = paste0(endpoint, "71047841"),
-             config = .zz_authenticate(usr),
-             .zz_user_agent()
-             )
+#response <- httr::DELETE(url = paste0(endpoint, "71047841"),
+#             config = .zz_authenticate(usr),
+#             .zz_user_agent()
+#             )
 
-response[['status_code']]
+#response[['status_code']]
 
 
 zz_delete <- function(id = NULL, usr = NULL, prod = FALSE) {
@@ -42,11 +42,7 @@ zz_delete <- function(id = NULL, usr = NULL, prod = FALSE) {
                  response[['status_code']])
     )
   } else {
-    message(response[['status_code']])
+    res <- response[['status_code']]
   }
+  return(res)
 }
-
-
-zz_get_info()
-
-zz_delete(id = 71047848)
