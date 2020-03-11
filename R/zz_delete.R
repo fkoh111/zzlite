@@ -15,6 +15,8 @@
 #' 
 #' See: \url{https://developers.zamzar.com/user}
 #' 
+#' @param verbose Boolean deciding whether or not verbose status messages
+#' should be returned. Defaults to `FALSE`.  
 #'
 #' @export
 #' @return A status message indicating either success or failure.
@@ -28,12 +30,12 @@
 #' }
 
 
-zz_delete <- function(id = NULL, usr = NULL) {
+zz_delete <- function(id = NULL, usr = NULL, verbose = FALSE) {
  
   if (is.null(id)) {
     stop("Whoops, seems like you forgot to pass an id!")
   }
-  
+ 
   usr <- .zz_get_key(usr = usr)
   
   endpoints <- .zz_endpoints()
@@ -43,13 +45,22 @@ zz_delete <- function(id = NULL, usr = NULL) {
                            config = .zz_authenticate(usr),
                            .zz_user_agent()
   )
-   
+
+
   if (!response[['status_code']]  == 200) {
     stop(sprintf("Zamzar responded with a status code of: %d",
                  response[['status_code']])
     )
   } else {
-    res <- response[['status_code']]
+
+    if (verbose == FALSE) {
+      res <- response[['status_code']]
+    } else {
+      res <- data.frame(id = id,
+                        status_code = response$status_code,
+                        deleted_at = response$date,
+                        stringsAsFactors = FALSE)
+    }
   }
   return(res)
 }
