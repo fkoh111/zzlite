@@ -35,7 +35,7 @@
 #' # An example of zz_get() utilized with hardcoded arguments
 #' zz_get(id = 12345678, usr = "key", name = "my_avatar", extension = "png")
 #' 
-#' # An example zz_get() used in conjunction with zz_get_info()
+#' # An example of zz_get() used in conjunction with zz_get_info()
 #' # Please note this example assumes a valid key in .Renviron
 #' response <- zz_get_info(latest = TRUE)
 #' zz_get(id = response$id, extension = response$extension, prod = TRUE)
