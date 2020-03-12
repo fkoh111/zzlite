@@ -82,11 +82,6 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
     stop("Seems like Zamzar doesn't store any files submitted by this key!")
   }
   
-  # Null so we must have passed a key that isn't accepted
-  #if (is.null(content$data$id[[1]]) && is.null(content$data$created_at[[1]])) {
-  #  stop("Whoops, we can't find any valid key!")
-  #}
-
   if (latest == TRUE) {
     res <- data.frame(id = content[['data']][['id']][[1]],
                       extension = content[['data']][['format']][[1]],
