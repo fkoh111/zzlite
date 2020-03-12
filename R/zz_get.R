@@ -66,11 +66,11 @@ zz_get <- function(id = NULL,
   endpoints <- .zz_endpoints()
   
   if (prod == FALSE) {
-    endpoint <- endpoints$dev[[2]]
+    endpoint <- endpoints[['dev']][[2]]
   }
   
   if (prod == TRUE) {
-    endpoint <- endpoints$prod[[2]]
+    endpoint <- endpoints[['prod']][[2]]
   }
   
   # Concatenating an URL
@@ -90,14 +90,14 @@ zz_get <- function(id = NULL,
   
   if (!response$status_code %in% c(200, 201)) {
     stop(sprintf("Zamzar responded with a status code of: %d",
-                 response$status_code)
+                 response[['status_code']])
     )
   } else {
     message(sprintf("Writing file %s to %s", identifier, getwd()))
   }
  
   # Delete file if status code indicates so 
-  if (response$status_code %in% c(404)) {
+  if (response[['status_code']] %in% c(404)) {
     unlink(identifier)
   }
 

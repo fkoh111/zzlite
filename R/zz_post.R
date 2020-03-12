@@ -59,11 +59,11 @@ zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE, ver
   endpoints <- .zz_endpoints()
   
   if (prod == FALSE) {
-    endpoint <- endpoints$dev[[1]]
+    endpoint <- endpoints[['dev']][[1]]
   } 
   
   if (prod == TRUE) {
-    endpoint <- endpoints$prod[[1]]
+    endpoint <- endpoints[['prod']][[1]]
   }
   
   body <- list(source_file = httr::upload_file(path = file),
@@ -75,14 +75,14 @@ zz_post <- function(file = NULL, extension = NULL, usr = NULL, prod = FALSE, ver
        .zz_user_agent()
   )
   
-  res <- data.frame(status = response$status_code,
-                    endpoint = response$url,
-                    date = response$date)
+  res <- data.frame(status = response[['status_code']],
+                    endpoint = response[['url']],
+                    date = response[['date']])
   
   if (verbose == TRUE) {
     res <- res
   } else {
-    res <- res$status
+    res <- res[['status']]
   }
   
   return(res)

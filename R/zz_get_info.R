@@ -59,8 +59,8 @@
 zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   endpoints <- .zz_endpoints()
-  endpoint <- endpoints$prod[[2]]
-  
+  endpoint <- endpoints[['prod']][[2]]
+
   usr <- .zz_get_key(usr = usr)
   
   response <- httr::GET(url = endpoint,
@@ -70,24 +70,32 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   
   content <- .zz_parse_response(response = response)
   
-  if (isTRUE(content$paging$total_count == 0) && isTRUE(content$paging$limit == 50)) {
+  if (!response[['status_code']]  == 200) {
+    stop(sprintf("Zamzar responded with %s and a status code of: %d",
+                 content[['errors']][['message']],
+                 response[['status_code']]
+                 )
+    )
+  }
+  
+  if (isTRUE(content[['paging']][['total_count']] == 0) && isTRUE(content[['paging']][['limit']] == 50)) {
     stop("Seems like Zamzar doesn't store any files submitted by this key!")
   }
   
   # Null so we must have passed a key that isn't accepted
-  if (is.null(content$data$id[[1]]) && is.null(content$data$created_at[[1]])) {
-    stop("Whoops, we can't find any valid key!")
-  }
+  #if (is.null(content$data$id[[1]]) && is.null(content$data$created_at[[1]])) {
+  #  stop("Whoops, we can't find any valid key!")
+  #}
 
   if (latest == TRUE) {
-    res <- data.frame(id = content$data$id[[1]],
-                      extension = content$data$format[[1]],
-                      created_at = content$data$created_at[[1]],
+    res <- data.frame(id = content[['data']][['id']][[1]],
+                      extension = content[['data']][['format']][[1]],
+                      created_at = content[['data']][['created_at']][[1]],
                       stringsAsFactors = FALSE)
   } else {
-    res <- data.frame(id = content$data$id,
-                      extension = content$data$format,
-                      created_at = content$data$created_at,
+    res <- data.frame(id = content[['data']][['id']],
+                      extension = content[['data']][['format']],
+                      created_at = content[['data']][['created_at']],
                       stringsAsFactors = FALSE)
   }
   
