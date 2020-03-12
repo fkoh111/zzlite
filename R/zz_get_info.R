@@ -79,7 +79,7 @@ zz_get_info <- function(usr = NULL, latest = TRUE) {
   }
   
   if (isTRUE(content[['paging']][['total_count']] == 0) && isTRUE(content[['paging']][['limit']] == 50)) {
-    stop("Seems like Zamzar doesn't store any files submitted by this key!")
+    stop("Seems like Zamzar doesn't store any files submitted by this account!")
   }
   
   if (latest == TRUE) {
