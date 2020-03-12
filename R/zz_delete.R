@@ -57,8 +57,8 @@ zz_delete <- function(id = NULL, usr = NULL, verbose = FALSE) {
       res <- response[['status_code']]
     } else {
       res <- data.frame(id = id,
-                        status_code = response$status_code,
-                        deleted_at = response$date,
+                        status_code = response[['status_code']],
+                        deleted_at = response[['date']],
                         stringsAsFactors = FALSE)
     }
   }

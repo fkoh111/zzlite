@@ -56,9 +56,9 @@ zz_format <- function(origin = NULL, usr = NULL) {
   endpoints <- .zz_endpoints()
   
   if (is.null(origin) || origin == "") {
-    endpoint <- endpoints$format[[1]]
+    endpoint <- endpoints[['format']][[1]]
   } else {
-    endpoint <- paste0(endpoints$format[[1]], "/", origin)
+    endpoint <- paste0(endpoints[['format']][[1]], "/", origin)
   }
   
   response <- httr::GET(endpoint,
@@ -68,18 +68,18 @@ zz_format <- function(origin = NULL, usr = NULL) {
   
   content <- .zz_parse_response(response = response)
 
-  if (!response$status_code %in% c(200, 201)) {
+  if (!response[['status_code']] %in% c(200, 201)) {
     stop(sprintf("Whoops! Zamzar responded with: %s, and a status code of: %d",
-                 content$errors$message,
-                 response$status_code)
+                 content[['errors']][['message']],
+                 response[['status_code']])
     )
   }
   
-  container <- data.frame(target = content$data$name,
+  container <- data.frame(target = content[['data']][['name']],
                           stringsAsFactors = FALSE)
   
   # Checking if we should do paging (more than 50)
-  if(length(content$data$name) >= 50) {
+  if(length(content[['data']][['name']]) >= 50) {
     container <- .zz_do_paging(content = content,
                                container = container,
                                endpoint = endpoint,
@@ -90,18 +90,18 @@ zz_format <- function(origin = NULL, usr = NULL) {
   if (is.null(origin) || origin == "") {
     res <- container
   } else {
-    res <- data.frame(target = content$targets$name,
-                      cost = content$targets$credit_cost,
+    res <- data.frame(target = content[['targets']][['name']],
+                      cost = content[['targets']][['credit_cost']],
                       stringsAsFactors = FALSE)
   }
   
 
-  if (response$status_code %in% c(200, 201)) {
+  if (response[['status_code']] %in% c(200, 201)) {
     return(res)
   } else {
     stop(sprintf("Whoops! Zamzar responded with: %s, and status code %d.",
-                 content$errors$message,
-                 response$status_code)
+                 content[['errors']][['message']],
+                 response[['status_code']])
     )
   }
 }

@@ -94,14 +94,14 @@
 #' 
 #' @keywords internal
 .zz_do_paging <- function(content, container, endpoint, usr) {
-  if (content$paging$total_count > length(content$data$name)) {
+  if (content[['paging']][['total_count']] > length(content[['data']][['name']])) {
     
     storage <- list()
 
-    counter <- ceiling(content$paging$total_count / length(content$data$name))
+    counter <- ceiling(content[['paging']][['total_count']] / length(content[['data']][['name']]))
     
     for(i in 1:counter) {
-      state_last_target <- content$paging$last
+      state_last_target <- content[['paging']][['last']]
       
       paged_endpoint <- httr::modify_url(endpoint, query = list(after=state_last_target))
       
@@ -112,7 +112,7 @@
       
       content <- .zz_parse_response(response = paged_response)
       
-      temp <- data.frame(target = content$data$name,
+      temp <- data.frame(target = content[['data']][['name']],
                          stringsAsFactors = FALSE)
       
       storage[[i]] <- temp
