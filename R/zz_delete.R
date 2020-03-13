@@ -37,15 +37,13 @@ zz_delete <- function(id = NULL, usr = NULL, verbose = FALSE) {
   }
  
   usr <- .zz_get_key(usr = usr)
-  
-  endpoints <- .zz_endpoints()
-  endpoint <- endpoints[['prod']][[2]]
+
+  endpoint <- zz_config[['prod']][[2]]
   
   response <- httr::DELETE(url = paste0(endpoint, id),
                            config = .zz_authenticate(usr),
                            .zz_user_agent()
   )
-
 
   if (!response[['status_code']]  == 200) {
     stop(sprintf("Zamzar responded with a status code of: %d",

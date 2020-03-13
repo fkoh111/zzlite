@@ -63,14 +63,12 @@ zz_get <- function(id = NULL,
     id <- as.character(id)
   }
   
-  endpoints <- .zz_endpoints()
-  
   if (prod == FALSE) {
-    endpoint <- endpoints[['dev']][[2]]
+    endpoint <- zz_config[['dev']][[2]]
   }
   
   if (prod == TRUE) {
-    endpoint <- endpoints[['prod']][[2]]
+    endpoint <- zz_config[['prod']][[2]]
   }
   
   # Concatenating an URL
