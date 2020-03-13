@@ -1,29 +1,3 @@
-# .zz_endpoints
-#' 
-#' Auxiliary object to hold Zamzar API endpoints
-#' 
-#' @keywords internal
-.zz_endpoints <- function() {
-  prod <- list(
-    post <- c("https://api.zamzar.com/v1/jobs"),
-    get <- c("https://api.zamzar.com/v1/files/")
-  )
-  
-  dev <- list (
-    post <- c("https://sandbox.zamzar.com/v1/jobs"),
-    get <- c("https://sandbox.zamzar.com/v1/files/")
-  )
-  
-  format <- list(
-    format <- c("https://sandbox.zamzar.com/v1/formats")
-  )
-  
-  conf <- list(prod = prod, dev = dev, format = format)
-  
-  invisible(structure(conf, class = "zz_config"))
-  
-}
-
 # .zz_endpoint_content
 #' 
 #' Auxiliary function

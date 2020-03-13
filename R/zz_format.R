@@ -53,12 +53,10 @@ zz_format <- function(origin = NULL, usr = NULL) {
   
   usr <- .zz_get_key(usr = usr)
   
-  endpoints <- .zz_endpoints()
-  
   if (is.null(origin) || origin == "") {
-    endpoint <- endpoints[['format']][[1]]
+    endpoint <- zz_config[['format']][[1]]
   } else {
-    endpoint <- paste0(endpoints[['format']][[1]], "/", origin)
+    endpoint <- paste0(zz_config[['format']][[1]], "/", origin)
   }
   
   response <- httr::GET(endpoint,
