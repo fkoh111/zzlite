@@ -241,7 +241,7 @@ We can get a converted file by invoking `zz_get()` with appropriate arguments.
 A minimal example for obtaining the converted avatar from the previous example would be:
 
 ```r
-zzlite::zz_get(id = 61920045, extension = "png", prod = TRUE)
+zzlite::zz_get(id = 61920045, extension = "png")
 
 #> Writing file 61920045.png to /Users/whatever/Documents/conversions
 ```
