@@ -1,6 +1,6 @@
 #' Accepted formats from Zamzar
 #' 
-#' Get a dataframe of all the formats accepted by Zamzar, or a dataframe of formats
+#' Get dataframe of all the formats accepted by Zamzar. Alternatively, a dataframe of formats
 #' you can convert an origin to.
 #' 
 #' Please note that a Zamzar key passed as argument to `usr` takes precedence over a

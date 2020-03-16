@@ -31,7 +31,7 @@ The returned dataframe contains the following columns:
 A dataframe.
 }
 \description{
-Get info on the files submitted to the Zamzar API via your current key.
+Get info on files submitted to Zamzar by account.
 }
 \details{
 Per default \code{zz_get_info()} assumes you want information for the last
@@ -51,14 +51,14 @@ Zamzar key extracted from an \code{.Renviron}.
 # submitted file will be returned.
 zz_get_info()
 
-# Same as above, we're just passing the key manually.
+# Same as above, we're just passing the key in a variable.
 zz_get_info(usr = "key")
  
 # Provided a valid token, will return metadata for all files
 # submitted to the API within a reasonable time frame.
 zz_get_info(usr = "key", latest = FALSE)
 
-# Same as above, we're just using the .Renviron.
+# Same as above, we're just utilizing .Renviron.
 zz_get_info(latest = FALSE)
 }
 }
