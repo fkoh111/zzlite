@@ -22,6 +22,9 @@
 #' @param overwrite Should `zz_get()` overwrite if a file with the same name already
 #' exists in directory. Defaults to `FALSE`.
 #'
+#' @param prod Boolean deciding whether to use a production endpoint or
+#' a development endpoint. Defaults to FALSE (That is, development endpoint).
+#'
 #' @export
 #' @return A file written to disk.
 #' 
@@ -33,7 +36,7 @@
 #' # An example of zz_get() used in conjunction with zz_get_info()
 #' # Please note this example assumes a valid key in .Renviron
 #' response <- zz_get_info(latest = TRUE)
-#' zz_get(id = response$id, extension = response$extension)
+#' zz_get(id = response$id, extension = response$extension, prod = TRUE)
 #' }
 
 
@@ -41,7 +44,8 @@ zz_get <- function(id = NULL,
                    usr = NULL,
                    name = NULL,
                    extension = NULL,
-                   overwrite = FALSE) {
+                   overwrite = FALSE,
+                   prod = FALSE) {
   
   if (is.null(id)) {
     stop("Whoops, seems like you forgot to pass an id!")
@@ -57,8 +61,14 @@ zz_get <- function(id = NULL,
     id <- as.character(id)
   }
   
-  endpoint <- zz_config[['prod']][[2]]
-
+  if (prod == FALSE) {
+    endpoint <- zz_config[['dev']][[2]]
+  }
+  
+  if (prod == TRUE) {
+    endpoint <- zz_config[['prod']][[2]]
+  }
+  
   # Concatenating an URL
   url <- .zz_endpoint_content(endpoint = endpoint, id = id)
   
@@ -69,9 +79,9 @@ zz_get <- function(id = NULL,
   identifier <- paste0(id, ".", extension)
   
   response <- httr::GET(url,
-      httr::write_disk(identifier, overwrite = overwrite),
-      config = .zz_authenticate(usr),
-      .zz_user_agent()
+                        httr::write_disk(identifier, overwrite = overwrite),
+                        config = .zz_authenticate(usr),
+                        .zz_user_agent()
   )
   
   if (!response$status_code %in% c(200, 201)) {
@@ -81,10 +91,10 @@ zz_get <- function(id = NULL,
   } else {
     message(sprintf("Writing file %s to %s", identifier, getwd()))
   }
- 
+  
   # Delete file if status code indicates so 
   if (response[['status_code']] %in% c(404)) {
     unlink(identifier)
   }
-
+  
 }

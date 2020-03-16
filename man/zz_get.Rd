@@ -4,7 +4,14 @@
 \alias{zz_get}
 \title{Get file from Zamzar account}
 \usage{
-zz_get(id = NULL, usr = NULL, name = NULL, extension = NULL, overwrite = FALSE)
+zz_get(
+  id = NULL,
+  usr = NULL,
+  name = NULL,
+  extension = NULL,
+  overwrite = FALSE,
+  prod = FALSE
+)
 }
 \arguments{
 \item{id}{The target id for a previously passed file. Most likely
@@ -22,6 +29,9 @@ not assigned to the file, then the id of the file will be used as file name.}
 
 \item{overwrite}{Should `zz_get()` overwrite if a file with the same name already
 exists in directory. Defaults to `FALSE`.}
+
+\item{prod}{Boolean deciding whether to use a production endpoint or
+a development endpoint. Defaults to FALSE (That is, development endpoint).}
 }
 \value{
 A file written to disk.
@@ -41,6 +51,6 @@ zz_get(id = 12345678, usr = "key", name = "my_avatar", extension = "png")
 # An example of zz_get() used in conjunction with zz_get_info()
 # Please note this example assumes a valid key in .Renviron
 response <- zz_get_info(latest = TRUE)
-zz_get(id = response$id, extension = response$extension)
+zz_get(id = response$id, extension = response$extension, prod = TRUE)
 }
 }
