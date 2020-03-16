@@ -189,7 +189,7 @@ zzlite::zz_post(file = "avatar.emf", extension = "png", prod = TRUE)
 
 ```
 
-In the example above, `avatar.emf` is the file that we've requested Zamzar to convert. The paramter `extension` is the extension/format we want the file to have _after_ conversion.  
+In the example above, `avatar.emf` is the file that we've requested Zamzar to convert. The parameter `extension` is the extension/format we want the file to have _after_ conversion.  
 The `prod` boolean decides whether or not we should use a development endpoint or a production endpoint.  
 
 For more information on differences between endpoints, see: [test and production environments](https://developers.zamzar.com/docs) in the official Zamzar documentation.
