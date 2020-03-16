@@ -38,6 +38,8 @@ A file written to disk.
 }
 \description{
 Get file from Zamzar account provided a file id.
+Per default `zz_get()` assumes that you're doing development, thus using a 	
+development endpoint. Set prod boolean to `TRUE` to change this behavior.
 }
 \details{
 Please note that a Zamzar key passed as argument to `usr` takes precedence over a
