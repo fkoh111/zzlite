@@ -6,7 +6,7 @@
 #' Zamzar key extracted from an `.Renviron`.  
 #' 
 #' 
-#' @param id The target id for a file you wish to delete.
+#' @param id The target id for a file you wish to delete. Most likely returned from ‘zz get info()‘.
 #'
 #' @param usr The username/API key you are using. If not set, the function
 #' will check if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    

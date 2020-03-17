@@ -36,6 +36,8 @@ Per default `zz_post()` assumes that you're doing development, thus using a
 development endpoint. Set parameter `prod` to `TRUE` to change this behavior.
 }
 \details{
+On differences between endpoints, see: \url{https://developers.zamzar.com/docs#section-Next_steps} and  \url{https://developers.zamzar.com/docs#section-Rate_Limits}
+
 Please note that a Zamzar key passed as argument to `usr` takes precedence over a
 Zamzar key extracted from an `.Renviron`.
 }

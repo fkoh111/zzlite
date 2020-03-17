@@ -42,6 +42,8 @@ Per default `zz_get()` assumes that you're doing development, thus using a
 development endpoint. Set prod boolean to `TRUE` to change this behavior.
 }
 \details{
+On differences between endpoints, see: \url{https://developers.zamzar.com/docs#section-Next_steps} and  \url{https://developers.zamzar.com/docs#section-Rate_Limits}
+
 Please note that a Zamzar key passed as argument to `usr` takes precedence over a
 Zamzar key extracted from an `.Renviron`.
 }

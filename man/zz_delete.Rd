@@ -7,7 +7,7 @@
 zz_delete(id = NULL, usr = NULL, verbose = FALSE)
 }
 \arguments{
-\item{id}{The target id for a file you wish to delete.}
+\item{id}{The target id for a file you wish to delete. Most likely returned from ‘zz get info()‘.}
 
 \item{usr}{The username/API key you are using. If not set, the function
 will check if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use that.    
