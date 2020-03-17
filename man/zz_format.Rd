@@ -31,7 +31,7 @@ Either a dataframe of formats that you can convert to, or a
 dataframe of accepted origin formats.
 }
 \description{
-Get a dataframe of all the formats accepted by Zamzar, or a dataframe of formats
+Get dataframe of all the formats accepted by Zamzar. Alternatively, a dataframe of formats
 you can convert an origin to.
 }
 \details{

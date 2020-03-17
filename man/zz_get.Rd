@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_get.R
 \name{zz_get}
 \alias{zz_get}
-\title{Get file from Zamzar endpoint}
+\title{Get file from Zamzar account}
 \usage{
 zz_get(
   id = NULL,
@@ -23,7 +23,7 @@ will check if a key exists as a `ZAMZAR_USR` variable  in `.Renviron` and use th
 See: \url{https://developers.zamzar.com/user}}
 
 \item{name}{The name of the file you are fetching from Zamzar. If a name is
-not assigned to the file, then we're using the id as file name.}
+not assigned to the file, then the id of the file will be used as file name.}
 
 \item{extension}{The extension of the file you are fetching from Zamzar.}
 
@@ -37,8 +37,8 @@ a development endpoint. Defaults to FALSE (That is, development endpoint).}
 A file written to disk.
 }
 \description{
-Get file from Zamzar endpoint via id.
-Per default `zz_get()` assumes that you're doing development, thus using a 
+Get file from Zamzar account provided a file id.
+Per default `zz_get()` assumes that you're doing development, thus using a 	
 development endpoint. Set prod boolean to `TRUE` to change this behavior.
 }
 \details{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz_delete.R
 \name{zz_delete}
 \alias{zz_delete}
-\title{Delete file from Zamzar endpoint}
+\title{Delete file from Zamzar account}
 \usage{
 zz_delete(id = NULL, usr = NULL, verbose = FALSE)
 }
@@ -21,9 +21,7 @@ should be returned. Defaults to `FALSE`.}
 A status message indicating either success or failure.
 }
 \description{
-Delete file from Zamzar endpoint via id.
-Per default `zz_delete()` assumes that you're doing development, thus using a 
-development endpoint. Set prod boolean to `TRUE` to change this behavior.
+Delete file from Zamzar account provided a file id.
 }
 \details{
 Please note that a Zamzar key passed as argument to `usr` takes precedence over a
@@ -32,7 +30,6 @@ Zamzar key extracted from an `.Renviron`.
 \examples{
 \dontrun{
 # An example of zz_delete() with a hardcoded file id
-# Please note that zz_delete doesn't need to dinstinguish betweend endpoints (prod or dev)
 
 zz_get(id = 12345678)
 }

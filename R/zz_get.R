@@ -1,7 +1,7 @@
-#' Get file from Zamzar endpoint
+#' Get file from Zamzar account
 #' 
-#' Get file from Zamzar endpoint via id.
-#' Per default `zz_get()` assumes that you're doing development, thus using a 
+#' Get file from Zamzar account provided a file id.
+#' Per default `zz_get()` assumes that you're doing development, thus using a 	
 #' development endpoint. Set prod boolean to `TRUE` to change this behavior.
 #'
 #' Please note that a Zamzar key passed as argument to `usr` takes precedence over a
@@ -17,7 +17,7 @@
 #' See: \url{https://developers.zamzar.com/user}
 #' 
 #' @param name The name of the file you are fetching from Zamzar. If a name is
-#' not assigned to the file, then we're using the id as file name.
+#' not assigned to the file, then the id of the file will be used as file name.
 #'
 #' @param extension The extension of the file you are fetching from Zamzar. 
 #' 
@@ -81,9 +81,9 @@ zz_get <- function(id = NULL,
   identifier <- paste0(id, ".", extension)
   
   response <- httr::GET(url,
-      httr::write_disk(identifier, overwrite = overwrite),
-      config = .zz_authenticate(usr),
-      .zz_user_agent()
+                        httr::write_disk(identifier, overwrite = overwrite),
+                        config = .zz_authenticate(usr),
+                        .zz_user_agent()
   )
   
   if (!response$status_code %in% c(200, 201)) {
@@ -93,10 +93,10 @@ zz_get <- function(id = NULL,
   } else {
     message(sprintf("Writing file %s to %s", identifier, getwd()))
   }
- 
+  
   # Delete file if status code indicates so 
   if (response[['status_code']] %in% c(404)) {
     unlink(identifier)
   }
-
+  
 }
